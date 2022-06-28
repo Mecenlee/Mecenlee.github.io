@@ -1,0 +1,843 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/log.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LMC">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="15.9 类加载 15.9.1 说明  15.9.2 类加载时机  15.9.3 类加载过程图  15.9.4 类加载各个阶段完成任务  15.9.5 加载阶段  15.9.6 连接阶段-验证  15.9.7 连接阶段-准备  解释： 15.9.8 连接阶段-解析  15.9.10 初始化  15.10 通过反射获取类的结构信息 15.10.1 Java.lang.Class  getFields">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_SE(十五)《反射》下篇">
+<meta property="og:url" content="http://lmc.pub/2022/06/11/Java-SE15-2/index.html">
+<meta property="og:site_name" content="LMC_Blog">
+<meta property="og:description" content="15.9 类加载 15.9.1 说明  15.9.2 类加载时机  15.9.3 类加载过程图  15.9.4 类加载各个阶段完成任务  15.9.5 加载阶段  15.9.6 连接阶段-验证  15.9.7 连接阶段-准备  解释： 15.9.8 连接阶段-解析  15.9.10 初始化  15.10 通过反射获取类的结构信息 15.10.1 Java.lang.Class  getFields">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143143759.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143333363.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143430325.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143652839.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143753525.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143838082.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143937076.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530144016874.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530144100984.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530144157232.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145151346.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145221479.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145257775.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145336497.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145840563.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530154319482.png">
+<meta property="article:published_time" content="2022-06-11T15:33:54.000Z">
+<meta property="article:modified_time" content="2022-06-17T07:09:52.758Z">
+<meta property="article:author" content="LMC">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143143759.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Java_SE(十五)《反射》下篇 - LMC_Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc.pub","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mecenlee&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Java_SE(十五)《反射》下篇"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        LMC
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-11 23:33" pubdate>
+          2022年6月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          38 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=230 height=450 src="//music.163.com/outchain/player?type=0&id=7474593916&auto=0&height=430"></iframe>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java_SE(十五)《反射》下篇</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：11 天前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h3 id="15-9-类加载-v2">15.9 类加载</h3>
+<h4 id="15-9-1-说明-v2">15.9.1 说明</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143143759.png" srcset="/img/loading.gif" lazyload alt="image-20220530143143759"></p>
+<h4 id="15-9-2-类加载时机-v2">15.9.2 类加载时机</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143333363.png" srcset="/img/loading.gif" lazyload alt="image-20220530143333363"></p>
+<h4 id="15-9-3-类加载过程图-v2">15.9.3 类加载过程图</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143430325.png" srcset="/img/loading.gif" lazyload alt="image-20220530143430325"></p>
+<h4 id="15-9-4-类加载各个阶段完成任务-v2">15.9.4 类加载各个阶段完成任务</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143652839.png" srcset="/img/loading.gif" lazyload alt="image-20220530143652839"></p>
+<h4 id="15-9-5-加载阶段-v2">15.9.5 加载阶段</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143753525.png" srcset="/img/loading.gif" lazyload alt="image-20220530143753525"></p>
+<h4 id="15-9-6-连接阶段-验证-v2">15.9.6 连接阶段-验证</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143838082.png" srcset="/img/loading.gif" lazyload alt="image-20220530143838082"></p>
+<h4 id="15-9-7-连接阶段-准备-v2">15.9.7 连接阶段-准备</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530143937076.png" srcset="/img/loading.gif" lazyload alt="image-20220530143937076"></p>
+<p>解释：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530144016874.png" srcset="/img/loading.gif" lazyload alt="image-20220530144016874"></p>
+<h4 id="15-9-8-连接阶段-解析-v2">15.9.8 连接阶段-解析</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530144100984.png" srcset="/img/loading.gif" lazyload alt="image-20220530144100984"></p>
+<h4 id="15-9-10-初始化-v2">15.9.10 初始化</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530144157232.png" srcset="/img/loading.gif" lazyload alt="image-20220530144157232"></p>
+<h3 id="15-10-通过反射获取类的结构信息-v2">15.10 通过反射获取类的结构信息</h3>
+<h4 id="15-10-1-Java-lang-Class-v2">15.10.1 Java.lang.Class</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145151346.png" srcset="/img/loading.gif" lazyload alt="image-20220530145151346"></p>
+<p>getFields()：获得某个类的所有的公共（public）的字段，包括父类中的字段。<br>
+getDeclaredFields()：获得某个类的所有声明的字段，即包括public、private和proteced，但是不包括父类的申明字段。</p>
+<h4 id="15-10-2-Java-lang-reflect-Field-v2">15.10.2 Java.lang.reflect.Field</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145221479.png" srcset="/img/loading.gif" lazyload alt="image-20220530145221479"></p>
+<h4 id="15-10-3-Java-lang-reflect-Method-v2">15.10.3 Java.lang.reflect.Method</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145257775.png" srcset="/img/loading.gif" lazyload alt="image-20220530145257775"></p>
+<h4 id="15-10-4-Java-lang-reflect-Constructor-v2">15.10.4 Java.lang.reflect.Constructor</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145336497.png" srcset="/img/loading.gif" lazyload alt="image-20220530145336497"></p>
+<h3 id="15-11-通过反射创建对象-v2">15.11 通过反射创建对象</h3>
+<ol>
+<li>
+<p>✅<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530145840563.png" srcset="/img/loading.gif" lazyload alt="image-20220530145840563"></p>
+</li>
+<li>
+<p>代码：</p>
+</li>
+<li>
+<pre class=" language-language-java"><code class="language-language-java">package day08;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+/**
+ * @author 李敏灿
+ * @version 1.0
+ * 通过反射构建实例
+ */
+
+public class Reflection02 &#123;
+    public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException &#123;
+        //1. 获取到 User 类的 Class 对象
+        Class<?> aClass = Class.forName("day08.User");
+        //2.用 public 无参构造器
+        Object o = aClass.newInstance();
+        System.out.println(o);
+        //3.用 public 有参构造器
+        Constructor<?> constructor = aClass.getConstructor(String.class);
+        Object o1 = constructor.newInstance("李敏烂");
+        System.out.println(o1);
+        //4.通过 private 构造器
+        Constructor<?> constructor1 = aClass.getDeclaredConstructor(int.class, String.class);
+        constructor1.setAccessible(true);//爆破，将私有的限制突破。没有这个会报 IllegalAccessException
+        Object o2 = constructor1.newInstance(19, "烂烂");
+        System.out.println(o2);
+    &#125;
+&#125;
+class User&#123;
+    private int age = 10;
+    private String name = "Mecenlee";
+
+    public User() &#123;
+    &#125;
+
+    public User(String name) &#123;
+        this.name = name;
+    &#125;
+
+    private User(int age, String name) &#123;
+        this.age = age;
+        this.name = name;
+    &#125;
+
+    @Override
+    public String toString() &#123;
+        return "User&#123;" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                '&#125;';
+    &#125;
+&#125;
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><br>   结果图：![image<span class="hljs-number">-20220530152047467</span>](https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image<span class="hljs-number">-20220530152047467.</span>png)<br><br>### <span class="hljs-number">15.12</span> 通过反射访问类中的成员<br><br>#### <span class="hljs-number">15.12</span><span class="hljs-number">.1</span> 访问属性<br><br><span class="hljs-number">1.</span> :white_check_mark:介绍![image<span class="hljs-number">-20220530152146899</span>](https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image<span class="hljs-number">-20220530152146899.</span>png)<br><br><span class="hljs-number">2.</span> 代码演示：<br><br><span class="hljs-number">3.</span> ```java<br>   package day08;<br>   <br>   <span class="hljs-keyword">import</span> java.lang.reflect.Field;<br>   <br>   <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * @author 李敏灿</span><br><span class="hljs-comment">    * @version 1.0</span><br><span class="hljs-comment">    * 演示反射怎么操作属性</span><br><span class="hljs-comment">    */</span><br>   <br>   <span class="hljs-built_in">public</span> <span class="hljs-keyword">class</span> Reflection03 &#123;<br>       <span class="hljs-built_in">public</span> static <span class="hljs-type">void</span> main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchFieldException &#123;<br>           //<span class="hljs-number">1.</span> 得到 Student 对应的 <span class="hljs-keyword">Class</span> 对象<br>           <span class="hljs-keyword">Class</span><?> aClass = <span class="hljs-keyword">Class</span>.forName("day08.Student");<br>           //<span class="hljs-number">2.</span> 得到实例对象<br>           <span class="hljs-keyword">Object</span> o = aClass.newInstance();<br>           <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(o.getClass());<br>           //<span class="hljs-number">3.</span>使用反射得到 age 属性<br>           Field age = aClass.getField("age");<br>           age.<span class="hljs-keyword">set</span>(o,<span class="hljs-number">99</span>);<br>           <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(age.<span class="hljs-keyword">get</span>(o));<br>           //<span class="hljs-number">4.</span>使用反射操作 <span class="hljs-type">name</span> 属性<br>           Field <span class="hljs-type">name</span> = aClass.getDeclaredField("name");<br>           <span class="hljs-type">name</span>.setAccessible(<span class="hljs-keyword">true</span>);<br>           <span class="hljs-type">name</span>.<span class="hljs-keyword">set</span>(<span class="hljs-keyword">null</span>,"Jack");<br>           //<span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(<span class="hljs-type">name</span>.<span class="hljs-keyword">get</span>(o));<br>           <span class="hljs-keyword">System</span>.<span class="hljs-keyword">out</span>.println(<span class="hljs-type">name</span>.<span class="hljs-keyword">get</span>(<span class="hljs-keyword">null</span>));<br>   <br>       &#125;<br>   &#125;<br>   <span class="hljs-keyword">class</span> Student&#123;<br>       <span class="hljs-built_in">public</span> <span class="hljs-type">int</span> age;<br>       private static String <span class="hljs-type">name</span>;<br>   <br>       <span class="hljs-built_in">public</span> Student() &#123;<br>       &#125;<br>   <br>       @Override<br>       <span class="hljs-built_in">public</span> String toString() &#123;<br>           <span class="hljs-keyword">return</span> "Student&#123;" +<br>                   "age=" + age +<br>                   <span class="hljs-string">&#x27;&#125;&#x27;</span>;<br>       &#125;<br>   &#125;<br></code></pre></td></tr></table></figure>
+
+结果图：![image-20220530154241721](https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530154241721.png)
+
+</code></pre>
+</li>
+</ol>
+<h4 id="15-12-2-访问方法-v2">15.12.2 访问方法</h4>
+<ol>
+<li>
+<p>✅介绍<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530154319482.png" srcset="/img/loading.gif" lazyload alt="image-20220530154319482"></p>
+</li>
+<li>
+<p>代码演示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day08;<br><br><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-keyword">import</span> java.lang.reflect.InvocationTargetException;<br><span class="hljs-keyword">import</span> java.lang.reflect.Method;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示反射怎么访问方法</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Reflection04</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException &#123;<br>        <span class="hljs-comment">//1.获取 类对象</span><br>        Class&lt;?&gt; aClass = Class.forName(<span class="hljs-string">&quot;day08.Boss&quot;</span>);<br>        <span class="hljs-comment">//2.创建一个对象</span><br>        <span class="hljs-type">Object</span> <span class="hljs-variable">o</span> <span class="hljs-operator">=</span> aClass.newInstance();<br>        <span class="hljs-comment">//3.调用 public 的 hi 方法</span><br>        <span class="hljs-type">Method</span> <span class="hljs-variable">hi</span> <span class="hljs-operator">=</span> aClass.getMethod(<span class="hljs-string">&quot;hi&quot;</span>, String.class);<br>        hi.invoke(o, <span class="hljs-string">&quot;HL&quot;</span>);<br>        <span class="hljs-comment">//4.调用 private 的 say 方法</span><br>        <span class="hljs-type">Method</span> <span class="hljs-variable">say</span> <span class="hljs-operator">=</span> aClass.getDeclaredMethod(<span class="hljs-string">&quot;say&quot;</span>, <span class="hljs-type">int</span>.class, String.class, <span class="hljs-type">char</span>.class);<br>        say.setAccessible(<span class="hljs-literal">true</span>);<span class="hljs-comment">//直接上爆破</span><br>        System.out.println(say.invoke(<span class="hljs-literal">null</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&quot;lmc&quot;</span>, <span class="hljs-string">&#x27;男&#x27;</span>));<span class="hljs-comment">//0lmc男</span><br><br>        <span class="hljs-comment">//5.在反射中如果方法有返回值，统一返回 Object 。但是他的运行类型和方法定义的返回类型一致</span><br>        <span class="hljs-type">Method</span> <span class="hljs-variable">m1</span> <span class="hljs-operator">=</span> aClass.getMethod(<span class="hljs-string">&quot;m1&quot;</span>);<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">invoke</span> <span class="hljs-operator">=</span> m1.invoke(o);<br>        System.out.println(<span class="hljs-string">&quot;invoke 的运行类型=&quot;</span> + invoke.getClass());<span class="hljs-comment">//invoke 的运行类型=class day08.Monster</span><br><br><br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Monster</span> &#123;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Boss</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> age;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String name;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Boss</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Monster <span class="hljs-title function_">m1</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Monster</span>();<br>    &#125;<br><br>    <span class="hljs-comment">//静态方法</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">say</span><span class="hljs-params">(<span class="hljs-type">int</span> n, String s, <span class="hljs-type">char</span> c)</span> &#123;<br>        <span class="hljs-keyword">return</span> n + <span class="hljs-string">&quot;&quot;</span> + s + <span class="hljs-string">&quot;&quot;</span> + c;<br>    &#125;<br><br>    <span class="hljs-comment">//普通方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hi</span><span class="hljs-params">(String c)</span> &#123;<br>        System.out.println(<span class="hljs-string"><code class="language-hljs java"><span class="hljs-keyword">package</span> day08;<br><br><span class="hljs-keyword">import</span> com.sun.tools.javac.Main;<br><br><span class="hljs-keyword">import</span> java.lang.reflect.InvocationTargetException;<br><span class="hljs-keyword">import</span> java.lang.reflect.Method;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示反射怎么访问方法</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Reflection04</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException &#123;<br>        <span class="hljs-comment">//1.获取 类对象</span><br>        Class&lt;?&gt; aClass = Class.forName(<span class="hljs-string">&quot;day08.Boss&quot;</span>);<br>        <span class="hljs-comment">//2.创建一个对象</span><br>        <span class="hljs-type">Object</span> <span class="hljs-variable">o</span> <span class="hljs-operator">=</span> aClass.newInstance();<br>        <span class="hljs-comment">//3.调用 public 的 hi 方法</span><br>        <span class="hljs-type">Method</span> <span class="hljs-variable">hi</span> <span class="hljs-operator">=</span> aClass.getMethod(<span class="hljs-string">&quot;hi&quot;</span>, String.class);<br>        hi.invoke(o, <span class="hljs-string">&quot;HL&quot;</span>);<br>        <span class="hljs-comment">//4.调用 private 的 say 方法</span><br>        <span class="hljs-type">Method</span> <span class="hljs-variable">say</span> <span class="hljs-operator">=</span> aClass.getDeclaredMethod(<span class="hljs-string">&quot;say&quot;</span>, <span class="hljs-type">int</span>.class, String.class, <span class="hljs-type">char</span>.class);<br>        say.setAccessible(<span class="hljs-literal">true</span>);<span class="hljs-comment">//直接上爆破</span><br>        System.out.println(say.invoke(<span class="hljs-literal">null</span>, <span class="hljs-number">0</span>, <span class="hljs-string">&quot;lmc&quot;</span>, <span class="hljs-string">&#x27;男&#x27;</span>));<span class="hljs-comment">//0lmc男</span><br><br>        <span class="hljs-comment">//5.在反射中如果方法有返回值，统一返回 Object 。但是他的运行类型和方法定义的返回类型一致</span><br>        <span class="hljs-type">Method</span> <span class="hljs-variable">m1</span> <span class="hljs-operator">=</span> aClass.getMethod(<span class="hljs-string">&quot;m1&quot;</span>);<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">invoke</span> <span class="hljs-operator">=</span> m1.invoke(o);<br>        System.out.println(<span class="hljs-string">&quot;invoke 的运行类型=&quot;</span> + invoke.getClass());<span class="hljs-comment">//invoke 的运行类型=class day08.Monster</span><br><br><br>    &#125;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Monster</span> &#123;<br>&#125;<br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Boss</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> age;<br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String name;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Boss</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> Monster <span class="hljs-title function_">m1</span><span class="hljs-params">()</span> &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Monster</span>();<br>    &#125;<br><br>    <span class="hljs-comment">//静态方法</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> String <span class="hljs-title function_">say</span><span class="hljs-params">(<span class="hljs-type">int</span> n, String s, <span class="hljs-type">char</span> c)</span> &#123;<br>        <span class="hljs-keyword">return</span> n + <span class="hljs-string">&quot;&quot;</span> + s + <span class="hljs-string">&quot;&quot;</span> + c;<br>    &#125;<br><br>    <span class="hljs-comment">//普通方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">hi</span><span class="hljs-params">(String c)</span> &#123;<br>        System.out.println(<span class="hljs-string">"hi~"</span> + c);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java-SE/" class="category-chain-item">Java SE</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Java-SE/15-%E5%8F%8D%E5%B0%84/" class="category-chain-item">15.反射</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/">#Java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Java_SE(十五)《反射》下篇</div>
+      <div>http://lmc.pub/2022/06/11/Java-SE15-2/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LMC</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://blog.csdn.net/qq_65224479?spm=1011.2415.3001.5343" target="_blank" rel="nofollow noopener"><span>myCSDN</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+  <!--单击显示文字-->
+<script type="text/javascript" src="/js/click_show_text.js"></script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+</body>
+</html>

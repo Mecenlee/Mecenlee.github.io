@@ -1,0 +1,837 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/log.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LMC">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="13.10 flush 详解 13.10.1 背景  我有个问题： 就是 Java 中 IO 流中的那个 flush 是干嘛的？原理是什么？什么时候用？什么时候可以不用？  13.10.2 原理   流的 writer 原理：Java 中 文件直接通过流 (Stream) 的方式传递,但是不同的流传递的方式还是有点不同的。比如现在通过 Java 程序去给桌面一个文件写东西进去：如果是节点流，他们">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_SE(十三)《IO流》下篇">
+<meta property="og:url" content="http://lmc.pub/2022/06/11/Java-SE13-3/index.html">
+<meta property="og:site_name" content="LMC_Blog">
+<meta property="og:description" content="13.10 flush 详解 13.10.1 背景  我有个问题： 就是 Java 中 IO 流中的那个 flush 是干嘛的？原理是什么？什么时候用？什么时候可以不用？  13.10.2 原理   流的 writer 原理：Java 中 文件直接通过流 (Stream) 的方式传递,但是不同的流传递的方式还是有点不同的。比如现在通过 Java 程序去给桌面一个文件写东西进去：如果是节点流，他们">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529114924889.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115007246.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115358943.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115443818.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115629945.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115651105.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529133850637.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529134413803.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530084852822.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530090601609.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530091212144.png">
+<meta property="article:published_time" content="2022-06-11T13:46:26.000Z">
+<meta property="article:modified_time" content="2022-06-11T15:21:15.419Z">
+<meta property="article:author" content="LMC">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529114924889.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Java_SE(十三)《IO流》下篇 - LMC_Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc.pub","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mecenlee&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Java_SE(十三)《IO流》下篇"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        LMC
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-11 21:46" pubdate>
+          2022年6月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          75 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=230 height=450 src="//music.163.com/outchain/player?type=0&id=7474593916&auto=0&height=430"></iframe>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java_SE(十三)《IO流》下篇</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：17 天前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h3 id="13-10-flush-详解-v2">13.10 flush 详解</h3>
+<h4 id="13-10-1-背景-v2">13.10.1 背景</h4>
+<blockquote>
+<p>我有个问题：</p>
+<p>就是 Java 中 IO 流中的那个 flush 是干嘛的？原理是什么？什么时候用？什么时候可以不用？</p>
+</blockquote>
+<h4 id="13-10-2-原理-v2">13.10.2 原理</h4>
+<ol>
+<li>
+<p>流的 writer 原理：Java 中 文件直接通过流 (Stream) 的方式传递,但是不同的流传递的方式还是有点不同的。比如现在通过 Java 程序去给桌面一个文件写东西进去：如果是节点流，他们 write 是直接淦目标中了；但是包装流 (Buffer 流) 他们就有个缓冲区，设计的初衷是提高读写效率，他们 write 先是写在缓冲区，满了才给写目标文件中去。</p>
+</li>
+<li>
+<p>flush 原理：这个 flush 是干啥的呢？就是如果我们直接调用它，他就会不管缓存区有没有满，都给他淦出缓存区，强行冲一遍。注意啊，这个赶出缓存不是直接写到物理地址硬盘上，而是赶出去让操作系统来写到文件上去。这个 flush 还是个空方法。</p>
+<p>下面是 flush 的源码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Flushes this output stream and forces any buffered output bytes</span><br><span class="hljs-comment"> * to be written out. The general contract of &lt;code&gt;flush&lt;/code&gt; is</span><br><span class="hljs-comment"> * that calling it is an indication that, if any bytes previously</span><br><span class="hljs-comment"> * written have been buffered by the implementation of the output</span><br><span class="hljs-comment"> * stream, such bytes should immediately be written to their</span><br><span class="hljs-comment"> * intended destination.</span><br><span class="hljs-comment"> * &lt;p&gt;</span><br><span class="hljs-comment"> * If the intended destination of this stream is an abstraction provided by</span><br><span class="hljs-comment"> * the underlying operating system, for example a file, then flushing the</span><br><span class="hljs-comment"> * stream guarantees only that bytes previously written to the stream are</span><br><span class="hljs-comment"> * passed to the operating system for writing; it does not guarantee that</span><br><span class="hljs-comment"> * they are actually written to a physical device such as a disk drive.</span><br><span class="hljs-comment"> * &lt;p&gt;</span><br><span class="hljs-comment"> * The &lt;code&gt;flush&lt;/code&gt; method of &lt;code&gt;OutputStream&lt;/code&gt; does nothing.</span><br><span class="hljs-comment"> * 中文翻译：</span><br><span class="hljs-comment"> 	刷新此输出流并强制写出任何缓冲的输出字节。 &lt;code&gt;flush&lt;code&gt; 的一般约定是调用它表示，如果先前写入的任何字节已被输出  	流的实现缓冲，则应立即将这些字节写入其预期目的地。 &lt;p&gt; 如果此流的预期目的地是底层操作系统提供的抽象，例如文件，则刷新	流仅保证先前写入流的字节被传递给操作系统进行写入；它不能保证它们实际上被写入了物理设备，例如磁盘驱动器。 &lt;p&gt; &lt;code&gt;OutputStream&lt;code&gt; 的 &lt;code&gt;flush&lt;code&gt; 方法什么也不做。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@exception</span>  IOException  if an I/O error occurs.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">flush</span><span class="hljs-params">()</span> <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Flushes this output stream and forces any buffered output bytes</span><br><span class="hljs-comment"> * to be written out. The general contract of &lt;code&gt;flush&lt;/code&gt; is</span><br><span class="hljs-comment"> * that calling it is an indication that, if any bytes previously</span><br><span class="hljs-comment"> * written have been buffered by the implementation of the output</span><br><span class="hljs-comment"> * stream, such bytes should immediately be written to their</span><br><span class="hljs-comment"> * intended destination.</span><br><span class="hljs-comment"> * &lt;p&gt;</span><br><span class="hljs-comment"> * If the intended destination of this stream is an abstraction provided by</span><br><span class="hljs-comment"> * the underlying operating system, for example a file, then flushing the</span><br><span class="hljs-comment"> * stream guarantees only that bytes previously written to the stream are</span><br><span class="hljs-comment"> * passed to the operating system for writing; it does not guarantee that</span><br><span class="hljs-comment"> * they are actually written to a physical device such as a disk drive.</span><br><span class="hljs-comment"> * &lt;p&gt;</span><br><span class="hljs-comment"> * The &lt;code&gt;flush&lt;/code&gt; method of &lt;code&gt;OutputStream&lt;/code&gt; does nothing.</span><br><span class="hljs-comment"> * 中文翻译：</span><br><span class="hljs-comment"> 	刷新此输出流并强制写出任何缓冲的输出字节。 &lt;code&gt;flush&lt;code&gt; 的一般约定是调用它表示，如果先前写入的任何字节已被输出  	流的实现缓冲，则应立即将这些字节写入其预期目的地。 &lt;p&gt; 如果此流的预期目的地是底层操作系统提供的抽象，例如文件，则刷新	流仅保证先前写入流的字节被传递给操作系统进行写入；它不能保证它们实际上被写入了物理设备，例如磁盘驱动器。 &lt;p&gt; &lt;code&gt;OutputStream&lt;code&gt; 的 &lt;code&gt;flush&lt;code&gt; 方法什么也不做。</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@exception</span>  IOException  if an I/O error occurs.</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">flush</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>缓冲流的 close 原理：它会先用一下 flush 然后再关流。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Closes this output stream and releases any system resources</span><br><span class="hljs-comment"> * associated with the stream.</span><br><span class="hljs-comment"> * &lt;p&gt;</span><br><span class="hljs-comment"> * When not already closed, the &#123;<span class="hljs-doctag">@code</span> close&#125; method of &#123;<span class="hljs-doctag">@code</span></span><br><span class="hljs-comment"> * FilterOutputStream&#125; calls its &#123;<span class="hljs-doctag">@code</span> flush&#125; method, and then</span><br><span class="hljs-comment"> * calls the &#123;<span class="hljs-doctag">@code</span> close&#125; method of its underlying output stream.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> *中文翻译：</span><br><span class="hljs-comment">	 关闭此输出流并释放与该流关联的所有系统资源。 &lt;p&gt; 当尚未关闭时，&#123;<span class="hljs-doctag">@code</span> FilterOutputStream&#125; 的 &#123;<span class="hljs-doctag">@code</span> 				close&#125; 方	法调用其 &#123;<span class="hljs-doctag">@code</span> flush&#125; 方法，然后调用其底层输出流的 &#123;<span class="hljs-doctag">@code</span> close&#125; 方法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@exception</span>  IOException  if an I/O error occurs.</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@see</span>        java.io.FilterOutputStream#flush()</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@see</span>        java.io.FilterOutputStream#out</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">close</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-keyword">if</span> (closed) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">synchronized</span> (closeLock) &#123;<br>        <span class="hljs-keyword">if</span> (closed) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        closed = <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-type">Throwable</span> <span class="hljs-variable">flushException</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        flush();<br>    &#125; <span class="hljs-keyword">catch</span> (Throwable e) &#123;<br>        flushException = e;<br>        <span class="hljs-keyword">throw</span> e;<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-keyword">if</span> (flushException == <span class="hljs-literal">null</span>) &#123;<br>            out.close();<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                out.close();<br>            &#125; <span class="hljs-keyword">catch</span> (Throwable closeException) &#123;<br>               <span class="hljs-comment">// evaluate possible precedence of flushException over closeException</span><br>               <span class="hljs-keyword">if</span> ((flushException <span class="hljs-keyword">instanceof</span> ThreadDeath) &amp;&amp;<br>                   !(closeException <span class="hljs-keyword">instanceof</span> ThreadDeath)) &#123;<br>                   flushException.addSuppressed(closeException);<br>                   <span class="hljs-keyword">throw</span> (ThreadDeath) flushException;<br>               &#125;<br><br>                <span class="hljs-keyword">if</span> (flushException != closeException) &#123;<br>                    closeException.addSuppressed(flushException);<br>                &#125;<br><br>                <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Closes this output stream and releases any system resources</span><br><span class="hljs-comment"> * associated with the stream.</span><br><span class="hljs-comment"> * &lt;p&gt;</span><br><span class="hljs-comment"> * When not already closed, the &#123;<span class="hljs-doctag">@code</span> close&#125; method of &#123;<span class="hljs-doctag">@code</span></span><br><span class="hljs-comment"> * FilterOutputStream&#125; calls its &#123;<span class="hljs-doctag">@code</span> flush&#125; method, and then</span><br><span class="hljs-comment"> * calls the &#123;<span class="hljs-doctag">@code</span> close&#125; method of its underlying output stream.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> *中文翻译：</span><br><span class="hljs-comment">	 关闭此输出流并释放与该流关联的所有系统资源。 &lt;p&gt; 当尚未关闭时，&#123;<span class="hljs-doctag">@code</span> FilterOutputStream&#125; 的 &#123;<span class="hljs-doctag">@code</span> 				close&#125; 方	法调用其 &#123;<span class="hljs-doctag">@code</span> flush&#125; 方法，然后调用其底层输出流的 &#123;<span class="hljs-doctag">@code</span> close&#125; 方法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@exception</span>  IOException  if an I/O error occurs.</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@see</span>        java.io.FilterOutputStream#flush()</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@see</span>        java.io.FilterOutputStream#out</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">close</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-keyword">if</span> (closed) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">synchronized</span> (closeLock) &#123;<br>        <span class="hljs-keyword">if</span> (closed) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        closed = <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-type">Throwable</span> <span class="hljs-variable">flushException</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        flush();<br>    &#125; <span class="hljs-keyword">catch</span> (Throwable e) &#123;<br>        flushException = e;<br>        <span class="hljs-keyword">throw</span> e;<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-keyword">if</span> (flushException == <span class="hljs-literal">null</span>) &#123;<br>            out.close();<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                out.close();<br>            &#125; <span class="hljs-keyword">catch</span> (Throwable closeException) &#123;<br>               <span class="hljs-comment">// evaluate possible precedence of flushException over closeException</span><br>               <span class="hljs-keyword">if</span> ((flushException <span class="hljs-keyword">instanceof</span> ThreadDeath) &amp;&amp;<br>                   !(closeException <span class="hljs-keyword">instanceof</span> ThreadDeath)) &#123;<br>                   flushException.addSuppressed(closeException);<br>                   <span class="hljs-keyword">throw</span> (ThreadDeath) flushException;<br>               &#125;<br><br>                <span class="hljs-keyword">if</span> (flushException != closeException) &#123;<br>                    closeException.addSuppressed(flushException);<br>                &#125;<br><br>                <span class="hljs-keyword">throw</span> closeException;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="13-10-3-使用场景-v2">13.10.3 使用场景</h4>
+<blockquote>
+<p>Java 中有缓冲区的是 BufferedOutput 流的那些，所以在这些流每次 write 后如果想立马把缓存区的东西写到文件，以防丢失就可以用一下这个</p>
+</blockquote>
+<ol>
+<li>其实现实开发中，如果暂时不能 close ，那就每 write 一下就 flush 一下</li>
+<li>如果一定会 close 流(比如写在 finally 中)，就可以不写 flush。因为它 close 前给你 flush 了。</li>
+</ol>
+<h4 id="13-10-4-错误使用演示-v2">13.10.4 错误使用演示</h4>
+<blockquote>
+<p>你要是不肯定会 close 也不 write 后就是 flush ，你写的数据就会丢失一小部分。</p>
+</blockquote>
+<p>演示：</p>
+<ol>
+<li>不 close 也不及时 flush -&gt; 数据丢失</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示用处理流拷贝音视频文件</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. 把路径，流准备好</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">fromPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\AAA.mp4&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">toPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\BBB.mp4&quot;</span>;<br>        <span class="hljs-comment">//2. 提前声明流，方便 finally 中关闭</span><br>        <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">bis</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">byte</span>[] readDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">readLen</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//3. 流的初始化</span><br>            bis = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(fromPath));<br>            bos = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(toPath),<span class="hljs-number">1024</span>);<br>            <span class="hljs-keyword">while</span> ((readLen = bis.read(readDate))!= -<span class="hljs-number">1</span>)&#123;<br>                bos.write(readDate,<span class="hljs-number">0</span>,readLen);<br>                <span class="hljs-comment">//bos.flush();</span><br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br><span class="hljs-comment">//            if (bos != null)&#123;</span><br><span class="hljs-comment">//                try &#123;</span><br><span class="hljs-comment">//                    bos.close();</span><br><span class="hljs-comment">//                &#125; catch (IOException e) &#123;</span><br><span class="hljs-comment">//                    e.printStackTrace();</span><br><span class="hljs-comment">//                &#125;</span><br><span class="hljs-comment">//            &#125;</span><br>            <span class="hljs-keyword">if</span> (bis!=<span class="hljs-literal">null</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    bis.close();<br>                &#125; <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示用处理流拷贝音视频文件</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. 把路径，流准备好</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">fromPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\AAA.mp4&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">toPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\BBB.mp4&quot;</span>;<br>        <span class="hljs-comment">//2. 提前声明流，方便 finally 中关闭</span><br>        <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">bis</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">byte</span>[] readDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">readLen</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//3. 流的初始化</span><br>            bis = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(fromPath));<br>            bos = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(toPath),<span class="hljs-number">1024</span>);<br>            <span class="hljs-keyword">while</span> ((readLen = bis.read(readDate))!= -<span class="hljs-number">1</span>)&#123;<br>                bos.write(readDate,<span class="hljs-number">0</span>,readLen);<br>                <span class="hljs-comment">//bos.flush();</span><br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br><span class="hljs-comment">//            if (bos != null)&#123;</span><br><span class="hljs-comment">//                try &#123;</span><br><span class="hljs-comment">//                    bos.close();</span><br><span class="hljs-comment">//                &#125; catch (IOException e) &#123;</span><br><span class="hljs-comment">//                    e.printStackTrace();</span><br><span class="hljs-comment">//                &#125;</span><br><span class="hljs-comment">//            &#125;</span><br>            <span class="hljs-keyword">if</span> (bis!=<span class="hljs-literal">null</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    bis.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>结果图：</p>
+<p>拷是拷成功了<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529114924889.png" srcset="/img/loading.gif" lazyload alt="image-20220529114924889"></p>
+<p>但是你打开：</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115007246.png" srcset="/img/loading.gif" lazyload alt="image-20220529115007246"></p>
+<ol start="2">
+<li>
+<p>只及时 flush 不 close -&gt; 可以</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示用处理流拷贝音视频文件</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. 把路径，流准备好</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">fromPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\AAA.mp4&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">toPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\BBB.mp4&quot;</span>;<br>        <span class="hljs-comment">//2. 提前声明流，方便 finally 中关闭</span><br>        <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">bis</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">byte</span>[] readDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">readLen</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//3. 流的初始化</span><br>            bis = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(fromPath));<br>            bos = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(toPath));<br>            <span class="hljs-keyword">while</span> ((readLen = bis.read(readDate))!= -<span class="hljs-number">1</span>)&#123;<br>                bos.write(readDate,<span class="hljs-number">0</span>,readLen);<br>                bos.flush();<br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br><span class="hljs-comment">//            if (bos != null)&#123;</span><br><span class="hljs-comment">//                try &#123;</span><br><span class="hljs-comment">//                    bos.close();</span><br><span class="hljs-comment">//                &#125; catch (IOException e) &#123;</span><br><span class="hljs-comment">//                    e.printStackTrace();</span><br><span class="hljs-comment">//                &#125;</span><br><span class="hljs-comment">//            &#125;</span><br>            <span class="hljs-keyword">if</span> (bis!=<span class="hljs-literal">null</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    bis.close();<br>                &#125; <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示用处理流拷贝音视频文件</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. 把路径，流准备好</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">fromPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\AAA.mp4&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">toPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\BBB.mp4&quot;</span>;<br>        <span class="hljs-comment">//2. 提前声明流，方便 finally 中关闭</span><br>        <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">bis</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">byte</span>[] readDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">readLen</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//3. 流的初始化</span><br>            bis = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(fromPath));<br>            bos = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(toPath));<br>            <span class="hljs-keyword">while</span> ((readLen = bis.read(readDate))!= -<span class="hljs-number">1</span>)&#123;<br>                bos.write(readDate,<span class="hljs-number">0</span>,readLen);<br>                bos.flush();<br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br><span class="hljs-comment">//            if (bos != null)&#123;</span><br><span class="hljs-comment">//                try &#123;</span><br><span class="hljs-comment">//                    bos.close();</span><br><span class="hljs-comment">//                &#125; catch (IOException e) &#123;</span><br><span class="hljs-comment">//                    e.printStackTrace();</span><br><span class="hljs-comment">//                &#125;</span><br><span class="hljs-comment">//            &#125;</span><br>            <span class="hljs-keyword">if</span> (bis!=<span class="hljs-literal">null</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    bis.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>结果图：</p>
+<p>拷贝成功</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115358943.png" srcset="/img/loading.gif" lazyload alt="image-20220529115358943"></p>
+<p>打开拷贝视频可以播放，没有损坏</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115443818.png" srcset="/img/loading.gif" lazyload alt="image-20220529115443818"></p>
+</li>
+<li>
+<p>不及时 flush 但最后一定 close 了 -&gt; 可以的</p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示用处理流拷贝音视频文件</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. 把路径，流准备好</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">fromPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\AAA.mp4&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">toPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\BBB.mp4&quot;</span>;<br>        <span class="hljs-comment">//2. 提前声明流，方便 finally 中关闭</span><br>        <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">bis</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">byte</span>[] readDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">readLen</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//3. 流的初始化</span><br>            bis = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(fromPath));<br>            bos = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(toPath));<br>            <span class="hljs-keyword">while</span> ((readLen = bis.read(readDate))!= -<span class="hljs-number">1</span>)&#123;<br>                bos.write(readDate,<span class="hljs-number">0</span>,readLen);<br>                <span class="hljs-comment">//bos.flush();</span><br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-keyword">if</span> (bos != <span class="hljs-literal">null</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    bos.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (bis!=<span class="hljs-literal">null</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    bis.close();<br>                &#125; <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示用处理流拷贝音视频文件</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. 把路径，流准备好</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">fromPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\AAA.mp4&quot;</span>;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">toPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\BBB.mp4&quot;</span>;<br>        <span class="hljs-comment">//2. 提前声明流，方便 finally 中关闭</span><br>        <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">bis</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>        <span class="hljs-type">byte</span>[] readDate = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        <span class="hljs-type">int</span> <span class="hljs-variable">readLen</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//3. 流的初始化</span><br>            bis = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(fromPath));<br>            bos = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(toPath));<br>            <span class="hljs-keyword">while</span> ((readLen = bis.read(readDate))!= -<span class="hljs-number">1</span>)&#123;<br>                bos.write(readDate,<span class="hljs-number">0</span>,readLen);<br>                <span class="hljs-comment">//bos.flush();</span><br>            &#125;<br><br>        &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>            e.printStackTrace();<br>        &#125; <span class="hljs-keyword">finally</span> &#123;<br>            <span class="hljs-keyword">if</span> (bos != <span class="hljs-literal">null</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    bos.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>            <span class="hljs-keyword">if</span> (bis!=<span class="hljs-literal">null</span>)&#123;<br>                <span class="hljs-keyword">try</span> &#123;<br>                    bis.close();<br>                &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>                    e.printStackTrace();<br>                &#125;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>拷贝成功图：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115629945.png" srcset="/img/loading.gif" lazyload alt="image-20220529115629945"></p>
+<p>打开能播放图：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115651105.png" srcset="/img/loading.gif" lazyload alt="image-20220529115651105"></p>
+</li>
+</ol>
+<h4 id="13-10-5-总结-v2">13.10.5 总结</h4>
+<p>所以大家在用 处理流写东西时，如果一定能 close 流，那没啥事。但是如果不能关，记得 write 一下 flush 一下，不然数据会丢失。</p>
+<h4 id="13-10-6-非要做-v2">13.10.6 非要做</h4>
+<blockquote>
+<p>比如现在我们非要既不及时 flush 也不 close 还想写到文件怎么办？</p>
+</blockquote>
+<ol>
+<li>
+<p>把缓存区大小改为数据大小</p>
+<p>代码:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.BufferedOutputStream;<br><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\hello.txt&quot;</span>);<br>        <span class="hljs-keyword">if</span> (!file.exists()) &#123;<br>            file.createNewFile();<br>        &#125;<br>        <span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">fos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(file);<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(fos,<span class="hljs-number">1000</span>);<span class="hljs-comment">//这里我把缓存区大小设置为 1 kb</span><br>        <span class="hljs-type">byte</span>[] b = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        bos.write(b);<span class="hljs-comment">//这里我们写入 1 kb 的数据</span><br>        <span class="hljs-comment"><code class="language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.BufferedOutputStream;<br><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\hello.txt&quot;</span>);<br>        <span class="hljs-keyword">if</span> (!file.exists()) &#123;<br>            file.createNewFile();<br>        &#125;<br>        <span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">fos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(file);<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(fos,<span class="hljs-number">1000</span>);<span class="hljs-comment">//这里我把缓存区大小设置为 1 kb</span><br>        <span class="hljs-type">byte</span>[] b = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>];<br>        bos.write(b);<span class="hljs-comment">//这里我们写入 1 kb 的数据</span><br>        <span class="hljs-comment">//bos.flush();</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>结果图：是成功的，大小为我们刚写的 1 KB<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529133850637.png" srcset="/img/loading.gif" lazyload alt="image-20220529133850637"></p>
+<p>这里为啥大小和占用空间不一样鸭？为什么占用空间是 4 KB。因为硬盘最小是以 4 K 为分配单位的。大小和占用空间不一样是很正常的，<strong>硬盘分区的最小是以4k为计算单位的</strong>。 就是说好像一个一个格子一样，这些格子比较大。 即使是一个文件写了一个字，它的大小不足1k，但是显示占用空间为4k。 所以特别是一些小文件很多的东西。</p>
+</li>
+<li>
+<p>写入文件大于缓存区默认大小(8 KB)</p>
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.BufferedOutputStream;<br><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\hello.txt&quot;</span>);<br>        <span class="hljs-keyword">if</span> (!file.exists()) &#123;<br>            file.createNewFile();<br>        &#125;<br>        <span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">fos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(file);<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(fos);<br>        <span class="hljs-type">byte</span>[] b = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>*<span class="hljs-number">8</span>];<br>        bos.write(b);<span class="hljs-comment">//这里我们写入 1 kb 的数据</span><br>        <span class="hljs-comment"><code class="language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.io.BufferedOutputStream;<br><span class="hljs-keyword">import</span> java.io.File;<br><span class="hljs-keyword">import</span> java.io.FileOutputStream;<br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> Exception &#123;<br>        <span class="hljs-type">File</span> <span class="hljs-variable">file</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\hello.txt&quot;</span>);<br>        <span class="hljs-keyword">if</span> (!file.exists()) &#123;<br>            file.createNewFile();<br>        &#125;<br>        <span class="hljs-type">FileOutputStream</span> <span class="hljs-variable">fos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileOutputStream</span>(file);<br>        <span class="hljs-type">BufferedOutputStream</span> <span class="hljs-variable">bos</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedOutputStream</span>(fos);<br>        <span class="hljs-type">byte</span>[] b = <span class="hljs-keyword">new</span> <span class="hljs-title class_">byte</span>[<span class="hljs-number">1024</span>*<span class="hljs-number">8</span>];<br>        bos.write(b);<span class="hljs-comment">//这里我们写入 1 kb 的数据</span><br>        <span class="hljs-comment">//bos.flush();</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>结果图：大小为 8 KB</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529134413803.png" srcset="/img/loading.gif" lazyload alt="image-20220529134413803"></p>
+</li>
+<li>
+<p>大家思考：那在音视频我们能不能这样呢？为什么能或者不能？</p>
+<p>答案：不能，会有丢失。原因俺也不知道，希望大家在评论区教我。</p>
+</li>
+</ol>
+<h3 id="13-11-怎么关这种匿名流-v2">13.11 怎么关这种匿名流</h3>
+<p>题目描述：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530084852822.png" srcset="/img/loading.gif" lazyload alt="image-20220530084852822"></p>
+<ol>
+<li>
+<p>在方法内部关闭。这样可以在调用这个办法结束就关闭这个匿名流，匿名流只能用一次。</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530090601609.png" srcset="/img/loading.gif" lazyload alt="image-20220530090601609"></p>
+</li>
+<li>
+<p>依靠 full-gc 给你关。就是 Java 的垃圾自动装置，会在 gc 的时候给你关闭那些没有用过的流。一定程度上如果胆子大，可以就不关然后等着 JVM 给你调 full-gc 给你关。</p>
+</li>
+<li>
+<p>用新版的 try-with-resouce 别老整这些匿名流。这个是最新的也是最优雅的关流的办法。</p>
+<p>演示代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> Utils.StreamUtils;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@SuppressWarnings(&#123;&quot;all&quot;&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo14</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">fromPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\AAA.mp4&quot;</span>;<br>        <span class="hljs-keyword">try</span> (<br>                <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">bufferedInputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(fromPath))<br>            <span class="hljs-comment">//这里写流</span><br>        ) &#123;<br>            <span class="hljs-comment">//操作代码块</span><br>        &#125; <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> Utils.StreamUtils;<br><br><span class="hljs-keyword">import</span> java.io.*;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@SuppressWarnings(&#123;&quot;all&quot;&#125;)</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo14</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">String</span> <span class="hljs-variable">fromPath</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;C:\\Users\\Micenlee李敏灿\\Desktop\\AAA.mp4&quot;</span>;<br>        <span class="hljs-keyword">try</span> (<br>                <span class="hljs-type">BufferedInputStream</span> <span class="hljs-variable">bufferedInputStream</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">BufferedInputStream</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">FileInputStream</span>(fromPath))<br>            <span class="hljs-comment">//这里写流</span><br>        ) &#123;<br>            <span class="hljs-comment">//操作代码块</span><br>        &#125; <span class="hljs-keyword">catch</span> (IOException e) &#123;<br>        &#125;<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>IDEA中在 new 资源流的时候后面加个<code>.twr</code>就可以出来了<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530091212144.png" srcset="/img/loading.gif" lazyload alt="image-20220530091212144"></p>
+<p>凡是在 try 后面小括号中的流，只要实现了 Closeable 接口的，都可以这样关，省心又方便。</p>
+</li>
+<li>
+<p>《Effective Java》在第三版中也推荐使用try-with-resources语句替代try-finally语句。</p>
+<p>所以在处理必须关闭的资源时，使用try-with-resources语句替代try-finally语句。生成的代码更简洁，更清晰，并且生成的异常更有用。 try-with-resources语句在编写必须关闭资源的代码时会更容易，也不会出错，而使用try-finally语句实际上是不可能的。</p>
+<p>如此，推荐大家使用<strong>try-with-resources</strong>优雅地关闭资源！</p>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java-SE/" class="category-chain-item">Java SE</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Java-SE/13-IO%E6%B5%81/" class="category-chain-item">13.IO流</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/">#Java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Java_SE(十三)《IO流》下篇</div>
+      <div>http://lmc.pub/2022/06/11/Java-SE13-3/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LMC</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://blog.csdn.net/qq_65224479?spm=1011.2415.3001.5343" target="_blank" rel="nofollow noopener"><span>myCSDN</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+  <!--单击显示文字-->
+<script type="text/javascript" src="/js/click_show_text.js"></script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+</body>
+</html>

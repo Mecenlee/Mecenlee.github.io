@@ -1,0 +1,779 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/log.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LMC">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="9.7 日期 9.7.1 第一代日期 Date   一览图✅   代码演示： 12345678910111213141516171819202122232425262728293031package day04;import java.text.ParseException;import java.text.SimpleDateFormat;import java.util.Date;&#x2F;** *">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java_SE(九)《常用类》下篇">
+<meta property="og:url" content="http://lmc.pub/2022/06/11/Java-SE9-3/index.html">
+<meta property="og:site_name" content="LMC_Blog">
+<meta property="og:description" content="9.7 日期 9.7.1 第一代日期 Date   一览图✅   代码演示： 12345678910111213141516171819202122232425262728293031package day04;import java.text.ParseException;import java.text.SimpleDateFormat;import java.util.Date;&#x2F;** *">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526154023605.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526155547520.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526163430514.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526163602293.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526165535502.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526165627489.png">
+<meta property="article:published_time" content="2022-06-11T13:20:10.000Z">
+<meta property="article:modified_time" content="2022-06-19T13:26:05.552Z">
+<meta property="article:author" content="LMC">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526154023605.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>Java_SE(九)《常用类》下篇 - LMC_Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc.pub","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mecenlee&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Java_SE(九)《常用类》下篇"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        LMC
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-11 21:20" pubdate>
+          2022年6月11日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=230 height=450 src="//music.163.com/outchain/player?type=0&id=7474593916&auto=0&height=430"></iframe>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Java_SE(九)《常用类》下篇</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：9 天前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <h3 id="9-7-日期-v2">9.7 日期</h3>
+<h4 id="9-7-1-第一代日期-Date-v2">9.7.1 第一代日期 Date</h4>
+<ol>
+<li>
+<p>一览图✅<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526154023605.png" srcset="/img/loading.gif" lazyload alt="image-20220526154023605"></p>
+</li>
+<li>
+<p>代码演示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day04;<br><br><span class="hljs-keyword">import</span> java.text.ParseException;<br><span class="hljs-keyword">import</span> java.text.SimpleDateFormat;<br><span class="hljs-keyword">import</span> java.util.Date;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示第一代日期 </span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DateTimeDemo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ParseException &#123;<br>        <span class="hljs-comment">//1.Date</span><br>        <span class="hljs-comment">//直接这样 new 是返回当前时间，外国格式</span><br>        <span class="hljs-type">Date</span> <span class="hljs-variable">date</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br>        System.out.println(date);<br>        <span class="hljs-comment">//这样是用秒数去换算是什么时候</span><br>        <span class="hljs-type">Date</span> <span class="hljs-variable">date1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">989989</span>);<br>        System.out.println(date1);<br><br>        <span class="hljs-comment">//2.SimpleDateFormat</span><br>        <span class="hljs-comment">//设置格式，注意字母是有规定的</span><br>        <span class="hljs-type">SimpleDateFormat</span> <span class="hljs-variable">simpleDateFormat</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;yyyy 年 MM 月 dd 日 hh:mm:ss E&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> simpleDateFormat.format(date);<br>        System.out.println(<span class="hljs-string">&quot;进行了格式化的时间\n&quot;</span>+s);<span class="hljs-comment">//将原来的 Date 转了格式输出</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;2018 年 09 月 23 日 09:23:09 周一&quot;</span>;<br>        System.out.println(simpleDateFormat.parse(s1));<span class="hljs-comment"><code class="language-hljs java"><span class="hljs-keyword">package</span> day04;<br><br><span class="hljs-keyword">import</span> java.text.ParseException;<br><span class="hljs-keyword">import</span> java.text.SimpleDateFormat;<br><span class="hljs-keyword">import</span> java.util.Date;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示第一代日期 </span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DateTimeDemo1</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> ParseException &#123;<br>        <span class="hljs-comment">//1.Date</span><br>        <span class="hljs-comment">//直接这样 new 是返回当前时间，外国格式</span><br>        <span class="hljs-type">Date</span> <span class="hljs-variable">date</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br>        System.out.println(date);<br>        <span class="hljs-comment">//这样是用秒数去换算是什么时候</span><br>        <span class="hljs-type">Date</span> <span class="hljs-variable">date1</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-number">989989</span>);<br>        System.out.println(date1);<br><br>        <span class="hljs-comment">//2.SimpleDateFormat</span><br>        <span class="hljs-comment">//设置格式，注意字母是有规定的</span><br>        <span class="hljs-type">SimpleDateFormat</span> <span class="hljs-variable">simpleDateFormat</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;yyyy 年 MM 月 dd 日 hh:mm:ss E&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> simpleDateFormat.format(date);<br>        System.out.println(<span class="hljs-string">&quot;进行了格式化的时间\n&quot;</span>+s);<span class="hljs-comment">//将原来的 Date 转了格式输出</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">s1</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;2018 年 09 月 23 日 09:23:09 周一&quot;</span>;<br>        System.out.println(simpleDateFormat.parse(s1));<span class="hljs-comment">//也可以把符合规范的 String 转为 Date</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="9-7-2-第二代日期-Calendar-v2">9.7.2 第二代日期 Calendar</h4>
+<h5 id="9-7-2-1-介绍✅">9.7.2.1 介绍✅</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526155547520.png" srcset="/img/loading.gif" lazyload alt="image-20220526155547520"></p>
+<h5 id="9-7-2-2-代码演示-v2">9.7.2.2 代码演示</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day04;<br><br><span class="hljs-keyword">import</span> java.util.Calendar;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示第二代时间 Calender 日历</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DateTimeDemo2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. Calender 构造器是私有的</span><br>        <span class="hljs-type">Calendar</span> <span class="hljs-variable">c1</span> <span class="hljs-operator">=</span> Calendar.getInstance();<br>        System.out.println(c1);<span class="hljs-comment">//打出来是奇怪东西</span><br>        System.out.println(<span class="hljs-string">&quot;年：&quot;</span>+c1.get(Calendar.YEAR));<span class="hljs-comment">//年：2022</span><br>        <span class="hljs-comment">//他的月份是从 0 开始的，所以要加一</span><br>        System.out.println(<span class="hljs-string">&quot;月：&quot;</span>+(c1.get(Calendar.MONTH)+<span class="hljs-number">1</span>));<span class="hljs-comment">//月：5</span><br>        System.out.println(<span class="hljs-string">&quot;日：&quot;</span>+c1.get(Calendar.DAY_OF_MONTH));<span class="hljs-comment">//日：26</span><br>        System.out.println(<span class="hljs-string">&quot;时：&quot;</span>+c1.get(Calendar.HOUR));<span class="hljs-comment">//时：4</span><br>        System.out.println(<span class="hljs-string">&quot;时：&quot;</span>+c1.get(Calendar.HOUR_OF_DAY));<span class="hljs-comment">//时：16</span><br>        System.out.println(<span class="hljs-string">&quot;分：&quot;</span>+c1.get(Calendar.MINUTE));<span class="hljs-comment">//分：9</span><br>        System.out.println(<span class="hljs-string">&quot;秒：&quot;</span>+c1.get(Calendar.SECOND));<span class="hljs-comment">//秒：23</span><br>        <span class="hljs-comment">//是的他没有组合的，得自己拼起来</span><br>        System.out.println(<span class="hljs-string">&quot;组合输出:&quot;</span>+c1.get(Calendar.YEAR)<br>                +<span class="hljs-string">&quot;-&quot;</span><br>                +(c1.get(Calendar.MONTH)+<span class="hljs-number">1</span>)<br>                +<span class="hljs-string">&quot;-&quot;</span><br>                +c1.get(Calendar.DAY_OF_MONTH)<br>                +<span class="hljs-string">&quot; &quot;</span><br>                +c1.get(Calendar.HOUR_OF_DAY)<br>                +<span class="hljs-string">&quot;:&quot;</span><br>                +c1.get(Calendar.MINUTE)<br>                +<span class="hljs-string">&quot;:&quot;</span><br>                +c1.get(Calendar.SECOND)<br>        );<span class="hljs-comment"><code class="language-hljs java"><span class="hljs-keyword">package</span> day04;<br><br><span class="hljs-keyword">import</span> java.util.Calendar;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示第二代时间 Calender 日历</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DateTimeDemo2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. Calender 构造器是私有的</span><br>        <span class="hljs-type">Calendar</span> <span class="hljs-variable">c1</span> <span class="hljs-operator">=</span> Calendar.getInstance();<br>        System.out.println(c1);<span class="hljs-comment">//打出来是奇怪东西</span><br>        System.out.println(<span class="hljs-string">&quot;年：&quot;</span>+c1.get(Calendar.YEAR));<span class="hljs-comment">//年：2022</span><br>        <span class="hljs-comment">//他的月份是从 0 开始的，所以要加一</span><br>        System.out.println(<span class="hljs-string">&quot;月：&quot;</span>+(c1.get(Calendar.MONTH)+<span class="hljs-number">1</span>));<span class="hljs-comment">//月：5</span><br>        System.out.println(<span class="hljs-string">&quot;日：&quot;</span>+c1.get(Calendar.DAY_OF_MONTH));<span class="hljs-comment">//日：26</span><br>        System.out.println(<span class="hljs-string">&quot;时：&quot;</span>+c1.get(Calendar.HOUR));<span class="hljs-comment">//时：4</span><br>        System.out.println(<span class="hljs-string">&quot;时：&quot;</span>+c1.get(Calendar.HOUR_OF_DAY));<span class="hljs-comment">//时：16</span><br>        System.out.println(<span class="hljs-string">&quot;分：&quot;</span>+c1.get(Calendar.MINUTE));<span class="hljs-comment">//分：9</span><br>        System.out.println(<span class="hljs-string">&quot;秒：&quot;</span>+c1.get(Calendar.SECOND));<span class="hljs-comment">//秒：23</span><br>        <span class="hljs-comment">//是的他没有组合的，得自己拼起来</span><br>        System.out.println(<span class="hljs-string">&quot;组合输出:&quot;</span>+c1.get(Calendar.YEAR)<br>                +<span class="hljs-string">&quot;-&quot;</span><br>                +(c1.get(Calendar.MONTH)+<span class="hljs-number">1</span>)<br>                +<span class="hljs-string">&quot;-&quot;</span><br>                +c1.get(Calendar.DAY_OF_MONTH)<br>                +<span class="hljs-string">&quot; &quot;</span><br>                +c1.get(Calendar.HOUR_OF_DAY)<br>                +<span class="hljs-string">&quot;:&quot;</span><br>                +c1.get(Calendar.MINUTE)<br>                +<span class="hljs-string">&quot;:&quot;</span><br>                +c1.get(Calendar.SECOND)<br>        );<span class="hljs-comment">//组合输出:2022-5-26 16:9:23</span><br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h4 id="9-7-3-第三代日期-v2">9.7.3 第三代日期</h4>
+<h5 id="9-7-3-1-出生背景-v2">9.7.3.1 出生背景</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526163430514.png" srcset="/img/loading.gif" lazyload alt="image-20220526163430514"></p>
+<h5 id="9-7-3-2-介绍✅">9.7.3.2 介绍✅</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526163602293.png" srcset="/img/loading.gif" lazyload alt="image-20220526163602293"></p>
+<h5 id="9-7-3-3-代码详讲-v2">9.7.3.3 代码详讲</h5>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day04;<br><br><span class="hljs-keyword">import</span> java.time.LocalDateTime;<br><span class="hljs-keyword">import</span> java.time.format.DateTimeFormatter;<br><span class="hljs-keyword">import</span> java.util.Calendar;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示第三代日期</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DateTimeDemo3</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. 使用 now() 返回当前日期时间</span><br>        <span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">now</span> <span class="hljs-operator">=</span> LocalDateTime.now();<span class="hljs-comment">//LocalDate.now()~LocalTime.now()</span><br>        System.out.println(now);<br>        <span class="hljs-comment">//2. DateTimeFormatter 来格式化</span><br>        <span class="hljs-type">DateTimeFormatter</span> <span class="hljs-variable">dateTimeFormatter</span> <span class="hljs-operator">=</span> DateTimeFormatter.ofPattern(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">format</span> <span class="hljs-operator">=</span> dateTimeFormatter.format(now);<br>        System.out.println(<span class="hljs-string">&quot;格式化过后的时间&quot;</span> + format);<br>        <span class="hljs-comment">//3.获取单个信息</span><br>        System.out.println(<span class="hljs-string">&quot;年：&quot;</span> + now.getYear());<span class="hljs-comment">//年：2022</span><br>        System.out.println(<span class="hljs-string">&quot;月：&quot;</span> + now.getMonth());<span class="hljs-comment">//月：MAY</span><br>        System.out.println(<span class="hljs-string">&quot;月：&quot;</span> + now.getMonthValue());<span class="hljs-comment">//月：5</span><br>        System.out.println(<span class="hljs-string">&quot;日：&quot;</span> + now.getDayOfMonth());<span class="hljs-comment">//日：5</span><br>        System.out.println(<span class="hljs-string">&quot;时：&quot;</span> + now.getHour());<span class="hljs-comment">//时：16</span><br>        System.out.println(<span class="hljs-string">&quot;分：&quot;</span> + now.getMinute());<span class="hljs-comment">//分：48</span><br>        System.out.println(<span class="hljs-string">&quot;秒：&quot;</span> + now.getSecond());<span class="hljs-comment">//秒：14</span><br>        <span class="hljs-comment">//4. 时间加减</span><br>        <span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">time1</span> <span class="hljs-operator">=</span> now.plusDays(<span class="hljs-number">20</span>);<br>        System.out.println(<span class="hljs-string">&quot;20 天后是&quot;</span> + time1);<span class="hljs-comment">//20 天后是2022-06-15T16:52:17.709479300</span><br>        <span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">time2</span> <span class="hljs-operator">=</span> now.minusHours(<span class="hljs-number">10</span>);<br>        System.out.println(<span class="hljs-string">&quot;10个小时前是&quot;</span>+ time2);<span class="hljs-comment"><code class="language-hljs java"><span class="hljs-keyword">package</span> day04;<br><br><span class="hljs-keyword">import</span> java.time.LocalDateTime;<br><span class="hljs-keyword">import</span> java.time.format.DateTimeFormatter;<br><span class="hljs-keyword">import</span> java.util.Calendar;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示第三代日期</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DateTimeDemo3</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//1. 使用 now() 返回当前日期时间</span><br>        <span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">now</span> <span class="hljs-operator">=</span> LocalDateTime.now();<span class="hljs-comment">//LocalDate.now()~LocalTime.now()</span><br>        System.out.println(now);<br>        <span class="hljs-comment">//2. DateTimeFormatter 来格式化</span><br>        <span class="hljs-type">DateTimeFormatter</span> <span class="hljs-variable">dateTimeFormatter</span> <span class="hljs-operator">=</span> DateTimeFormatter.ofPattern(<span class="hljs-string">&quot;yyyy-MM-dd HH:mm:ss&quot;</span>);<br>        <span class="hljs-type">String</span> <span class="hljs-variable">format</span> <span class="hljs-operator">=</span> dateTimeFormatter.format(now);<br>        System.out.println(<span class="hljs-string">&quot;格式化过后的时间&quot;</span> + format);<br>        <span class="hljs-comment">//3.获取单个信息</span><br>        System.out.println(<span class="hljs-string">&quot;年：&quot;</span> + now.getYear());<span class="hljs-comment">//年：2022</span><br>        System.out.println(<span class="hljs-string">&quot;月：&quot;</span> + now.getMonth());<span class="hljs-comment">//月：MAY</span><br>        System.out.println(<span class="hljs-string">&quot;月：&quot;</span> + now.getMonthValue());<span class="hljs-comment">//月：5</span><br>        System.out.println(<span class="hljs-string">&quot;日：&quot;</span> + now.getDayOfMonth());<span class="hljs-comment">//日：5</span><br>        System.out.println(<span class="hljs-string">&quot;时：&quot;</span> + now.getHour());<span class="hljs-comment">//时：16</span><br>        System.out.println(<span class="hljs-string">&quot;分：&quot;</span> + now.getMinute());<span class="hljs-comment">//分：48</span><br>        System.out.println(<span class="hljs-string">&quot;秒：&quot;</span> + now.getSecond());<span class="hljs-comment">//秒：14</span><br>        <span class="hljs-comment">//4. 时间加减</span><br>        <span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">time1</span> <span class="hljs-operator">=</span> now.plusDays(<span class="hljs-number">20</span>);<br>        System.out.println(<span class="hljs-string">&quot;20 天后是&quot;</span> + time1);<span class="hljs-comment">//20 天后是2022-06-15T16:52:17.709479300</span><br>        <span class="hljs-type">LocalDateTime</span> <span class="hljs-variable">time2</span> <span class="hljs-operator">=</span> now.minusHours(<span class="hljs-number">10</span>);<br>        System.out.println(<span class="hljs-string">&quot;10个小时前是&quot;</span>+ time2);<span class="hljs-comment">//10个小时前是2022-05-26T06:52:17.709479300</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h5 id="9-7-3-3-格式日期类✅">9.7.3.3 格式日期类✅</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526165535502.png" srcset="/img/loading.gif" lazyload alt="image-20220526165535502"></p>
+<h4 id="9-7-4-时间戳-v2">9.7.4 时间戳</h4>
+<ol>
+<li>
+<p>✅<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220526165627489.png" srcset="/img/loading.gif" lazyload alt="image-20220526165627489"></p>
+</li>
+<li>
+<pre class=" language-language-java"><code class="language-language-java">package day04;
+
+import java.time.Instant;
+import java.util.Date;
+
+/**
+ * @author 李敏灿
+ * @version 1.0
+ * 演示时间戳
+ */
+
+public class DateTimeDemo4 &#123;
+    public static void main(String[] args) &#123;
+        //1.时间戳
+        Instant now = Instant.now();
+        System.out.println(now);
+        //2.时间戳转 Date
+        Date from = Date.from(now);
+        //3.Date 转 Instant 
+        Instant instant = from.toInstant();
+    &#125;
+&#125;
+</code></pre>
+</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Java-SE/" class="category-chain-item">Java SE</a>
+  
+  
+    <span>></span>
+    
+  <a href="/categories/Java-SE/09-%E5%B8%B8%E7%94%A8%E7%B1%BB/" class="category-chain-item">09.常用类</a>
+  
+  
+
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/Java/">#Java</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Java_SE(九)《常用类》下篇</div>
+      <div>http://lmc.pub/2022/06/11/Java-SE9-3/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LMC</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月11日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://blog.csdn.net/qq_65224479?spm=1011.2415.3001.5343" target="_blank" rel="nofollow noopener"><span>myCSDN</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+  <!--单击显示文字-->
+<script type="text/javascript" src="/js/click_show_text.js"></script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+</body>
+</html>

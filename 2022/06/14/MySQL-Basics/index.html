@@ -1,0 +1,1163 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/log.jpg">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="LMC">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="MySQL 基础中的：基本准备，DDL，DML，DQL，DCL，函数等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL_Basics">
+<meta property="og:url" content="http://lmc.pub/2022/06/14/MySQL-Basics/index.html">
+<meta property="og:site_name" content="LMC_Blog">
+<meta property="og:description" content="MySQL 基础中的：基本准备，DDL，DML，DQL，DCL，函数等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165429868-16551759190411.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165443069-16551759190413.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612164156181-16551759190425.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612164452378-16551759190427.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612163232896-16551759190429.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165704575-165517591904211.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165746443-165517591904213.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612172454149-165517591904215.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612175212742-165517591904217.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612180429725-165517591904219.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612182627992-165517591904221.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612182653419-165517591904223.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612182733764-165517591904225.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612183027014-165517591904227.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612183050530-165517591904229.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612211242574-165517591904231.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612212235660-165517591904233.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213033364-165517591904335.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213155195-165517591904339.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213703055-165517591904337.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213248083-165517591904341.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213455626-165517591904343.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213909009-165517591904345.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612214613288-165517591904347.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612214625581-165517591904349.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612214706641-165517591904351.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613093805552-165517591904353.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613102113955-165517591904355.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613102404919-165517591904457.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104028164-165517591904459.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613103739700-165517591904461.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104159098-165517591904463.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104533640-165517591904465.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104803511-165517591904467.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613105217939-165517591904469.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613105259184-165517591904471.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613105336698-165517591904473.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613110948455-165517591904475.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613110954887-165517591904477.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613111705902-165517591904479.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613111820632-165517591904481.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613113748228-165517591904483.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613114125636-165517591904585.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613171323018-165517591904587.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613172216361-165517591904589.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613184414579-165517591904591.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613185313496-165517591904593.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613214210603-165517591904595.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613223248000-165517591904597.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613224434578-165517591904599.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613224541177-1655175919045101.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613224916183-1655175919045103.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613225007039-1655175919045105.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613225418310-1655175919045107.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613230302981-1655175919045109.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613231721108-1655175919045111.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613231905887-1655175919045113.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613234239604-1655175919045115.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614094039715-1655175919045117.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614094124795-1655175919045119.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614094310600-1655175919045121.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614095344974-1655175919045123.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614095827717-1655175919046125.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614095932729-1655175919046127.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614100601670-1655175919046129.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614100818618-1655175919046131.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614100844428-1655175919046133.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614101257428-1655175919046135.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614101511845-1655175919046137.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614101818685-1655175919046139.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102255276-1655175919046141.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102542166-1655175919046143.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102712168-1655175919046145.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102822695-1655175919046147.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102848675-1655175919046149.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102936751-1655175919046151.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614103132421-1655175919046153.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614103142087-1655175919046155.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614103250362-1655175919046157.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104114782-1655175919046159.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104225661-1655175919046161.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104450566-1655175919046163.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104516446-1655175919046165.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104540411-1655175919047167.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104608219-1655175919047169.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104800419-1655175919047171.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105357308-1655175919047173.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105427232-1655175919047175.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105438686-1655175919047177.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105554910-1655175919047179.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613114418530-1655175919047181.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613114926429-1655175919047183.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613120630608-1655175919047185.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613120637601-1655175919047187.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613121229060-1655175919047189.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613121557231-1655175919047191.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613121833069-1655175919047193.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613122020593-1655175919047195.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613125513714-1655175919047197.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613122034221-1655175919048199.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613125612572-1655175919048201.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613154524042-1655175919048203.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613155314246-1655175919048205.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613160418958-1655175919048207.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613155730860-1655175919048209.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613160311320-1655175919048211.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613161812310-1655175919048213.png">
+<meta property="article:published_time" content="2022-06-14T03:04:48.000Z">
+<meta property="article:modified_time" content="2022-06-14T03:23:26.016Z">
+<meta property="article:author" content="LMC">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165429868-16551759190411.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>MySQL_Basics - LMC_Blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lmc.pub","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+
+  
+<meta name="generator" content="Hexo 5.4.2"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Mecenlee&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default1.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="MySQL_Basics"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-author" aria-hidden="true"></i>
+        LMC
+      </span>
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-06-14 11:04" pubdate>
+          2022年6月14日 上午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          8k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          68 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=230 height=450 src="//music.163.com/outchain/player?type=0&id=7474593916&auto=0&height=430"></iframe>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">MySQL_Basics</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：15 天前
+                  
+                
+              </p>
+            
+            <div class="markdown-body">
+              
+              <p>MySQL 基础中的：基本准备，DDL，DML，DQL，DCL，函数等</p>
+<span id="more"></span>
+<h1>MySQL笔记总结</h1>
+<h2 id="一，基本介绍-操作">一，基本介绍&amp;操作</h2>
+<h3 id="1-1-理解">1.1 理解</h3>
+<p>数据就是书，数据库就是图书馆</p>
+<h3 id="1-2-安装">1.2 安装</h3>
+<h4 id="1-2-1-MySQL服务安装">1.2.1 MySQL服务安装</h4>
+<p>具体怎么安后面补起来，考试不考。</p>
+<p>但是这个安的 MySQL 是啥要知道：</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165429868-16551759190411.png" srcset="/img/loading.gif" lazyload alt="image-20220612165429868"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165443069-16551759190413.png" srcset="/img/loading.gif" lazyload alt="image-20220612165443069"></p>
+<h4 id="1-2-2-图形化界面软件安装">1.2.2 图形化界面软件安装</h4>
+<p>Navicat</p>
+<p>SQLyog(我在用这个)</p>
+<p>后面补起来，考试不考。</p>
+<h3 id="1-3-初始化">1.3  初始化</h3>
+<h4 id="1-启动服务">1.启动服务</h4>
+<p>启动：<code>net start mysql</code></p>
+<p>关闭：<code>net stop mysql</code></p>
+<p>注意：要用管理员权限打开命令提示符</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612164156181-16551759190425.png" srcset="/img/loading.gif" lazyload alt="image-20220612164156181"></p>
+<h4 id="2-登录服务">2. 登录服务</h4>
+<p>最标准：<code>mysql -h 主机名 -P 端口 -u 用户名 -p密码</code></p>
+<p>最简单：	mysql -u root -p密码</p>
+<p>注意：</p>
+<p>一般来说主机名可以不写默认本地 localhost，</p>
+<p>端口可以不写默认 3306，工作中一般会改</p>
+<p>注意端口那里是<code>P</code>而不是<code>p</code></p>
+<p>密码可以紧跟<code>-p</code>,中间没空格，也可以不写他会像图中一样让你输入</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612164452378-16551759190427.png" srcset="/img/loading.gif" lazyload alt="image-20220612164452378"></p>
+<h4 id="3-总结">3. 总结</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612163232896-16551759190429.png" srcset="/img/loading.gif" lazyload alt="image-20220612163232896"></p>
+<h3 id="1-4-其他">1.4 其他</h3>
+<h4 id="1-4-1-数据在数据库中的存储形式">1.4.1 数据在数据库中的存储形式</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165704575-165517591904211.png" srcset="/img/loading.gif" lazyload alt="image-20220612165704575"></p>
+<h4 id="1-4-2-SQL-语句分类">1.4.2 SQL 语句分类</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165746443-165517591904213.png" srcset="/img/loading.gif" lazyload alt="image-20220612165746443"></p>
+<h2 id="二，DDL-数据定义">二，DDL_数据定义</h2>
+<blockquote>
+<p>DDL (Data Definition Language)</p>
+</blockquote>
+<h3 id="2-1-库">2.1 库</h3>
+<h4 id="2-1-1-创建数据库">2.1.1 创建数据库</h4>
+<p>最简单的：<code>create database 数据库名;</code></p>
+<p>标准的：<code>create database 数据库名 character set 指定字符集 collate 校对规则;</code></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612172454149-165517591904215.png" srcset="/img/loading.gif" lazyload alt="image-20220612172454149"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612175212742-165517591904217.png" srcset="/img/loading.gif" lazyload alt="image-20220612175212742"></p>
+<h4 id="2-1-2-删除数据库">2.1.2 删除数据库</h4>
+<p>唯一一个：<code>drop database 数据库名</code></p>
+<h4 id="2-1-3-查看数据库">2.1.3 查看数据库</h4>
+<p>显示所有数据库: <code>show databases</code></p>
+<p>显示数据库创建语句：<code>show create database da_name</code></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612180429725-165517591904219.png" srcset="/img/loading.gif" lazyload alt="image-20220612180429725"></p>
+<h4 id="2-1-4-备份恢复数据库">2.1.4 备份恢复数据库</h4>
+<p>在dos命令行备份：<code>mysqldump -u root -p -B ds_name &gt; backups_name.sql</code></p>
+<p>在 SQL 命令行恢复：<code>source baskups_name.sql</code></p>
+<p>也可以用笨方法恢复：直接粘贴文件中的所有语句再去执行一遍</p>
+<p>注意：其实备份后的文件就是那个数据的从创建开始的所有 SQL 语句；一般存放在 MySQL 自己的 bin 文件夹中。</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612182627992-165517591904221.png" srcset="/img/loading.gif" lazyload alt="image-20220612182627992"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612182653419-165517591904223.png" srcset="/img/loading.gif" lazyload alt="image-20220612182653419"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612182733764-165517591904225.png" srcset="/img/loading.gif" lazyload alt="image-20220612182733764"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612183027014-165517591904227.png" srcset="/img/loading.gif" lazyload alt="image-20220612183027014"></p>
+<h4 id="2-1-5-备份恢复数据库的表">2.1.5 备份恢复数据库的表</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612183050530-165517591904229.png" srcset="/img/loading.gif" lazyload alt="image-20220612183050530"></p>
+<p>其实我推荐别指定在那个盘，直接用<code>文件名.sql</code>。因为你用那种具体的盘的位置，到时候恢复的时候会报<code>Fail to open file,erro:2</code>就是 MySQL 找不到那个文件，直接这样名字创建，文件就在 MySQL bin 下面就不会出问题。</p>
+<h3 id="2-2-表">2.2 表</h3>
+<h4 id="2-2-1-创建表">2.2.1 创建表</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612211242574-165517591904231.png" srcset="/img/loading.gif" lazyload alt="image-20220612211242574"></p>
+<p>演示：</p>
+<p>简约：<code>create table table_name( field datetype 。。。);</code></p>
+<p>其实其他的他又默认值的，咱也是这样简洁用的多。</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612212235660-165517591904233.png" srcset="/img/loading.gif" lazyload alt="image-20220612212235660"></p>
+<h4 id="2-2-2-数据类型">2.2.2 数据类型</h4>
+<h5 id="2-2-2-1-总览">2.2.2.1 总览</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213033364-165517591904335.png" srcset="/img/loading.gif" lazyload alt="image-20220612213033364"></p>
+<h5 id="2-2-2-2-整数">2.2.2.2 整数</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213155195-165517591904339.png" srcset="/img/loading.gif" lazyload alt="image-20220612213155195"></p>
+<h5 id="2-2-2-3-小数">2.2.2.3 小数</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213703055-165517591904337.png" srcset="/img/loading.gif" lazyload alt="image-20220612213703055"></p>
+<h5 id="2-2-2-3-无符号整数">2.2.2.3 无符号整数</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213248083-165517591904341.png" srcset="/img/loading.gif" lazyload alt="image-20220612213248083"></p>
+<h5 id="2-2-2-4-bit">2.2.2.4 bit</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213455626-165517591904343.png" srcset="/img/loading.gif" lazyload alt="image-20220612213455626"></p>
+<h5 id="2-2-2-5-小数">2.2.2.5 小数</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213909009-165517591904345.png" srcset="/img/loading.gif" lazyload alt="image-20220612213909009"></p>
+<h5 id="2-2-2-6-字符串">2.2.2.6 字符串</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612214613288-165517591904347.png" srcset="/img/loading.gif" lazyload alt="image-20220612214613288"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612214625581-165517591904349.png" srcset="/img/loading.gif" lazyload alt="image-20220612214625581"></p>
+<h5 id="2-2-2-7-日期">2.2.2.7 日期</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612214706641-165517591904351.png" srcset="/img/loading.gif" lazyload alt="image-20220612214706641"></p>
+<h4 id="2-2-3-修改表">2.2.3 修改表</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613093805552-165517591904353.png" srcset="/img/loading.gif" lazyload alt="image-20220613093805552"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#添加列<br>ALTER TABLE demo01 <br>ADD (gender CHAR(1));<br>#修改列<br>ALTER TABLE demo01<br>MODIFY `name` VARCHAR(200);<br>#删除列<br>ALTER TABLE demo01<br>DROP word;<br>#修改表名<br>RENAME TABLE demo1 TO demo01;<br>#显示表结构<br>DESC demo01;<br>#修改表的字符集<br>ALTER TABLE demo01 CHARACTER SET utf8; <br>#修改列名<br>ALTER TABLE demo01 CHANGE `name` `user_name` VARCHAR(63);<br>#查找<br>SELECT * FROM demo01;<br></code></pre></td></tr></table></figure>
+<h4 id="2-2-4-表的复制">2.2.4 表的复制</h4>
+<p>蠕虫复制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">-- 演示如何自我复制<br>-- 1. 先把 emp 表的记录复制到 my_tab01<br>INSERT INTO my_tab01<br>(id, `name`, sal, job,deptno)<br>SELECT empno, ename, sal, job, deptno FROM emp;<br>-- 2. 自我复制<br>INSERT INTO my_tab01<br>SELECT * FROM my_tab01;<br><br>SELECT COUNT(*) FROM my_tab01;<br></code></pre></td></tr></table></figure>
+<p>如何删除一张表的重复记录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">/*<br>思路<br>(1) 先创建一张临时表 my_tmp , 该表的结构和 my_tab02 一样<br>(2) 把 my_tmp 的记录 通过 distinct 关键字 处理后 把记录复制到 my_tmp<br>(3) 清除掉 my_tab02 记录<br>(4) 把 my_tmp 表的记录复制到 my_tab02<br>(5) drop 掉 临时表 my_tmp<br>*/<br>-- (1) 先创建一张临时表 my_tmp , 该表的结构和 my_tab02 一样<br>create table my_tmp like my_tab02<br>-- (2) 把 my_tmp 的记录 通过 distinct 关键字 处理后 把记录复制到 my_tmp<br>insert into my_tmp<br>select distinct * from my_tab02;<br>-- (3) 清除掉 my_tab02 记录<br>delete from my_tab02;<br>-- (4) 把 my_tmp 表的记录复制到 my_tab02<br>insert into my_tab02<br>select * from my_tmp;<br>-- (5) drop 掉 临时表 my_tmp<br>drop table my_tmp;<br><br>select * from my_tab02;<br></code></pre></td></tr></table></figure>
+<h2 id="三，DML-数据操纵">三，DML_数据操纵</h2>
+<blockquote>
+<p>DML (Data Manipulation Language)</p>
+</blockquote>
+<h3 id="3-1-CRUD">3.1 CRUD</h3>
+<p>C：create 添加</p>
+<p>R：read 查找</p>
+<p>U：update 更新</p>
+<p>D：delete 删除</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613102113955-165517591904355.png" srcset="/img/loading.gif" lazyload alt="image-20220613102113955"></p>
+<h3 id="3-2-Insert">3.2 Insert</h3>
+<p>向表中插入数据</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613102404919-165517591904457.png" srcset="/img/loading.gif" lazyload alt="image-20220613102404919"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#insert 插入数据<br>#简约方式<br>INSERT INTO demo01<br>VALUES(1,&#x27;张三&#x27;,&#x27;男&#x27;);<br>#标准方式<br>INSERT INTO demo01(id,user_name) <br>VALUES(2,&#x27;李四&#x27;);<br>#一次性插入多条语句<br>INSERT INTO demo01<br>VALUES(3,&#x27;王五&#x27;,&#x27;女&#x27;),(4,&#x27;托尼&#x27;,&#x27;男&#x27;),(5,&#x27;杰克&#x27;,&#x27;女&#x27;);<br>#查询表中情况<br>SELECT * FROM demo01;<br></code></pre></td></tr></table></figure>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104028164-165517591904459.png" srcset="/img/loading.gif" lazyload alt="image-20220613104028164"></p>
+<p>补充：</p>
+<ol>
+<li>如果添加是给表中所有字段都加就不用写<code>table_name</code>后的字段名称；</li>
+<li>如果没有赋值，有默认值，可以创建表时指定也可以是各类型的默认值；</li>
+<li>注意插入的数据顺序对应，长度合适；</li>
+<li>如果数据是日期或者字符加上英文单引号；</li>
+<li>某列某行上可以为空，前提是可以为 null；</li>
+</ol>
+<h3 id="3-3-update">3.3 update</h3>
+<p>修改表中数据</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613103739700-165517591904461.png" srcset="/img/loading.gif" lazyload alt="image-20220613103739700"></p>
+<p>细节：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104159098-165517591904463.png" srcset="/img/loading.gif" lazyload alt="image-20220613104159098"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#更新表中数据<br>update demo01<br>set gender = &#x27;女&#x27;<br>where id = 4;<br>#同时更新多行<br>update demo01<br>set user_name = &#x27;大石头&#x27;,id = 666<br>where gender = &#x27;男&#x27;; <br></code></pre></td></tr></table></figure>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104533640-165517591904465.png" srcset="/img/loading.gif" lazyload alt="image-20220613104533640"></p>
+<h3 id="3-4-delete">3.4 delete</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104803511-165517591904467.png" srcset="/img/loading.gif" lazyload alt="image-20220613104803511"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#删除一条数据<br>DELETE FROM demo01<br>WHERE id = 2;<br>#删除一个表所有数据<br>DELETE FROM demo01;<br></code></pre></td></tr></table></figure>
+<p>细节：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613105217939-165517591904469.png" srcset="/img/loading.gif" lazyload alt="image-20220613105217939"></p>
+<h2 id="四，DQL-数据查询">四，DQL_数据查询</h2>
+<blockquote>
+<p>DQL (Data Query Language)</p>
+</blockquote>
+<h3 id="4-1-语法">4.1 语法</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613105259184-165517591904471.png" srcset="/img/loading.gif" lazyload alt="image-20220613105259184"></p>
+<p>解释:<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613105336698-165517591904473.png" srcset="/img/loading.gif" lazyload alt="image-20220613105336698"></p>
+<p>代码演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#整表查询<br>SELECT * FROM demo01;<br>#去重整表查询<br>SELECT DISTINCT * FROM demo01;<br>#指定查询<br>SELECT id,user_name FROM demo01<br>WHERE gender = &#x27;女&#x27;; <br></code></pre></td></tr></table></figure>
+<h3 id="4-2-查询加工">4.2 查询加工</h3>
+<p>查询中加列计算加as改名</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613110948455-165517591904475.png" srcset="/img/loading.gif" lazyload alt="image-20220613110948455"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613110954887-165517591904477.png" srcset="/img/loading.gif" lazyload alt="image-20220613110954887"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#演示查询中加计算和改名<br>CREATE TABLE student<br>(<br>`name` VARCHAR(55),<br>math INT,<br>chinese INT,<br>english INT<br>);<br>INSERT INTO student <br>VALUES(&#x27;张三&#x27;,10,10,10),<br>(&#x27;李四&#x27;,20,20,20),<br>(&#x27;王五&#x27;,30,30,30);<br>SELECT `name`,(math+chinese+english)<br> AS total_scores FROM student;<br></code></pre></td></tr></table></figure>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613111705902-165517591904479.png" srcset="/img/loading.gif" lazyload alt="image-20220613111705902"></p>
+<h3 id="4-3-运算符">4.3 运算符</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613111820632-165517591904481.png" srcset="/img/loading.gif" lazyload alt="image-20220613111820632"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">运算符在过滤查询中的使用<br> select * from student<br> where (math+chinese+english) between 40 and 100 and math = 20 ;<br></code></pre></td></tr></table></figure>
+<h3 id="4-4-排序查找">4.4 排序查找</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613113748228-165517591904483.png" srcset="/img/loading.gif" lazyload alt="image-20220613113748228"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#按照总分降序输出<br>select *,(math+chinese+english) as total_scores from student<br>order by total_scores desc;<br></code></pre></td></tr></table></figure>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613114125636-165517591904585.png" srcset="/img/loading.gif" lazyload alt="image-20220613114125636"></p>
+<h3 id="4-5-加强表查询">4.5 加强表查询</h3>
+<ol>
+<li>mysql 中日期类型可以直接比较，需要注意格式；</li>
+<li>%：表示0到多个任意字符 _：表示任意字符；</li>
+<li>详细的要在实战中体现，这里就不在赘述；</li>
+</ol>
+<h3 id="4-6-分页查询">4.6 分页查询</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613171323018-165517591904587.png" srcset="/img/loading.gif" lazyload alt="image-20220613171323018"></p>
+<h3 id="4-7-数据分组的总结">4.7 数据分组的总结</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613172216361-165517591904589.png" srcset="/img/loading.gif" lazyload alt="image-20220613172216361"></p>
+<h3 id="4-8-多表查询">4.8 多表查询</h3>
+<p>就是我们要查询的信息来源于两个表以上，这时候注意我们的条件至少要是 表的个数-1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">SELECT ename,sal,dname,emp.deptno<br>FROM emp, dept<br>WHERE emp.deptno = dept.deptno<br></code></pre></td></tr></table></figure>
+<h3 id="4-9-自连接">4.9 自连接</h3>
+<p>在同一张表上的连接查询，将一张表看成两张表</p>
+<p>注意给表取个别名，列也可以这样加一个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">SELECT worker.ename AS &#x27;职员名&#x27; , boss.ename AS &#x27;上级名&#x27;<br>FROM emp worker, emp boss<br>WHERE worker.mgr = boss.empno;<br></code></pre></td></tr></table></figure>
+<h3 id="4-10-子查询">4.10 子查询</h3>
+<p>就是查询语句嵌套在其他 SQL 语句中</p>
+<p>找 smith 同部门的人</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">SELECT *<br>FROM emp<br>WHERE deptno = (<br>SELECT deptno<br>FROM emp<br>WHERE ename = &#x27;SMITH&#x27;<br>)<br></code></pre></td></tr></table></figure>
+<p>找和10号部门的工作相同但是不是 10 号部门的人</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">select ename, job, sal, deptno<br>from emp<br>where job in (<br>SELECT DISTINCT job<br>FROM emp<br>WHERE deptno = 10<br>) and deptno <> 10  <br></code></pre></td></tr></table></figure>
+<p>子查询额结果也可以作为临时表使用</p>
+<p>子查询中加 all/any：</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613184414579-165517591904591.png" srcset="/img/loading.gif" lazyload alt="image-20220613184414579"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613185313496-165517591904593.png" srcset="/img/loading.gif" lazyload alt="image-20220613185313496"></p>
+<p>当然了，你把 all 换成 any 就是查大于部门 30 中的任意一个就符合条件</p>
+<p>查询一个表中各个类别最贵的商品：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">select goods_id, ecs_goods.cat_id, goods_name, shop_price<br>from (<br>SELECT cat_id , MAX(shop_price) as max_price<br>FROM ecs_goods<br>GROUP BY cat_id<br>) temp , ecs_goods<br>where temp.cat_id = ecs_goods.cat_id<br>and temp.max_price = ecs_goods.shop_price<br></code></pre></td></tr></table></figure>
+<p>多列子查询</p>
+<p>举例：找和 allen 部门和岗位完全相同的所有雇员，除了他自己：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">SELECT *<br>FROM emp<br>WHERE (deptno , job) = (<br>SELECT deptno , job<br>FROM emp<br>WHERE ename = &#x27;ALLEN&#x27;<br>) AND ename != &#x27;ALLEN&#x27;<br></code></pre></td></tr></table></figure>
+<p>子查询作为临时表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">SELECT ename, sal, temp.max_sal, emp.deptno<br>FROM emp, (<br>SELECT deptno, MAX(sal) AS max_sal<br>FROM emp<br>GROUP BY deptno<br>) temp<br>WHERE emp.deptno = temp.deptno AND emp.sal = temp.max_sal<br></code></pre></td></tr></table></figure>
+<h3 id="4-11-合并查询">4.11 合并查询</h3>
+<p>下面的有笔误</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613214210603-165517591904595.png" srcset="/img/loading.gif" lazyload alt="image-20220613214210603"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">-- union all 就是将两个查询结果合并， 不会去重<br>SELECT ename,sal,job FROM emp WHERE sal>2500 -- 5<br>UNION ALL<br>SELECT ename,sal,job FROM emp WHERE job=&#x27;MANAGER&#x27; -- 3<br>-- union 就是将两个查询结果合并， 会去重<br>SELECT ename,sal,job FROM emp WHERE sal>2500 -- 5<br>UNION<br>SELECT ename,sal,job FROM emp WHERE job=&#x27;MANAGER&#x27; -- 3<br></code></pre></td></tr></table></figure>
+<h2 id="五，DCL-数据控制">五，DCL_数据控制</h2>
+<blockquote>
+<p>DCL（Date control Language）</p>
+</blockquote>
+<p>考完回来继续~</p>
+<h3 id="5-1-表外连接">5.1 表外连接</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613223248000-165517591904597.png" srcset="/img/loading.gif" lazyload alt="image-20220613223248000"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">-- 使用左外连接实现<br>SELECT dname, ename, job<br>FROM dept LEFT JOIN emp<br>ON dept.deptno = emp.deptno<br>-- 使用右外连接实现<br>SELECT dname, ename, job<br>FROM emp RIGHT JOIN dept<br>ON dept.deptno = emp.deptno<br>--<br></code></pre></td></tr></table></figure>
+<h3 id="5-2-约束">5.2 约束</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613224434578-165517591904599.png" srcset="/img/loading.gif" lazyload alt="image-20220613224434578"></p>
+<h4 id="5-2-1-primary-key">5.2.1 primary key</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613224541177-1655175919045101.png" srcset="/img/loading.gif" lazyload alt="image-20220613224541177"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">CREATE TABLE t20<br>(id INT ,<br>`name` VARCHAR(32) ,<br>email VARCHAR(32),<br>PRIMARY KEY(id,`name`) -- 在表定义最后写 primary key(列名)复合主键：也就是说两个元素一致才是叫重复<br> );<br></code></pre></td></tr></table></figure>
+<h4 id="5-2-2-not-null-非空">5.2.2 not null (非空)</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613224916183-1655175919045103.png" srcset="/img/loading.gif" lazyload alt="image-20220613224916183"></p>
+<h4 id="5-2-3-unique（唯一）">5.2.3 unique（唯一）</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613225007039-1655175919045105.png" srcset="/img/loading.gif" lazyload alt="image-20220613225007039"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613225418310-1655175919045107.png" srcset="/img/loading.gif" lazyload alt="image-20220613225418310"></p>
+<h4 id="5-2-4-foreign-key-外键">5.2.4 foreign key (外键)</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613230302981-1655175919045109.png" srcset="/img/loading.gif" lazyload alt="image-20220613230302981"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">-- 外键演示<br>-- 创建 主表 my_class<br>CREATE TABLE my_class (<br>id INT PRIMARY KEY , -- 班级编号<br>`name` VARCHAR(32) NOT NULL DEFAULT &#x27;&#x27;);<br>-- 创建 从表 my_stu<br>CREATE TABLE my_stu (<br>id INT PRIMARY KEY , -- 学生编号<br>`name` VARCHAR(32) NOT NULL DEFAULT &#x27;&#x27;,<br>class_id INT , -- 学生所在班级的编号<br>-- 下面指定外键关系<br>FOREIGN KEY (class_id) REFERENCES my_class(id))<br></code></pre></td></tr></table></figure>
+<h4 id="5-2-5-check">5.2.5 check</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613231721108-1655175919045111.png" srcset="/img/loading.gif" lazyload alt="image-20220613231721108"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">-- 测试<br>CREATE TABLE t23 (<br>id INT PRIMARY KEY,<br>`name` VARCHAR(32) ,<br>sex VARCHAR(6) CHECK (sex IN(&#x27;man&#x27;,&#x27;woman&#x27;)),<br>sal DOUBLE CHECK ( sal > 1000 AND sal < 2000)<br>);<br></code></pre></td></tr></table></figure>
+<h3 id="5-3-自增长">5.3 自增长</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613231905887-1655175919045113.png" srcset="/img/loading.gif" lazyload alt="image-20220613231905887"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613234239604-1655175919045115.png" srcset="/img/loading.gif" lazyload alt="image-20220613234239604"></p>
+<h3 id="5-4-索引">5.4 索引</h3>
+<h4 id="5-4-1-入门">5.4.1 入门</h4>
+<p>可以优化查询速度，但是索引也会暂用空间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">-- empno_index 索引名称<br>-- ON emp (empno) : 表示在 emp 表的 empno 列创建索引<br>CREATE INDEX empno_index ON emp (empno)<br></code></pre></td></tr></table></figure>
+<p>注意创建的索引只对有索引的行有用。</p>
+<h4 id="5-4-2-索引原理">5.4.2 索引原理</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614094039715-1655175919045117.png" srcset="/img/loading.gif" lazyload alt="image-20220614094039715"></p>
+<h4 id="5-4-3-索引类型">5.4.3 索引类型</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614094124795-1655175919045119.png" srcset="/img/loading.gif" lazyload alt="image-20220614094124795"></p>
+<h4 id="5-4-4-索引使用">5.4.4 索引使用</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614094310600-1655175919045121.png" srcset="/img/loading.gif" lazyload alt="image-20220614094310600"></p>
+<h4 id="5-4-5-适合">5.4.5 适合</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614095344974-1655175919045123.png" srcset="/img/loading.gif" lazyload alt="image-20220614095344974"></p>
+<h3 id="5-5-事务">5.5 事务</h3>
+<p>事务就是一种捆绑关系，把几句DML MySQL 语句捆在一起，要么都执行要么就都不执行。比如转账，没用事务你这边钱扣了，她那边没收到，你说麻烦不？所以这个事务的必要性呼之欲出了，它保证了数据的一致性。</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614095827717-1655175919046125.png" srcset="/img/loading.gif" lazyload alt="image-20220614095827717"></p>
+<h4 id="5-5-1-锁">5.5.1 锁</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614095932729-1655175919046127.png" srcset="/img/loading.gif" lazyload alt="image-20220614095932729"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">-- 演示<br>-- 1. 创建一张测试表<br>CREATE TABLE t27<br>( id INT,<br>`name` VARCHAR(32));<br>-- 2. 开始事务<br>START TRANSACTION<br>set autocommit=off;<br>-- 3. 设置保存点<br>SAVEPOINT a<br>-- 执行 dml 操作<br>INSERT INTO t27 VALUES(100, &#x27;tom&#x27;);<br>SELECT * FROM t27;<br>SAVEPOINT b<br>-- 执行 dml 操作<br>INSERT INTO t27 VALUES(200, &#x27;jack&#x27;);<br>-- 回退到 b<br>ROLLBACK TO b<br>-- 继续回退 a<br>ROLLBACK TO a<br>-- 如果这样, 表示直接回退到事务开始的状态.<br>ROLLBACK<br>COMMIT<br></code></pre></td></tr></table></figure>
+<h4 id="5-5-2-细节强调">5.5.2 细节强调</h4>
+<h5 id="5-5-2-1-回退事务">5.5.2.1 回退事务</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614100601670-1655175919046129.png" srcset="/img/loading.gif" lazyload alt="image-20220614100601670"></p>
+<h5 id="5-5-2-2-提交事务">5.5.2.2 提交事务</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614100818618-1655175919046131.png" srcset="/img/loading.gif" lazyload alt="image-20220614100818618"></p>
+<h5 id="5-5-2-3-细节">5.5.2.3 细节</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614100844428-1655175919046133.png" srcset="/img/loading.gif" lazyload alt="image-20220614100844428"></p>
+<h4 id="5-5-3-隔离级别">5.5.3 隔离级别</h4>
+<h5 id="5-5-3-1-介绍">5.5.3.1 介绍</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614101257428-1655175919046135.png" srcset="/img/loading.gif" lazyload alt="image-20220614101257428"></p>
+<h5 id="5-5-3-2-查看隔离级别">5.5.3.2 查看隔离级别</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614101511845-1655175919046137.png" srcset="/img/loading.gif" lazyload alt="image-20220614101511845"></p>
+<h5 id="5-5-3-3-事务隔离级别">5.5.3.3 事务隔离级别</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614101818685-1655175919046139.png" srcset="/img/loading.gif" lazyload alt="image-20220614101818685"></p>
+<h5 id="5-5-3-4-设置事务隔离级别">5.5.3.4 设置事务隔离级别</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102255276-1655175919046141.png" srcset="/img/loading.gif" lazyload alt="image-20220614102255276"></p>
+<h4 id="5-5-4-ACID">5.5.4 ACID</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102542166-1655175919046143.png" srcset="/img/loading.gif" lazyload alt="image-20220614102542166"></p>
+<h3 id="5-6-表类型和存储引擎">5.6 表类型和存储引擎</h3>
+<h4 id="5-6-1-介绍">5.6.1 介绍</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102712168-1655175919046145.png" srcset="/img/loading.gif" lazyload alt="image-20220614102712168"></p>
+<h5 id="5-6-2-引擎一览表">5.6.2 引擎一览表</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102822695-1655175919046147.png" srcset="/img/loading.gif" lazyload alt="image-20220614102822695"></p>
+<h5 id="5-6-3-细节-v3">5.6.3 细节</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102848675-1655175919046149.png" srcset="/img/loading.gif" lazyload alt="image-20220614102848675"></p>
+<h5 id="5-6-4-怎么选">5.6.4 怎么选</h5>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102936751-1655175919046151.png" srcset="/img/loading.gif" lazyload alt="image-20220614102936751"></p>
+<h5 id="5-6-5-修改引擎">5.6.5 修改引擎</h5>
+<p><code>alter table table_name engine = 存储引擎</code></p>
+<h3 id="5-7-视图">5.7 视图</h3>
+<h4 id="5-7-1-基本介绍">5.7.1 基本介绍</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614103132421-1655175919046153.png" srcset="/img/loading.gif" lazyload alt="image-20220614103132421"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614103142087-1655175919046155.png" srcset="/img/loading.gif" lazyload alt="image-20220614103142087"></p>
+<h4 id="5-7-2-使用">5.7.2 使用</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614103250362-1655175919046157.png" srcset="/img/loading.gif" lazyload alt="image-20220614103250362"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">-- 视图的使用<br>-- 创建一个视图 emp_view01， 只能查询 emp 表的(empno、 ename, job 和 deptno ) 信息<br>-- 创建视图<br>CREATE VIEW emp_view01<br>AS<br>SELECT empno, ename, job, deptno FROM emp;<br>-- 查看视图<br>DESC emp_view01<br>SELECT * FROM emp_view01;<br>SELECT empno, job FROM emp_view01;<br>-- 查看创建视图的指令<br>SHOW CREATE VIEW emp_view01<br>-- 删除视图<br>DROP VIEW emp_view01;<br></code></pre></td></tr></table></figure>
+<h4 id="5-7-3-细节讨论">5.7.3 细节讨论</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104114782-1655175919046159.png" srcset="/img/loading.gif" lazyload alt="image-20220614104114782"></p>
+<h4 id="5-7-4-实践">5.7.4 实践</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104225661-1655175919046161.png" srcset="/img/loading.gif" lazyload alt="image-20220614104225661"></p>
+<h3 id="5-8-MySQL-管理">5.8 MySQL 管理</h3>
+<h4 id="5-8-1-MySQL-用户">5.8.1 MySQL 用户</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104450566-1655175919046163.png" srcset="/img/loading.gif" lazyload alt="image-20220614104450566"></p>
+<h4 id="5-8-2-创建用户">5.8.2 创建用户</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104516446-1655175919046165.png" srcset="/img/loading.gif" lazyload alt="image-20220614104516446"></p>
+<h4 id="5-8-3-删除用户">5.8.3 删除用户</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104540411-1655175919047167.png" srcset="/img/loading.gif" lazyload alt="image-20220614104540411"></p>
+<h4 id="5-8-4-用户改密码">5.8.4 用户改密码</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104608219-1655175919047169.png" srcset="/img/loading.gif" lazyload alt="image-20220614104608219"></p>
+<h4 id="5-8-5-权限">5.8.5 权限</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104800419-1655175919047171.png" srcset="/img/loading.gif" lazyload alt="image-20220614104800419"></p>
+<h4 id="5-8-6-给用户授权">5.8.6 给用户授权</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105357308-1655175919047173.png" srcset="/img/loading.gif" lazyload alt="image-20220614105357308"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105427232-1655175919047175.png" srcset="/img/loading.gif" lazyload alt="image-20220614105427232"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105438686-1655175919047177.png" srcset="/img/loading.gif" lazyload alt="image-20220614105438686"></p>
+<h4 id="5-8-7-细节">5.8.7 细节</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105554910-1655175919047179.png" srcset="/img/loading.gif" lazyload alt="image-20220614105554910"></p>
+<h2 id="六，函数">六，函数</h2>
+<h3 id="6-1-合计-统计函数">6.1 合计/统计函数</h3>
+<h4 id="6-1-1-Count">6.1.1 Count</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613114418530-1655175919047181.png" srcset="/img/loading.gif" lazyload alt="image-20220613114418530"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">SELECT COUNT(*) FROM student;//4(空值要)<br>SELECT COUNT(`name`) FROM student;//3(空值不算)<br></code></pre></td></tr></table></figure>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613114926429-1655175919047183.png" srcset="/img/loading.gif" lazyload alt="image-20220613114926429"></p>
+<h4 id="6-1-2-Sum">6.1.2 Sum</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613120630608-1655175919047185.png" srcset="/img/loading.gif" lazyload alt="image-20220613120630608"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613120637601-1655175919047187.png" srcset="/img/loading.gif" lazyload alt="image-20220613120637601"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#Sum<br>SELECT SUM(math)/COUNT(*)AS math_avg FROM student;<br></code></pre></td></tr></table></figure>
+<h4 id="6-1-3-avg">6.1.3 avg</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613121229060-1655175919047189.png" srcset="/img/loading.gif" lazyload alt="image-20220613121229060"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#avg<br>SELECT AVG(math)AS math_avg FROM student;<br></code></pre></td></tr></table></figure>
+<h4 id="6-1-4-max-min">6.1.4 max/min</h4>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613121557231-1655175919047191.png" srcset="/img/loading.gif" lazyload alt="image-20220613121557231"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#max/min<br>SELECT MAX(math),MIN(english)FROM student;<br></code></pre></td></tr></table></figure>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613121833069-1655175919047193.png" srcset="/img/loading.gif" lazyload alt="image-20220613121833069"></p>
+<h4 id="6-1-5-group-by-分组">6.1.5 group by 分组</h4>
+<p>对列进行分组</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613122020593-1655175919047195.png" srcset="/img/loading.gif" lazyload alt="image-20220613122020593"></p>
+<p>解释：比如这里有一个员工表，里面的员工有自己的部门和工资，我们想知道每个部门的平均工资是多少</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#查各个部门平均工资<br>SELECT dept,FORMAT(AVG(salary),2)AS salary_avg FROM worker<br>GROUP BY dept;<br></code></pre></td></tr></table></figure>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613125513714-1655175919047197.png" srcset="/img/loading.gif" lazyload alt="image-20220613125513714"></p>
+<h4 id="6-1-6-having">6.1.6 having</h4>
+<p>对分组后的结果进行再过滤</p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613122034221-1655175919048199.png" srcset="/img/loading.gif" lazyload alt="image-20220613122034221"></p>
+<p>解释：我们想找出每个部门中（分组了），工资高于10000的 (进一步筛选，用 having)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#查那个部门的最高工资=200<br>SELECT  MAX(salary)AS salary_max,dept  FROM worker<br>GROUP BY dept<br>HAVING salary_max = 200;<br></code></pre></td></tr></table></figure>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613125612572-1655175919048201.png" srcset="/img/loading.gif" lazyload alt="image-20220613125612572"></p>
+<h3 id="6-2-字符串函数">6.2 字符串函数</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613154524042-1655175919048203.png" srcset="/img/loading.gif" lazyload alt="image-20220613154524042"></p>
+<p>dual表 是亚元表，系统表可以用来做测试</p>
+<h3 id="6-3-数学函数">6.3 数学函数</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613155314246-1655175919048205.png" srcset="/img/loading.gif" lazyload alt="image-20220613155314246"></p>
+<h3 id="6-4-时间日期函数">6.4 时间日期函数</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613160418958-1655175919048207.png" srcset="/img/loading.gif" lazyload alt="image-20220613160418958"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613155730860-1655175919048209.png" srcset="/img/loading.gif" lazyload alt="image-20220613155730860"></p>
+<h3 id="6-5-加密-系统函数">6.5 加密/系统函数</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613160311320-1655175919048211.png" srcset="/img/loading.gif" lazyload alt="image-20220613160311320"></p>
+<h3 id="6-6-控制流程函数">6.6 控制流程函数</h3>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613161812310-1655175919048213.png" srcset="/img/loading.gif" lazyload alt="image-20220613161812310"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">#控制函数<br>SELECT IF(FALSE,&#x27;你好&#x27;,&#x27;我好&#x27;)FROM DUAL;<br>SELECT IFNULL(NULL,&#x27;杰哥不要啊&#x27;)FROM DUAL;<br>SELECT CASE<br>WHEN FALSE THEN &#x27;jack&#x27;<br>WHEN FALSE THEN &#x27;tony&#x27;<br>ELSE &#x27;HL&#x27; END AS AAA<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>说在后面，至于 MySQL 编程基础，触发器，储存过程后面搞了，再回来补充</p>
+</blockquote>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/MySQL/" class="category-chain-item">MySQL</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/MySQL/">#MySQL</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>MySQL_Basics</div>
+      <div>http://lmc.pub/2022/06/14/MySQL-Basics/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>LMC</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年6月14日</div>
+        </div>
+      
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://blog.csdn.net/qq_65224479?spm=1011.2415.3001.5343" target="_blank" rel="nofollow noopener"><span>myCSDN</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+  <!--单击显示文字-->
+<script type="text/javascript" src="/js/click_show_text.js"></script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+<!--浏览器搞笑标题-->
+<script type="text/javascript" src="/js/FunnyTitle.js"></script>
+<!--动态线条背景-->
+<script type="text/javascript"
+color="220,220,220" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+</script>
+<canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+</body>
+</html>
