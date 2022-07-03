@@ -23,113 +23,113 @@
 <meta property="og:site_name" content="LMC_Blog">
 <meta property="og:description" content="[toc]  CMS项目设计说明书 一，需求分析 1.1 项目介绍 项目名：餐饮管理系统1.0&#x2F;CMS（CateringManagementSystem） 项目特色：基于Java SE 和 MySQL的小型餐饮行业管理系统的控制台程序 作者：SWU——21信管5龙箫， 21信管4黄锦，21信管3李敏灿（leader） 分工： 龙箫:  properties文件配置 libs下druid，mysq">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184246606.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184355874.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184443056.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184530249.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184603479.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184640806.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184709147.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184733594.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184804515.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703164322035.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703171805319.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703170338788.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703170543304.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703171455864.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703173131039.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703180608831.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703185005136.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703185228043.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703185614640.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703185828159.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703190012035.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703200847053.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703200955283.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201038157.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201128969.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201221854.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201241413.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703200309459.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201400491.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201853519.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703202220274.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703202331738.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703202544834.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703190313907.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703191051896.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703202745061.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703203424523.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703204214582.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205024246.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205052147.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205116429.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205235073.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205409214.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205751052.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205808059.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205823674.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205842153.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205857412.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205929261.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210059063.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210202430.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210321784.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210411065.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210518347.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210826752.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210841699.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703211108662.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703211242754.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703211620170.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703211844728.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212118104.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212222220.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212506520.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212656241.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212803155.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212942520.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703213240148.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703213615851.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703213900423.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703214023586.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703220644782.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703220940035.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703220105002.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703220441492.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221046643.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221224837.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221435715.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221550090.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221337119.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221713395.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222042604.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221947302.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222128013.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222231735.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222004701.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222421083.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222327883.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222351914.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222454669.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701205452907.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701205432855.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701205721845.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701210000201.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701213323601.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701214109295.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701214234029.png">
-<meta property="og:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701214433873.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184246606.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184355874.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184443056.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184530249.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184603479.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184640806.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184709147.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184733594.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184804515.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703164322035.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703171805319.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703170338788.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703170543304.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703171455864.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703173131039.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703180608831.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703185005136.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703185228043.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703185614640.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703185828159.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703190012035.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703200847053.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703200955283.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201038157.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201128969.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201221854.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201241413.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703200309459.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201400491.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201853519.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703202220274.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703202331738.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703202544834.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703190313907.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703191051896.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703202745061.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703203424523.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703204214582.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205024246.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205052147.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205116429.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205235073.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205409214.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205751052.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205808059.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205823674.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205842153.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205857412.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205929261.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210059063.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210202430.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210321784.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210411065.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210518347.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210826752.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210841699.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703211108662.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703211242754.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703211620170.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703211844728.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212118104.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212222220.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212506520.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212656241.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212803155.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212942520.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703213240148.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703213615851.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703213900423.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703214023586.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703220644782.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703220940035.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703220105002.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703220441492.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221046643.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221224837.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221435715.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221550090.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221337119.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221713395.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222042604.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221947302.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222128013.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222231735.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222004701.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222421083.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222327883.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222351914.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222454669.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701205452907.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701205432855.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701205721845.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701210000201.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701213323601.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701214109295.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701214234029.png">
+<meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701214433873.png">
 <meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220702165739495.png">
 <meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220702171449781.png">
 <meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220702171637966.png">
 <meta property="og:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220702171937928.png">
 <meta property="article:published_time" content="2022-07-03T06:24:01.000Z">
-<meta property="article:modified_time" content="2022-07-03T16:14:22.142Z">
+<meta property="article:modified_time" content="2022-07-03T16:35:10.947Z">
 <meta property="article:author" content="LMC">
 <meta property="article:tag" content="Java">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184246606.png">
+<meta name="twitter:image" content="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184246606.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -396,7 +396,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：16 分钟前
+                    本文最后更新于：几秒前
                   
                 
               </p>
@@ -443,26 +443,26 @@
 <p>采用分层结构，整个项目主要用 Java SE 和 MySQL 写成。</p>
 <h3 id="2-1-功能介绍">2.1 功能介绍</h3>
 <p>系统登录：通过JDBC与MySQL数据库核实检验（做了防SQL注入处理）</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184246606.png" srcset="/img/loading.gif" lazyload alt="image-20220703184246606"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184246606.png" srcset="/img/loading.gif" lazyload alt="image-20220703184246606"></p>
 <p>酒店管理系统(二级菜单)</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184355874.png" srcset="/img/loading.gif" lazyload alt="image-20220703184355874"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184355874.png" srcset="/img/loading.gif" lazyload alt="image-20220703184355874"></p>
 <p>显示餐桌状态</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184443056.png" srcset="/img/loading.gif" lazyload alt="image-20220703184443056"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184443056.png" srcset="/img/loading.gif" lazyload alt="image-20220703184443056"></p>
 <p>预定餐桌</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184530249.png" srcset="/img/loading.gif" lazyload alt="image-20220703184530249"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184530249.png" srcset="/img/loading.gif" lazyload alt="image-20220703184530249"></p>
 <p>显示所有菜品</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184603479.png" srcset="/img/loading.gif" lazyload alt="image-20220703184603479"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184603479.png" srcset="/img/loading.gif" lazyload alt="image-20220703184603479"></p>
 <p>点餐</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184640806.png" srcset="/img/loading.gif" lazyload alt="image-20220703184640806"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184640806.png" srcset="/img/loading.gif" lazyload alt="image-20220703184640806"></p>
 <p>查看账单</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184709147.png" srcset="/img/loading.gif" lazyload alt="image-20220703184709147"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184709147.png" srcset="/img/loading.gif" lazyload alt="image-20220703184709147"></p>
 <p>结账</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184733594.png" srcset="/img/loading.gif" lazyload alt="image-20220703184733594"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184733594.png" srcset="/img/loading.gif" lazyload alt="image-20220703184733594"></p>
 <p>退出系统</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703184804515.png" srcset="/img/loading.gif" lazyload alt="image-20220703184804515"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703184804515.png" srcset="/img/loading.gif" lazyload alt="image-20220703184804515"></p>
 <p>演示视频：B站</p>
 <h3 id="2-2-程序架构图">2.2 程序架构图</h3>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703164322035.png" srcset="/img/loading.gif" lazyload alt="image-20220703164322035"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703164322035.png" srcset="/img/loading.gif" lazyload alt="image-20220703164322035"></p>
 <h3 id="2-3-项目分层">2.3 项目分层</h3>
 <p>View层：界面层。负责调用Service层获取数据和行为进行显示</p>
 <p>Service层：业务层。主要是各类业务衔接和操作</p>
@@ -485,32 +485,32 @@
 <h4 id="DAO层">DAO层</h4>
 <p>这层全是实际操作数据的，实际干活的，他们从 Service 得到指令，然后去具体执行，去操作数据库。我们的原则表示，这里会有一个 BasicDAO 这个是所有 DAO 共有的操作，就放在这里面。然后我们每多了一个 domain 类 就建立一个 对应去操作这种对象的 DAO ，然后继承 BasicDAO ，之后再在本 DAO 中加上自己的特殊操作，如果有的话。</p>
 <p>这里的 BasicDAO 有点讲究，它和下面那个JDBCUtilsByDruid 一样，都是包装好的，这个是把DML增删改用个 update就行了。但是对于查询，我们做了根据实际应用做了更加具体的分类：queryScalar查询单行单列的方法,即返回单值的方法；querySingle查询单行结果 的通用方法；queryMulti返回多个对象(即查询的结果是多行), 针对任意表。更加具体的实现我们在编码解释。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703171805319.png" srcset="/img/loading.gif" lazyload alt="image-20220703171805319"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703171805319.png" srcset="/img/loading.gif" lazyload alt="image-20220703171805319"></p>
 <h4 id="utils-类">utils 类</h4>
 <p>这是一个工具类。里面有两个工具。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703170338788.png" srcset="/img/loading.gif" lazyload alt="image-20220703170338788"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703170338788.png" srcset="/img/loading.gif" lazyload alt="image-20220703170338788"></p>
 <ul>
 <li>
 <p>一个是 Utility</p>
 <p>功能：<strong>处理各种情况的用户输入，并且能够按照程序员的需求，得到用户的控制台输入</strong>。看下图，具体都是干啥的，我们代码阶段讲解。</p>
 </li>
 </ul>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703170543304.png" srcset="/img/loading.gif" lazyload alt="image-20220703170543304"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703170543304.png" srcset="/img/loading.gif" lazyload alt="image-20220703170543304"></p>
 <ul>
 <li>
 <p>另一个是封装的 JDBCUtils</p>
 <p>连接池用的阿里的 Druid (德鲁伊)。因为用Java操作MySQL获取连接很麻烦，所以就整个这个。它就一个getConnection 返回一个连接。还有个 close 这个是关闭资源用的，包括连接，statement，结果集等/具体的我们编码阶段讲。</p>
 </li>
 </ul>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703171455864.png" srcset="/img/loading.gif" lazyload alt="image-20220703171455864"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703171455864.png" srcset="/img/loading.gif" lazyload alt="image-20220703171455864"></p>
 <h4 id="Service层">Service层</h4>
 <p>这个也是根据实际业务需求来写，比如有那个DAO我们就写个对应专门操作他的Service，专事专办。当然这个是看具体任务，一个Service可以控制两个DAO也是正常。</p>
 <h4 id="View层">View层</h4>
 <p>这个就是表层次的页面了，这个里面我们有一下几个方法，分别行驶不同的功能，比如listDiningTable是显示目前店内的餐桌适用情况；orderDiningTable是预定餐桌；listMune是列举菜单等等，具体的我们在编码给大家讲解。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703173131039.png" srcset="/img/loading.gif" lazyload alt="image-20220703173131039"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703173131039.png" srcset="/img/loading.gif" lazyload alt="image-20220703173131039"></p>
 <h2 id="四，编码">四，编码</h2>
 <h3 id="4-1-项目构成">4.1 项目构成</h3>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703180608831.png" srcset="/img/loading.gif" lazyload alt="image-20220703180608831"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703180608831.png" srcset="/img/loading.gif" lazyload alt="image-20220703180608831"></p>
 <h4 id="1-包名">1.包名</h4>
 <p>如下，总包为<code>team.swu.lmc.HMS</code></p>
 <p>符合规范：全部小写，按照<code>team.学校.作者.项目名.模块名</code>格式命名</p>
@@ -551,20 +551,20 @@
 <h3 id="4-2-每个代码块详细讲解">4.2 每个代码块详细讲解</h3>
 <h4 id="4-2-1-MySQL数据库">4.2.1 MySQL数据库</h4>
 <h5 id="1-结构">1.结构</h5>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703185005136.png" srcset="/img/loading.gif" lazyload alt="image-20220703185005136"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703185005136.png" srcset="/img/loading.gif" lazyload alt="image-20220703185005136"></p>
 <h5 id="2-解释">2.解释</h5>
 <p>bill：账单表。</p>
 <p>id是第几单，billID是订单号（做了防止重复的设计），menuId是菜品号，nums是点的菜品数目，diningTableId是几号桌子的，billDate是那个时间下单的，state是订单状态，如果支付了会有详细支付方式，如果没有买单就是未支付</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703185228043.png" srcset="/img/loading.gif" lazyload alt="image-20220703185228043"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703185228043.png" srcset="/img/loading.gif" lazyload alt="image-20220703185228043"></p>
 <p>diningTable：餐桌单。</p>
 <p>id是桌号；state是餐桌状态，已预约就是预约好了但是还没有用餐；正在用餐就是已经上菜，在吃；空就是空闲的，orderName是定桌人姓名，orderTel是定餐人电话</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703185614640.png" srcset="/img/loading.gif" lazyload alt="image-20220703185614640"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703185614640.png" srcset="/img/loading.gif" lazyload alt="image-20220703185614640"></p>
 <p>employee：雇员表</p>
 <p>empId是工号，pwd是密码(这里使用了MD5加密)；name是雇员姓名；job是他的职位。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703185828159.png" srcset="/img/loading.gif" lazyload alt="image-20220703185828159"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703185828159.png" srcset="/img/loading.gif" lazyload alt="image-20220703185828159"></p>
 <p>menu:菜单表</p>
 <p>id是菜品号，name是菜品名，type是菜品类别，price是菜品价格</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703190012035.png" srcset="/img/loading.gif" lazyload alt="image-20220703190012035"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703190012035.png" srcset="/img/loading.gif" lazyload alt="image-20220703190012035"></p>
 <h5 id="3-history代码">3.history代码</h5>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre class=" language-hljs mysql"><code class="language-hljs mysql">-- 创建HMS数据库<br>create database HMS<br>-- 创建表 employee<br>create table employee(<br>id int primary key auto_increment,#自增<br>empId varchar(50)unique not null default &#x27;&#x27;,#员工号<br>pwd char(32) not null default &#x27;&#x27;,#密码md5<br>`name` varchar(50) not null default &#x27;&#x27;,#姓名<br>job varchar(50) not null default &#x27;&#x27;#岗位<br>)<br>charset=utf8;<br>drop table menu<br>#添加测试数据<br>insert into employee values<br>(null,&#x27;001&#x27;,md5(&#x27;123456&#x27;),&#x27;张三丰&#x27;,&#x27;经理&#x27;),<br>(NULL,&#x27;002&#x27;,MD5(&#x27;123456&#x27;),&#x27;小龙女&#x27;,&#x27;服务员&#x27;),<br>(NULL,&#x27;003&#x27;,MD5(&#x27;123456&#x27;),&#x27;张无忌&#x27;,&#x27;收银员&#x27;),<br>(NULL,&#x27;666&#x27;,MD5(&#x27;123456&#x27;),&#x27;烂子&#x27;,&#x27;经理&#x27;);<br><br>select * from employee; <br><br>-- 创建diningTable表<br>create table diningTable(<br>id int primary key auto_increment,#自增，表示餐桌编号<br>state varchar(20)not null default &#x27;&#x27;,#餐桌状态<br>orderName varchar(50) not null default &#x27;&#x27;,#预定人的名字<br>orderTel varchar(11) not null default &#x27;&#x27;<br>)charset=utf8;<br>#测试数据<br>insert into diningTable values<br>(null,&#x27;空&#x27;,&#x27;&#x27;,&#x27;&#x27;),<br>(NULL,&#x27;空&#x27;,&#x27;&#x27;,&#x27;&#x27;),<br>(NULL,&#x27;空&#x27;,&#x27;&#x27;,&#x27;&#x27;);<br>select * from diningTable<br><br>select id,state from diningTable<br><br>select * from diningTable where id = 1<br><br>update diningTable set state=&#x27;空&#x27;,orderName=&#x27;&#x27;,orderTel=&#x27;&#x27; where id=1<br><br>#菜谱<br>create table menu (<br>	id int primary key auto_increment, #自增主键，作为菜谱编号(唯一)<br>	`name` varchar(50) not null default &#x27;&#x27;,#菜品名称<br>	`type` varchar(50) not null default &#x27;&#x27;, #菜品种类<br>	price double not null default 0#价格<br>)charset=utf8; <br><br>insert into menu values(null, &#x27;八宝饭&#x27;, &#x27;主食&#x27;, 10);<br>insert into menu values(null, &#x27;叉烧包&#x27;, &#x27;主食&#x27;, 20);<br>insert into menu values(null, &#x27;宫保鸡丁&#x27;, &#x27;热菜&#x27;, 30);<br>insert into menu values(null, &#x27;山药拨鱼&#x27;, &#x27;凉菜&#x27;, 14);<br>insert into menu values(null, &#x27;银丝卷&#x27;, &#x27;甜食&#x27;, 9);<br>insert into menu values(null, &#x27;水煮鱼&#x27;, &#x27;热菜&#x27;, 26);<br>insert into menu values(null, &#x27;甲鱼汤&#x27;, &#x27;汤类&#x27;, 100);<br>insert into menu values(null, &#x27;鸡蛋汤&#x27;, &#x27;汤类&#x27;, 16);<br><br>`bill`<br><br>#账单流水, 考虑可以分开结账, 并考虑将来分别统计各个不同菜品的销售情况<br>create table bill (<br>	id int primary key auto_increment, #自增主键<br>	billId varchar(50) not null default &#x27;&#x27;,#账单号可以按照自己规则生成 UUID<br>	menuId int not null default 0,#菜品的编号, 也可以使用外键<br>	nums SMALLINT not null default 0,#份数<br>	money double not null default 0, #金额<br>	diningTableId int not null default 0, #餐桌<br>	billDate datetime not null ,#订单日期<br>	state varchar(50) not null default &#x27;&#x27; # 状态 &#x27;未结账&#x27; , &#x27;已经结账&#x27;, &#x27;挂单&#x27;<br>)charset=utf8;<br><br></code></pre></td></tr></table></figure>
 <h4 id="4-2-2-utils">4.2.2 utils</h4>
@@ -581,30 +581,30 @@
 </li>
 <li>
 <p>readKeyBoard</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703200847053.png" srcset="/img/loading.gif" lazyload alt="image-20220703200847053"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703200847053.png" srcset="/img/loading.gif" lazyload alt="image-20220703200847053"></p>
 </li>
 <li>
 <p>readConfirmSelection</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703200955283.png" srcset="/img/loading.gif" lazyload alt="image-20220703200955283"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703200955283.png" srcset="/img/loading.gif" lazyload alt="image-20220703200955283"></p>
 </li>
 <li>
 <p>readString</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201038157.png" srcset="/img/loading.gif" lazyload alt="image-20220703201038157"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201038157.png" srcset="/img/loading.gif" lazyload alt="image-20220703201038157"></p>
 </li>
 <li>
 <p>readInt</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201128969.png" srcset="/img/loading.gif" lazyload alt="image-20220703201128969"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201128969.png" srcset="/img/loading.gif" lazyload alt="image-20220703201128969"></p>
 </li>
 <li>
 <p>readChar</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201221854.png" srcset="/img/loading.gif" lazyload alt="image-20220703201221854"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201221854.png" srcset="/img/loading.gif" lazyload alt="image-20220703201221854"></p>
 </li>
 <li>
 <p>readMenuSelection</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201241413.png" srcset="/img/loading.gif" lazyload alt="image-20220703201241413"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201241413.png" srcset="/img/loading.gif" lazyload alt="image-20220703201241413"></p>
 </li>
 </ol>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703200309459.png" srcset="/img/loading.gif" lazyload alt="image-20220703200309459"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703200309459.png" srcset="/img/loading.gif" lazyload alt="image-20220703200309459"></p>
 <h5 id="2-JDBCUtilsByDruid">2. JDBCUtilsByDruid</h5>
 <blockquote>
 <p>基于druid数据库连接池的工具类</p>
@@ -615,29 +615,29 @@
 <li>
 <p>构成结构</p>
 <p>一个私有静态的 DataSource+static代码块初始化+getConnection获取连接+close关闭资源</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201400491.png" srcset="/img/loading.gif" lazyload alt="image-20220703201400491"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201400491.png" srcset="/img/loading.gif" lazyload alt="image-20220703201400491"></p>
 </li>
 <li>
 <p>static代码块</p>
 <p>主要用途就是完成那个 DataSource 的初始化。</p>
 <p>相关信息是 src 下面的 druid.properties 配置文件 load 过来的，然后用 Druid数据池拿一个数据源给刚才的 DataSource 完成初始化。有问题就被try_catch 了。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703201853519.png" srcset="/img/loading.gif" lazyload alt="image-20220703201853519"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703201853519.png" srcset="/img/loading.gif" lazyload alt="image-20220703201853519"></p>
 </li>
 <li>
 <p>getConnection 获取连接</p>
 <p>直接用从 Druid 数据源中拿一个出来返回连接</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703202220274.png" srcset="/img/loading.gif" lazyload alt="image-20220703202220274"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703202220274.png" srcset="/img/loading.gif" lazyload alt="image-20220703202220274"></p>
 </li>
 <li>
 <p>close 回收资源</p>
 <p>如果需要关闭就对应位置传入对象，没有就 null</p>
 <p>里面先会判空然后再关闭</p>
 <p>注意这里的关闭是把连接放回 Druid 数据库连接池</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703202331738.png" srcset="/img/loading.gif" lazyload alt="image-20220703202331738"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703202331738.png" srcset="/img/loading.gif" lazyload alt="image-20220703202331738"></p>
 </li>
 <li>
 <p>Druid 的配置文件</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703202544834.png" srcset="/img/loading.gif" lazyload alt="image-20220703202544834"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703202544834.png" srcset="/img/loading.gif" lazyload alt="image-20220703202544834"></p>
 </li>
 </ol>
 <h4 id="4-2-3-domain">4.2.3 domain</h4>
@@ -657,7 +657,7 @@
 <p>还有一个便于打印该类元素的 toString</p>
 </li>
 </ol>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703190313907.png" srcset="/img/loading.gif" lazyload alt="image-20220703190313907"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703190313907.png" srcset="/img/loading.gif" lazyload alt="image-20220703190313907"></p>
 <p>这里需要注意的是：</p>
 <ol>
 <li>属性名最好和MySQL表中的列名保持一致</li>
@@ -675,25 +675,25 @@
 <p>BasicDAO实现：</p>
 <h5 id="结构">结构</h5>
 <p>一个内部私有new的驱动+一个增删改方法+3个数据库查询方法</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703191051896.png" srcset="/img/loading.gif" lazyload alt="image-20220703191051896"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703191051896.png" srcset="/img/loading.gif" lazyload alt="image-20220703191051896"></p>
 <h5 id="update">update</h5>
 <blockquote>
 <p>SQL语句中的增删改DML</p>
 </blockquote>
 <p>首先利用 JDBCUtilsByDruid 获取连接，然后用 QueryRunner 的update 传入相关参数去操作数据库。如果有异常捕捉后转换为运行异常并抛出。最后还是用 JDBCUtilsByDruid  的 close关闭相应的资源。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703202745061.png" srcset="/img/loading.gif" lazyload alt="image-20220703202745061"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703202745061.png" srcset="/img/loading.gif" lazyload alt="image-20220703202745061"></p>
 <h5 id="query类">query类</h5>
 <blockquote>
 <p>这是用来操作数据库，查询信息的，根据用途分为查多条信息，查一条信息，一条信息中的一个数据三种</p>
 </blockquote>
 <p>这个的原理和上面的 update 过程是相似的，唯一的区别是 用的是 query。区别三种查询类型的是第二个参数是（下图红框Bean），Bean的类型不同，返回的数据包装成不同的 Javabean。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703203424523.png" srcset="/img/loading.gif" lazyload alt="image-20220703203424523"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703203424523.png" srcset="/img/loading.gif" lazyload alt="image-20220703203424523"></p>
 <h4 id="4-2-5-service">4.2.5 service</h4>
 <blockquote>
 <p>这个是项目的主题，也是重头。主要是各个板块的服务逻辑书写</p>
 </blockquote>
 <h5 id="1-BillService">1. BillService</h5>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703204214582.png" srcset="/img/loading.gif" lazyload alt="image-20220703204214582"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703204214582.png" srcset="/img/loading.gif" lazyload alt="image-20220703204214582"></p>
 <p>结构：</p>
 <ul>
 <li>
@@ -704,19 +704,19 @@
 <li>
 <p>方法：</p>
 <p>orderMenu：点餐</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205024246.png" srcset="/img/loading.gif" lazyload alt="image-20220703205024246"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205024246.png" srcset="/img/loading.gif" lazyload alt="image-20220703205024246"></p>
 <p>list，list2：返回所有菜单（后面那个是多表查询）</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205052147.png" srcset="/img/loading.gif" lazyload alt="image-20220703205052147"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205052147.png" srcset="/img/loading.gif" lazyload alt="image-20220703205052147"></p>
 <p>hasPayBillByDiningTableId：查看某个餐桌是否有未结算的菜单</p>
 <p>根据餐桌号返回符合条件的 Bill 对象，非空即为有未记账的账单</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205116429.png" srcset="/img/loading.gif" lazyload alt="image-20220703205116429"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205116429.png" srcset="/img/loading.gif" lazyload alt="image-20220703205116429"></p>
 <p>payBill：结账行为</p>
 <p>首先在 Bill 表设置账单state，然后diningTable表中把桌子状态还原</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205235073.png" srcset="/img/loading.gif" lazyload alt="image-20220703205235073"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205235073.png" srcset="/img/loading.gif" lazyload alt="image-20220703205235073"></p>
 </li>
 </ul>
 <h5 id="2-DiningTableService">2.DiningTableService</h5>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205409214.png" srcset="/img/loading.gif" lazyload alt="image-20220703205409214"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205409214.png" srcset="/img/loading.gif" lazyload alt="image-20220703205409214"></p>
 <p>结构：</p>
 <ul>
 <li>
@@ -727,174 +727,174 @@
 </li>
 <li>
 <p>list：返回所有餐桌信息</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205751052.png" srcset="/img/loading.gif" lazyload alt="image-20220703205751052"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205751052.png" srcset="/img/loading.gif" lazyload alt="image-20220703205751052"></p>
 </li>
 <li>
 <p>getDiningTableById：根据 id ，查询对应的餐桌DiningTable 对象<br>
 如果返回null就是表示这个餐桌不存在</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205808059.png" srcset="/img/loading.gif" lazyload alt="image-20220703205808059"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205808059.png" srcset="/img/loading.gif" lazyload alt="image-20220703205808059"></p>
 </li>
 <li>
 <p>orderDiningTable：如果餐桌可以预定，调用方法，对其状态进行更新（包括预定人的姓名和电话）</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205823674.png" srcset="/img/loading.gif" lazyload alt="image-20220703205823674"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205823674.png" srcset="/img/loading.gif" lazyload alt="image-20220703205823674"></p>
 </li>
 <li>
 <p>updateDiningTableState：更新餐桌状态</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205842153.png" srcset="/img/loading.gif" lazyload alt="image-20220703205842153"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205842153.png" srcset="/img/loading.gif" lazyload alt="image-20220703205842153"></p>
 </li>
 <li>
 <p>updateDiningTableToFree：设置指定餐桌为空闲可用状态</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205857412.png" srcset="/img/loading.gif" lazyload alt="image-20220703205857412"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205857412.png" srcset="/img/loading.gif" lazyload alt="image-20220703205857412"></p>
 </li>
 </ul>
 <h5 id="3-EmployeeService">3.EmployeeService</h5>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703205929261.png" srcset="/img/loading.gif" lazyload alt="image-20220703205929261"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703205929261.png" srcset="/img/loading.gif" lazyload alt="image-20220703205929261"></p>
 <p>一个执行命令的 EmployeeDAO</p>
 <p>一个按empId 和pwd 返回 Employee 对象的方法</p>
 <p>唯一需要注意的就是下图标红的，需要用MD5加密否则匹配不上。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210059063.png" srcset="/img/loading.gif" lazyload alt="image-20220703210059063"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210059063.png" srcset="/img/loading.gif" lazyload alt="image-20220703210059063"></p>
 <h5 id="4-MenuService">4.MenuService</h5>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210202430.png" srcset="/img/loading.gif" lazyload alt="image-20220703210202430"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210202430.png" srcset="/img/loading.gif" lazyload alt="image-20220703210202430"></p>
 <p>一个执行命令的私有 MenuDAO</p>
 <p>list：返回所有的菜品，返回给界面使用</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210321784.png" srcset="/img/loading.gif" lazyload alt="image-20220703210321784"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210321784.png" srcset="/img/loading.gif" lazyload alt="image-20220703210321784"></p>
 <p>getMenuById：根据菜品 Id 获取 Menu 对象</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210411065.png" srcset="/img/loading.gif" lazyload alt="image-20220703210411065"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210411065.png" srcset="/img/loading.gif" lazyload alt="image-20220703210411065"></p>
 <h4 id="4-2-6-View">4.2.6 View</h4>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210518347.png" srcset="/img/loading.gif" lazyload alt="image-20220703210518347"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210518347.png" srcset="/img/loading.gif" lazyload alt="image-20220703210518347"></p>
 <h5 id="元素">元素</h5>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210826752.png" srcset="/img/loading.gif" lazyload alt="image-20220703210826752"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210826752.png" srcset="/img/loading.gif" lazyload alt="image-20220703210826752"></p>
 <p>loop：控制是否退出主页面</p>
 <p>key：接受用户在主菜单的选择的</p>
 <p>employeeService，diningTableService，menuService，billService：在 view 界面层中调用这些服务层</p>
 <h5 id="方法">方法</h5>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703210841699.png" srcset="/img/loading.gif" lazyload alt="image-20220703210841699"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703210841699.png" srcset="/img/loading.gif" lazyload alt="image-20220703210841699"></p>
 <h6 id="listDiningTable">listDiningTable</h6>
 <p>显示所有餐桌状态</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703211108662.png" srcset="/img/loading.gif" lazyload alt="image-20220703211108662"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703211108662.png" srcset="/img/loading.gif" lazyload alt="image-20220703211108662"></p>
 <p>核心就是：diningTableService.list()</p>
 <h6 id="orderDiningTable">orderDiningTable</h6>
 <p>完成定座</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703211242754.png" srcset="/img/loading.gif" lazyload alt="image-20220703211242754"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703211242754.png" srcset="/img/loading.gif" lazyload alt="image-20220703211242754"></p>
 <p>开始的时候判断两个需要推出的情况：输入 -1 和确定时输入 N</p>
 <p>这两个没问题接着下面，先排除没这个桌子，和桌子在空的不可用情况，然后预定改变桌子状态在 餐桌表。</p>
 <p>核心函数：diningTableService.getDiningTableById(orderId)；diningTableService.orderDiningTable(orderId, orderName, orderTel)</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703211620170.png" srcset="/img/loading.gif" lazyload alt="image-20220703211620170"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703211620170.png" srcset="/img/loading.gif" lazyload alt="image-20220703211620170"></p>
 <h6 id="listMune">listMune</h6>
 <p>显示所有菜品</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703211844728.png" srcset="/img/loading.gif" lazyload alt="image-20220703211844728"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703211844728.png" srcset="/img/loading.gif" lazyload alt="image-20220703211844728"></p>
 <p>核心就是：上图红框 menuService.list()</p>
 <h6 id="orderMenu">orderMenu</h6>
 <p>点餐</p>
 <p>首先是确定点餐的三次没有输入 -1 退出</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212118104.png" srcset="/img/loading.gif" lazyload alt="image-20220703212118104"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212118104.png" srcset="/img/loading.gif" lazyload alt="image-20220703212118104"></p>
 <p>这些都 ok 的话，就要确认餐桌号存在，顾客点的菜品存在，之后才点菜。</p>
 <p>主要就是下图红框的三个函数：</p>
 <p>diningTableService.getDiningTableById(orderDiningTableId);</p>
 <p>menuService.getMenuById(orderMenuId);<br>
 billService.orderMenu(orderMenuId, orderNums, orderDiningTableId)</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212222220.png" srcset="/img/loading.gif" lazyload alt="image-20220703212222220"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212222220.png" srcset="/img/loading.gif" lazyload alt="image-20220703212222220"></p>
 <h6 id="listBill">listBill</h6>
 <p>显示账单信息</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212506520.png" srcset="/img/loading.gif" lazyload alt="image-20220703212506520"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212506520.png" srcset="/img/loading.gif" lazyload alt="image-20220703212506520"></p>
 <p>注释掉的是旧版本的，现在用了 MySQL 多表查询</p>
 <h6 id="payBill">payBill</h6>
 <p>完成结账</p>
 <p>首先排除 -1 退出情况</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212656241.png" srcset="/img/loading.gif" lazyload alt="image-20220703212656241"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212656241.png" srcset="/img/loading.gif" lazyload alt="image-20220703212656241"></p>
 <p>再排除结账餐桌不存在和指定餐桌没有需要结账账单的两种情况</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212803155.png" srcset="/img/loading.gif" lazyload alt="image-20220703212803155"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212803155.png" srcset="/img/loading.gif" lazyload alt="image-20220703212803155"></p>
 <p>如果顾客再选择结账方式时候回车也是退出，最后确认输入 N 也是退出，或者支付账单出错也会取消，只有以上情况都排除才会顺利结账。</p>
 <p>核心：就是排除各种需要终止结账的情况和下图红框方法</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703212942520.png" srcset="/img/loading.gif" lazyload alt="image-20220703212942520"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703212942520.png" srcset="/img/loading.gif" lazyload alt="image-20220703212942520"></p>
 <h6 id="mainMenu">mainMenu</h6>
 <p>主菜单，用来显示的主页面</p>
 <p>登录界面，衔接下一步选择是否登录</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703213240148.png" srcset="/img/loading.gif" lazyload alt="image-20220703213240148"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703213240148.png" srcset="/img/loading.gif" lazyload alt="image-20220703213240148"></p>
 <p>登录账号密码输入，然后会去数据库核实，都没有出错才会登录系统。数据库验证考虑到 SQL 注入，所以做了相关处理</p>
 <p>核心：</p>
 <ol>
 <li>就是第一个红框的数据库验证函数</li>
 <li>各种拒绝登录的业务逻辑实现</li>
 </ol>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703213615851.png" srcset="/img/loading.gif" lazyload alt="image-20220703213615851"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703213615851.png" srcset="/img/loading.gif" lazyload alt="image-20220703213615851"></p>
 <p>系统二级选择菜单，选具体操作。对操作的处理在那个红框中</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703213900423.png" srcset="/img/loading.gif" lazyload alt="image-20220703213900423"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703213900423.png" srcset="/img/loading.gif" lazyload alt="image-20220703213900423"></p>
 <p>通过 switch 输入什么就执行什么业务逻辑，这里的方法是我们同类下面上面讲解的那些个静态方法</p>
 <p>核心：红框函数</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703214023586.png" srcset="/img/loading.gif" lazyload alt="image-20220703214023586"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703214023586.png" srcset="/img/loading.gif" lazyload alt="image-20220703214023586"></p>
 <h3 id="4-3-运行分析">4.3 运行分析</h3>
 <h4 id="登录">登录</h4>
 <p>输入1：让你输入账号密码，正确了就会显示登录成功[XX]，XX是登录者名字，然后显示系统的二级菜单，让你选择下一步操作。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703220644782.png" srcset="/img/loading.gif" lazyload alt="image-20220703220644782"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703220644782.png" srcset="/img/loading.gif" lazyload alt="image-20220703220644782"></p>
 <p>输入1，但是账号密码没有全对，会提醒登录失败，然后让你重新选择</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703220940035.png" srcset="/img/loading.gif" lazyload alt="image-20220703220940035"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703220940035.png" srcset="/img/loading.gif" lazyload alt="image-20220703220940035"></p>
 <p>输入2：退出系统</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703220105002.png" srcset="/img/loading.gif" lazyload alt="image-20220703220105002"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703220105002.png" srcset="/img/loading.gif" lazyload alt="image-20220703220105002"></p>
 <p>输入1，2之外的数字：提示请正确输入指令</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703220441492.png" srcset="/img/loading.gif" lazyload alt="image-20220703220441492"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703220441492.png" srcset="/img/loading.gif" lazyload alt="image-20220703220441492"></p>
 <p>能登陆的都是 MySQL 表中的员工，密码不可见，因为用了 MD5 加密</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221046643.png" srcset="/img/loading.gif" lazyload alt="image-20220703221046643"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221046643.png" srcset="/img/loading.gif" lazyload alt="image-20220703221046643"></p>
 <h4 id="1-查看餐桌情况">1 查看餐桌情况</h4>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221224837.png" srcset="/img/loading.gif" lazyload alt="image-20220703221224837"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221224837.png" srcset="/img/loading.gif" lazyload alt="image-20220703221224837"></p>
 <h4 id="2-预定餐桌">2 预定餐桌</h4>
 <p>顺利预定</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221435715.png" srcset="/img/loading.gif" lazyload alt="image-20220703221435715"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221435715.png" srcset="/img/loading.gif" lazyload alt="image-20220703221435715"></p>
 <p>顺利预定后查看，确实预定了</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221550090.png" srcset="/img/loading.gif" lazyload alt="image-20220703221550090"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221550090.png" srcset="/img/loading.gif" lazyload alt="image-20220703221550090"></p>
 <p>预定无法预定的餐桌</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221337119.png" srcset="/img/loading.gif" lazyload alt="image-20220703221337119"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221337119.png" srcset="/img/loading.gif" lazyload alt="image-20220703221337119"></p>
 <p>预定中途退出</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221713395.png" srcset="/img/loading.gif" lazyload alt="image-20220703221713395"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221713395.png" srcset="/img/loading.gif" lazyload alt="image-20220703221713395"></p>
 <h4 id="3-显示所有菜品">3.显示所有菜品</h4>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222042604.png" srcset="/img/loading.gif" lazyload alt="image-20220703222042604"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222042604.png" srcset="/img/loading.gif" lazyload alt="image-20220703222042604"></p>
 <h4 id="4-点餐">4.点餐</h4>
 <p>顺利点餐</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703221947302.png" srcset="/img/loading.gif" lazyload alt="image-20220703221947302"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703221947302.png" srcset="/img/loading.gif" lazyload alt="image-20220703221947302"></p>
 <p>不顺利点餐</p>
 <p>没餐桌</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222128013.png" srcset="/img/loading.gif" lazyload alt="image-20220703222128013"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222128013.png" srcset="/img/loading.gif" lazyload alt="image-20220703222128013"></p>
 <p>菜品不存在</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222231735.png" srcset="/img/loading.gif" lazyload alt="image-20220703222231735"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222231735.png" srcset="/img/loading.gif" lazyload alt="image-20220703222231735"></p>
 <h4 id="5-查看账单">5 查看账单</h4>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222004701.png" srcset="/img/loading.gif" lazyload alt="image-20220703222004701"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222004701.png" srcset="/img/loading.gif" lazyload alt="image-20220703222004701"></p>
 <h4 id="6-结账">6 结账</h4>
 <p>顺利结账</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222421083.png" srcset="/img/loading.gif" lazyload alt="image-20220703222421083"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222421083.png" srcset="/img/loading.gif" lazyload alt="image-20220703222421083"></p>
 <p>不顺利结账</p>
 <p>该餐桌没有账单</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222327883.png" srcset="/img/loading.gif" lazyload alt="image-20220703222327883"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222327883.png" srcset="/img/loading.gif" lazyload alt="image-20220703222327883"></p>
 <p>没有该餐桌</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222351914.png" srcset="/img/loading.gif" lazyload alt="image-20220703222351914"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222351914.png" srcset="/img/loading.gif" lazyload alt="image-20220703222351914"></p>
 <h4 id="9-退出系统">9.退出系统</h4>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220703222454669.png" srcset="/img/loading.gif" lazyload alt="image-20220703222454669"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220703222454669.png" srcset="/img/loading.gif" lazyload alt="image-20220703222454669"></p>
 <h3 id="4-4-遇到-Bugs">4.4 遇到 Bugs</h3>
 <p><a href="https://lmc.pub/2022/07/03/Bugs-20220702/">Bugs_20220702 - LMC_Blog</a></p>
 <h4 id="1-Druid配置文件错误-v2">1.Druid配置文件错误</h4>
 <h5 id="问题记录-v2">问题记录</h5>
 <p>测试两个工具类时，爆出 druid.properties 配置文件错误。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701205452907.png" srcset="/img/loading.gif" lazyload alt="image-20220701205452907"></p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701205432855.png" srcset="/img/loading.gif" lazyload alt="image-20220701205432855"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701205452907.png" srcset="/img/loading.gif" lazyload alt="image-20220701205452907"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701205432855.png" srcset="/img/loading.gif" lazyload alt="image-20220701205432855"></p>
 <h5 id="查看-v2">查看</h5>
 <p>原来是拷文件的时候没有改配置文件中的 <code>url</code>中的数据库名</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701205721845.png" srcset="/img/loading.gif" lazyload alt="image-20220701205721845"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701205721845.png" srcset="/img/loading.gif" lazyload alt="image-20220701205721845"></p>
 <h5 id="解决-v2">解决</h5>
 <p>新建一个 HMS 数据库，然后 druid.properties 中的目标位置<code>girl</code>改为<code>HMS</code></p>
 <p>再次测试，ok</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701210000201.png" srcset="/img/loading.gif" lazyload alt="image-20220701210000201"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701210000201.png" srcset="/img/loading.gif" lazyload alt="image-20220701210000201"></p>
 <h4 id="2-Jniut测试一直卡着跑不出来-v2">2.Jniut测试一直卡着跑不出来</h4>
 <h5 id="情况记录-v2">情况记录</h5>
 <p>写完登录页面后用<code>Jniut</code>进行测试，Run 之后却一直卡在运行测试给你转圈。程序也只跑了一些。</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701213323601.png" srcset="/img/loading.gif" lazyload alt="image-20220701213323601"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701213323601.png" srcset="/img/loading.gif" lazyload alt="image-20220701213323601"></p>
 <h5 id="原因-v3">原因</h5>
 <p>用 <strong>Jnuit</strong> 做单元测试的时候是不允许控制台输入的，第30行有句向控制台读入，<code>Jniut</code>在这里卡住了。</p>
 <h5 id="解决办法-v2">解决办法</h5>
 <p>帮助 -&gt; 编辑自定义VM选项</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701214109295.png" srcset="/img/loading.gif" lazyload alt="image-20220701214109295"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701214109295.png" srcset="/img/loading.gif" lazyload alt="image-20220701214109295"></p>
 <p>在末尾加上一行：<code>-Deditable.java.test.console=true</code></p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701214234029.png" srcset="/img/loading.gif" lazyload alt="image-20220701214234029"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701214234029.png" srcset="/img/loading.gif" lazyload alt="image-20220701214234029"></p>
 <p>然后重启 IDEA，问题解决</p>
-<p><img src="%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F.assets/image-20220701214433873.png" srcset="/img/loading.gif" lazyload alt="image-20220701214433873"></p>
+<p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220701214433873.png" srcset="/img/loading.gif" lazyload alt="image-20220701214433873"></p>
 <h4 id="3-domain是干什么的？-v2">3.domain是干什么的？</h4>
 <p>一般来说在数据库建了一个表后都会在旁建立一个domain类，然后里面写对应的 Javabean。</p>
 <p>这个的意思就是，数据库中的那个表所要表达的对象形式在 Java 程序中的体现。比如你 MySQL 中有个学生表，有很多元素。那你读取在 Java 端怎么接受?必须有一个对应的对象类去表示它。这就是 domain。</p>
