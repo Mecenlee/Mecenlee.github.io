@@ -306,20 +306,20 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：23 天前
+                    本文最后更新于：24 天前
                   
                 
               </p>
             
             <div class="markdown-body">
               
-              <h3 id="13-10-flush-详解">13.10 flush 详解</h3>
-<h4 id="13-10-1-背景">13.10.1 背景</h4>
+              <h3 id="13-10-flush-详解-v2">13.10 flush 详解</h3>
+<h4 id="13-10-1-背景-v2">13.10.1 背景</h4>
 <blockquote>
 <p>我有个问题：</p>
 <p>就是 Java 中 IO 流中的那个 flush 是干嘛的？原理是什么？什么时候用？什么时候可以不用？</p>
 </blockquote>
-<h4 id="13-10-2-原理">13.10.2 原理</h4>
+<h4 id="13-10-2-原理-v2">13.10.2 原理</h4>
 <ol>
 <li>
 <p>流的 writer 原理：Java 中 文件直接通过流 (Stream) 的方式传递,但是不同的流传递的方式还是有点不同的。比如现在通过 Java 程序去给桌面一个文件写东西进去：如果是节点流，他们 write 是直接淦目标中了；但是包装流 (Buffer 流) 他们就有个缓冲区，设计的初衷是提高读写效率，他们 write 先是写在缓冲区，满了才给写目标文件中去。</p>
@@ -334,7 +334,7 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Closes this output stream and releases any system resources</span><br><span class="hljs-comment"> * associated with the stream.</span><br><span class="hljs-comment"> * &lt;p&gt;</span><br><span class="hljs-comment"> * When not already closed, the &#123;<span class="hljs-doctag">@code</span> close&#125; method of &#123;<span class="hljs-doctag">@code</span></span><br><span class="hljs-comment"> * FilterOutputStream&#125; calls its &#123;<span class="hljs-doctag">@code</span> flush&#125; method, and then</span><br><span class="hljs-comment"> * calls the &#123;<span class="hljs-doctag">@code</span> close&#125; method of its underlying output stream.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> *中文翻译：</span><br><span class="hljs-comment">	 关闭此输出流并释放与该流关联的所有系统资源。 &lt;p&gt; 当尚未关闭时，&#123;<span class="hljs-doctag">@code</span> FilterOutputStream&#125; 的 &#123;<span class="hljs-doctag">@code</span> 				close&#125; 方	法调用其 &#123;<span class="hljs-doctag">@code</span> flush&#125; 方法，然后调用其底层输出流的 &#123;<span class="hljs-doctag">@code</span> close&#125; 方法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@exception</span>  IOException  if an I/O error occurs.</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@see</span>        java.io.FilterOutputStream#flush()</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@see</span>        java.io.FilterOutputStream#out</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">close</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-keyword">if</span> (closed) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">synchronized</span> (closeLock) &#123;<br>        <span class="hljs-keyword">if</span> (closed) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        closed = <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-type">Throwable</span> <span class="hljs-variable">flushException</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        flush();<br>    &#125; <span class="hljs-keyword">catch</span> (Throwable e) &#123;<br>        flushException = e;<br>        <span class="hljs-keyword">throw</span> e;<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-keyword">if</span> (flushException == <span class="hljs-literal">null</span>) &#123;<br>            out.close();<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                out.close();<br>            &#125; <span class="hljs-keyword">catch</span> (Throwable closeException) &#123;<br>               <span class="hljs-comment">// evaluate possible precedence of flushException over closeException</span><br>               <span class="hljs-keyword">if</span> ((flushException <span class="hljs-keyword">instanceof</span> ThreadDeath) &amp;&amp;<br>                   !(closeException <span class="hljs-keyword">instanceof</span> ThreadDeath)) &#123;<br>                   flushException.addSuppressed(closeException);<br>                   <span class="hljs-keyword">throw</span> (ThreadDeath) flushException;<br>               &#125;<br><br>                <span class="hljs-keyword">if</span> (flushException != closeException) &#123;<br>                    closeException.addSuppressed(flushException);<br>                &#125;<br><br>                <span class="hljs-keyword"><code class="language-hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * Closes this output stream and releases any system resources</span><br><span class="hljs-comment"> * associated with the stream.</span><br><span class="hljs-comment"> * &lt;p&gt;</span><br><span class="hljs-comment"> * When not already closed, the &#123;<span class="hljs-doctag">@code</span> close&#125; method of &#123;<span class="hljs-doctag">@code</span></span><br><span class="hljs-comment"> * FilterOutputStream&#125; calls its &#123;<span class="hljs-doctag">@code</span> flush&#125; method, and then</span><br><span class="hljs-comment"> * calls the &#123;<span class="hljs-doctag">@code</span> close&#125; method of its underlying output stream.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> *中文翻译：</span><br><span class="hljs-comment">	 关闭此输出流并释放与该流关联的所有系统资源。 &lt;p&gt; 当尚未关闭时，&#123;<span class="hljs-doctag">@code</span> FilterOutputStream&#125; 的 &#123;<span class="hljs-doctag">@code</span> 				close&#125; 方	法调用其 &#123;<span class="hljs-doctag">@code</span> flush&#125; 方法，然后调用其底层输出流的 &#123;<span class="hljs-doctag">@code</span> close&#125; 方法</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@exception</span>  IOException  if an I/O error occurs.</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@see</span>        java.io.FilterOutputStream#flush()</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@see</span>        java.io.FilterOutputStream#out</span><br><span class="hljs-comment"> */</span><br><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">close</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> IOException &#123;<br>    <span class="hljs-keyword">if</span> (closed) &#123;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br>    <span class="hljs-keyword">synchronized</span> (closeLock) &#123;<br>        <span class="hljs-keyword">if</span> (closed) &#123;<br>            <span class="hljs-keyword">return</span>;<br>        &#125;<br>        closed = <span class="hljs-literal">true</span>;<br>    &#125;<br><br>    <span class="hljs-type">Throwable</span> <span class="hljs-variable">flushException</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">try</span> &#123;<br>        flush();<br>    &#125; <span class="hljs-keyword">catch</span> (Throwable e) &#123;<br>        flushException = e;<br>        <span class="hljs-keyword">throw</span> e;<br>    &#125; <span class="hljs-keyword">finally</span> &#123;<br>        <span class="hljs-keyword">if</span> (flushException == <span class="hljs-literal">null</span>) &#123;<br>            out.close();<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            <span class="hljs-keyword">try</span> &#123;<br>                out.close();<br>            &#125; <span class="hljs-keyword">catch</span> (Throwable closeException) &#123;<br>               <span class="hljs-comment">// evaluate possible precedence of flushException over closeException</span><br>               <span class="hljs-keyword">if</span> ((flushException <span class="hljs-keyword">instanceof</span> ThreadDeath) &amp;&amp;<br>                   !(closeException <span class="hljs-keyword">instanceof</span> ThreadDeath)) &#123;<br>                   flushException.addSuppressed(closeException);<br>                   <span class="hljs-keyword">throw</span> (ThreadDeath) flushException;<br>               &#125;<br><br>                <span class="hljs-keyword">if</span> (flushException != closeException) &#123;<br>                    closeException.addSuppressed(flushException);<br>                &#125;<br><br>                <span class="hljs-keyword">throw</span> closeException;<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="13-10-3-使用场景">13.10.3 使用场景</h4>
+<h4 id="13-10-3-使用场景-v2">13.10.3 使用场景</h4>
 <blockquote>
 <p>Java 中有缓冲区的是 BufferedOutput 流的那些，所以在这些流每次 write 后如果想立马把缓存区的东西写到文件，以防丢失就可以用一下这个</p>
 </blockquote>
@@ -342,7 +342,7 @@
 <li>其实现实开发中，如果暂时不能 close ，那就每 write 一下就 flush 一下</li>
 <li>如果一定会 close 流(比如写在 finally 中)，就可以不写 flush。因为它 close 前给你 flush 了。</li>
 </ol>
-<h4 id="13-10-4-错误使用演示">13.10.4 错误使用演示</h4>
+<h4 id="13-10-4-错误使用演示-v2">13.10.4 错误使用演示</h4>
 <blockquote>
 <p>你要是不肯定会 close 也不 write 后就是 flush ，你写的数据就会丢失一小部分。</p>
 </blockquote>
@@ -373,9 +373,9 @@
 <p>打开能播放图：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529115651105.png" srcset="/img/loading.gif" lazyload alt="image-20220529115651105"></p>
 </li>
 </ol>
-<h4 id="13-10-5-总结">13.10.5 总结</h4>
+<h4 id="13-10-5-总结-v2">13.10.5 总结</h4>
 <p>所以大家在用 处理流写东西时，如果一定能 close 流，那没啥事。但是如果不能关，记得 write 一下 flush 一下，不然数据会丢失。</p>
-<h4 id="13-10-6-非要做">13.10.6 非要做</h4>
+<h4 id="13-10-6-非要做-v2">13.10.6 非要做</h4>
 <blockquote>
 <p>比如现在我们非要既不及时 flush 也不 close 还想写到文件怎么办？</p>
 </blockquote>
@@ -399,7 +399,7 @@
 <p>答案：不能，会有丢失。原因俺也不知道，希望大家在评论区教我。</p>
 </li>
 </ol>
-<h3 id="13-11-怎么关这种匿名流">13.11 怎么关这种匿名流</h3>
+<h3 id="13-11-怎么关这种匿名流-v2">13.11 怎么关这种匿名流</h3>
 <p>题目描述：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220530084852822.png" srcset="/img/loading.gif" lazyload alt="image-20220530084852822"></p>
 <ol>
 <li>
