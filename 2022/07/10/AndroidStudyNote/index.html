@@ -103,6 +103,7 @@
 <meta property="og:image" content="http://lmc.pub/2022/07/10/AndroidStudyNote/AndroidStudyNote.assets/image-20220719222250452.png">
 <meta property="og:image" content="http://lmc.pub/2022/07/10/AndroidStudyNote/AndroidStudyNote.assets/image-20220720214836410.png">
 <meta property="og:image" content="http://lmc.pub/2022/07/10/AndroidStudyNote/AndroidStudyNote.assets/image-20220721145858203.png">
+<meta property="og:image" content="http://lmc.pub/2022/07/10/AndroidStudyNote/AndroidStudyNote.assets/image-20220721171753694.png">
 <meta property="og:image" content="http://lmc.pub/2022/07/10/AndroidStudyNote/AndroidStudyNote.assets/image-20220711201234469.png">
 <meta property="og:image" content="http://lmc.pub/2022/07/10/AndroidStudyNote/AndroidStudyNote.assets/image-20220711204123168.png">
 <meta property="og:image" content="http://lmc.pub/2022/07/10/AndroidStudyNote/AndroidStudyNote.assets/image-20220711204634370.png">
@@ -117,7 +118,7 @@
 <meta property="og:image" content="http://lmc.pub/2022/07/10/AndroidStudyNote/AndroidStudyNote.assets/image-20220713154314897.png">
 <meta property="og:image" content="http://lmc.pub/2022/07/10/AndroidStudyNote/AndroidStudyNote.assets/image-20220713154428707.png">
 <meta property="article:published_time" content="2022-07-10T13:15:42.000Z">
-<meta property="article:modified_time" content="2022-07-21T06:59:15.110Z">
+<meta property="article:modified_time" content="2022-07-21T09:36:16.089Z">
 <meta property="article:author" content="LMC">
 <meta property="article:tag" content="Android">
 <meta name="twitter:card" content="summary_large_image">
@@ -324,7 +325,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          64k 字
+          67k 字
         
       </span>
     
@@ -335,7 +336,7 @@
         
         
         
-          534 分钟
+          560 分钟
         
       </span>
     
@@ -388,7 +389,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2 小时前
+                    本文最后更新于：3 分钟前
                   
                 
               </p>
@@ -1141,6 +1142,78 @@ replaceFragment()方法动态添加了RightFragment。当点击左侧Fragment中
 <h4 id="5-1-3-在-Fragment-中实现返回栈">5.1.3 在 Fragment 中实现返回栈</h4>
 <p><img src="AndroidStudyNote.assets/image-20220721145858203.png" srcset="/img/loading.gif" lazyload alt="image-20220721145858203"></p>
 <figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre class=" language-hljs kotlin">transaction.addToBackStack(<span class="hljs-literal">null</span>)<span class="hljs-comment"><code class="language-hljs kotlin">transaction.addToBackStack(<span class="hljs-literal">null</span>)<span class="hljs-comment">//加上这个让出现了动态画面然后返回是回到点击之前，而不是直接退出</span><br></code></pre></td></tr></table></figure>
+<h4 id="5-1-4-Fragment和Activity之间的交互">5.1.4 Fragment和Activity之间的交互</h4>
+<h5 id="5-1-4-1-如何在Activity中调用Fragment里的方法">5.1.4.1 如何在Activity中调用Fragment里的方法</h5>
+<ol>
+<li>
+<p>像这样获得 Fragment 的实例</p>
+<p>val fragment = leftFrag as LeftFragment</p>
+</li>
+<li>
+<p>然后直接用 这个变量的方法就可以的</p>
+</li>
+</ol>
+<h5 id="5-1-4-2-Fragment中又该怎样调用Activity">5.1.4.2 Fragment中又该怎样调用Activity</h5>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre class=" language-hljs kotlin"><span class="hljs-keyword">if</span> (activity != <span class="hljs-literal">null</span>) &#123;<br><span class="hljs-keyword">val</span> mainActivity = activity <span class="hljs-keyword"><code class="language-hljs kotlin"><span class="hljs-keyword">if</span> (activity != <span class="hljs-literal">null</span>) &#123;<br><span class="hljs-keyword">val</span> mainActivity = activity <span class="hljs-keyword">as</span> MainActivity<br>&#125;<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>既然Fragment和Activity之间的通信问题已经解决了，那么不同的Fragment之间可不可以进行通信呢？说实在的，这个问题并没有看上去那么复杂，它的基本思路非常简单：首先在一个Fragment中可以得到与它相关联的Activity，然后再通过这个Activity去获取另外一个Fragment的实例，这样就实现了不同Fragment之间的通信功能。因此，这里我们的回答是肯定的。</p>
+</blockquote>
+<h3 id="5-2-Fragment的生命周期">5.2  Fragment的生命周期</h3>
+<h4 id="5-2-1-Fragment的状态和回调">5.2.1 Fragment的状态和回调</h4>
+<h5 id="状态">状态</h5>
+<ol>
+<li>运行状态<br>
+当一个Fragment所关联的Activity正处于运行状态时，该Fragment也处于运行状态。</li>
+<li>暂停状态<br>
+当一个Activity进入暂停状态时（由于另一个未占满屏幕的Activity被添加到了栈顶），与<br>
+它相关联的Fragment就会进入暂停状态。</li>
+<li>停止状态<br>
+当一个Activity进入停止状态时，与它相关联的Fragment就会进入停止状态，或者通过调<br>
+用FragmentTransaction的remove()、replace()方法将Fragment从Activity中移<br>
+除，但在事务提交之前调用了addToBackStack()方法，这时的Fragment也会进入停止<br>
+状态。总的来说，进入停止状态的Fragment对用户来说是完全不可见的，有可能会被系统<br>
+回收。</li>
+<li>销毁状态<br>
+Fragment总是依附于Activity而存在，因此当Activity被销毁时，与它相关联的<br>
+Fragment就会进入销毁状态。或者通过调用FragmentTransaction的remove()、<br>
+replace()方法将Fragment从Activity中移除，但在事务提交之前并没有调用<br>
+addToBackStack()方法，这时的Fragment也会进入销毁状态。</li>
+</ol>
+<h5 id="回调">回调</h5>
+<ul>
+<li>onAttach()：当Fragment和Activity建立关联时调用。</li>
+<li>onCreateView()：为Fragment创建视图（加载布局）时调用。</li>
+<li>onActivityCreated()：确保与Fragment相关联的Activity已经创建完毕时调用。</li>
+<li>onDestroyView()：当与Fragment关联的视图被移除时调用。</li>
+<li>onDetach()：当Fragment和Activity解除关联时调用。</li>
+</ul>
+<p><img src="AndroidStudyNote.assets/image-20220721171753694.png" srcset="/img/loading.gif" lazyload alt="image-20220721171753694"></p>
+<blockquote>
+<ol>
+<li>
+<p>由于AnotherRightFragment替换了RightFragment，此时的RightFragment进入了停止状态，因此onPause()、onStop()和onDestroyView()方法会得到执行。当然，如果在替换的时候没有调用addToBackStack()方法，此时的RightFragment就会进入销毁状态，onDestroy()和onDetach()方法就会得到执行</p>
+</li>
+<li>
+<p>另外值得一提的是，在Fragment中你也可以通过onSaveInstanceState()方法来保存数据，因为进入停止状态的Fragment有可能在系统内存不足的时候被回收。保存下来的数据在 onCreate()、onCreateView()和onActivityCreated()这3个方法中你都可以重新得到，它们都含有一个Bundle类型的savedInstanceState参数。具体的代码我就不在这里展示了，如果你忘记了该如何编写，可以参考3.4.5小节</p>
+</li>
+</ol>
+</blockquote>
+<h3 id="5-3-动态加载布局的技巧">5.3 动态加载布局的技巧</h3>
+<p>程序能够根据设备的分辨率或屏幕大小，在运行时决定加载哪个布局</p>
+<h4 id="5-3-1-使用限定符">5.3.1 使用限定符</h4>
+<ol>
+<li>
+<p>将 activity_main.xml文件  中只有一个  Fragment</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre class=" language-hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;horizontal&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span> &gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftFrag&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name"><code class="language-hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;horizontal&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span> &gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftFrag&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>/&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>></span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>在 res 目录下面新建 layout-large 文件夹 ，这下面做一个 activity_main.xml 文件。里面写两个 Fragment</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre class=" language-hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;horizontal&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftFrag&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;1&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rightFrag&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.example.fragmenttest.RightFragment&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;3&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name"><code class="language-hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">LinearLayout</span> <span class="hljs-attr">xmlns:android</span>=<span class="hljs-string">&quot;http://schemas.android.com/apk/res/android&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:orientation</span>=<span class="hljs-string">&quot;horizontal&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/leftFrag&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.example.fragmenttest.LeftFragment&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;1&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">fragment</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:id</span>=<span class="hljs-string">&quot;@+id/rightFrag&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:name</span>=<span class="hljs-string">&quot;com.example.fragmenttest.RightFragment&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_width</span>=<span class="hljs-string">&quot;0dp&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_height</span>=<span class="hljs-string">&quot;match_parent&quot;</span></span><br><span class="hljs-tag"><span class="hljs-attr">android:layout_weight</span>=<span class="hljs-string">&quot;3&quot;</span> /&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">LinearLayout</span>></span><br></code></pre></td></tr></table></figure>
+</li>
+<li>
+<p>可以看到，layout/activity_main布局只包含了一个Fragment，即单页模式，而layoutlarge/ activity_main布局包含了两个Fragment，即双页模式。其中，large就是一个限定符，那些屏幕被认为是large的设备就会自动加载layout-large文件夹下的布局，小屏幕的设备则还是会加载layout文件夹下的布局</p>
+</li>
+</ol>
 <h2 id="">=========================================</h2>
 <h3 id="2-1-TextView">2.1 TextView</h3>
 <h3 id="1-3-获取对象">1.3 获取对象</h3>

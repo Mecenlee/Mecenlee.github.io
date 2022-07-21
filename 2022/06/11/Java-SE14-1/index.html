@@ -312,32 +312,32 @@
             
             <div class="markdown-body">
               
-              <h2 id="十四，网络编程-v2">十四，网络编程</h2>
-<h3 id="14-1-网络-v2">14.1 网络</h3>
-<h4 id="14-1-1-网络通信-v2">14.1.1 网络通信</h4>
+              <h2 id="十四，网络编程">十四，网络编程</h2>
+<h3 id="14-1-网络">14.1 网络</h3>
+<h4 id="14-1-1-网络通信">14.1.1 网络通信</h4>
 <p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529192446777.png" srcset="/img/loading.gif" lazyload alt="image-20220529192446777"></p>
-<h4 id="14-1-2-网络-v2">14.1.2 网络</h4>
+<h4 id="14-1-2-网络">14.1.2 网络</h4>
 <p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529192539053.png" srcset="/img/loading.gif" lazyload alt="image-20220529192539053"></p>
-<h4 id="14-1-3-ip-地址-v2">14.1.3 ip 地址</h4>
+<h4 id="14-1-3-ip-地址">14.1.3 ip 地址</h4>
 <p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529192645291.png" srcset="/img/loading.gif" lazyload alt="image-20220529192645291"></p>
-<h4 id="14-1-4-域名-v2">14.1.4 域名</h4>
+<h4 id="14-1-4-域名">14.1.4 域名</h4>
 <p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529192827564.png" srcset="/img/loading.gif" lazyload alt="image-20220529192827564"></p>
-<h4 id="14-1-5-网络通信协议-v2">14.1.5 网络通信协议</h4>
+<h4 id="14-1-5-网络通信协议">14.1.5 网络通信协议</h4>
 <ol>
 <li><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529193050329.png" srcset="/img/loading.gif" lazyload alt="image-20220529193050329"></li>
 <li>借用下我老师的图：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529193240070.png" srcset="/img/loading.gif" lazyload alt="image-20220529193240070"></li>
 </ol>
-<h4 id="14-1-6-TCP-和-UDP-v2">14.1.6 TCP 和 UDP</h4>
+<h4 id="14-1-6-TCP-和-UDP">14.1.6 TCP 和 UDP</h4>
 <p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529193444268.png" srcset="/img/loading.gif" lazyload alt="image-20220529193444268"></p>
-<h3 id="14-2-InetAddress-类-v2">14.2 InetAddress 类</h3>
-<h4 id="14-2-1-方法-v2">14.2.1 方法</h4>
+<h3 id="14-2-InetAddress-类">14.2 InetAddress 类</h3>
+<h4 id="14-2-1-方法">14.2.1 方法</h4>
 <p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529193849936.png" srcset="/img/loading.gif" lazyload alt="image-20220529193849936"></p>
 <p>代码演示：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre class=" language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><span class="hljs-keyword">import</span> java.net.UnknownHostException;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示 InetAddress</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo9</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> UnknownHostException &#123;<br>        <span class="hljs-comment">//1. 获取计算机对象</span><br>        <span class="hljs-comment">//1） 直接获取本机</span><br>        <span class="hljs-type">InetAddress</span> <span class="hljs-variable">localHost</span> <span class="hljs-operator">=</span> InetAddress.getLocalHost();<br>        System.out.println(localHost);<br>        <span class="hljs-comment">//2）获取百度</span><br>        <span class="hljs-type">InetAddress</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> InetAddress.getByName(<span class="hljs-string">&quot;www.baidu.com&quot;</span>);<br>        System.out.println(name);<br>        <span class="hljs-comment">//3）通过名字获取</span><br>        System.out.println(InetAddress.getByName(<span class="hljs-string">&quot;Mecenlee&quot;</span>));<br>        <span class="hljs-comment">//2.获取计算机名</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">hostName</span> <span class="hljs-operator">=</span> localHost.getHostName();<br>        System.out.println(hostName);<br>        <span class="hljs-comment">//3.获取计算机 IP</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">hostAddress</span> <span class="hljs-operator"><code class="language-hljs java"><span class="hljs-keyword">package</span> day07;<br><br><span class="hljs-keyword">import</span> java.net.InetAddress;<br><span class="hljs-keyword">import</span> java.net.UnknownHostException;<br><br><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@author</span> 李敏灿</span><br><span class="hljs-comment"> * <span class="hljs-doctag">@version</span> 1.0</span><br><span class="hljs-comment"> * 演示 InetAddress</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">demo9</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> <span class="hljs-keyword">throws</span> UnknownHostException &#123;<br>        <span class="hljs-comment">//1. 获取计算机对象</span><br>        <span class="hljs-comment">//1） 直接获取本机</span><br>        <span class="hljs-type">InetAddress</span> <span class="hljs-variable">localHost</span> <span class="hljs-operator">=</span> InetAddress.getLocalHost();<br>        System.out.println(localHost);<br>        <span class="hljs-comment">//2）获取百度</span><br>        <span class="hljs-type">InetAddress</span> <span class="hljs-variable">name</span> <span class="hljs-operator">=</span> InetAddress.getByName(<span class="hljs-string">&quot;www.baidu.com&quot;</span>);<br>        System.out.println(name);<br>        <span class="hljs-comment">//3）通过名字获取</span><br>        System.out.println(InetAddress.getByName(<span class="hljs-string">&quot;Mecenlee&quot;</span>));<br>        <span class="hljs-comment">//2.获取计算机名</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">hostName</span> <span class="hljs-operator">=</span> localHost.getHostName();<br>        System.out.println(hostName);<br>        <span class="hljs-comment">//3.获取计算机 IP</span><br>        <span class="hljs-type">String</span> <span class="hljs-variable">hostAddress</span> <span class="hljs-operator">=</span> localHost.getHostAddress();<br>        System.out.println(hostAddress);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h3 id="14-3-Socket-v2">14.3 Socket</h3>
-<h4 id="14-3-1-介绍-v2">14.3.1 介绍</h4>
+<h3 id="14-3-Socket">14.3 Socket</h3>
+<h4 id="14-3-1-介绍">14.3.1 介绍</h4>
 <p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529195603795.png" srcset="/img/loading.gif" lazyload alt="image-20220529195603795"></p>
-<h4 id="14-3-2-示意图-v2">14.3.2 示意图</h4>
+<h4 id="14-3-2-示意图">14.3.2 示意图</h4>
 <p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220529195624603.png" srcset="/img/loading.gif" lazyload alt="image-20220529195624603"></p>
 
               
