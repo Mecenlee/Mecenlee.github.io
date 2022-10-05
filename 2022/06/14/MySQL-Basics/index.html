@@ -1,0 +1,500 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>MySQL_Basics | LMC_Blog</title><meta name="keywords" content="MySQL"><meta name="author" content="LMC"><meta name="copyright" content="LMC"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="MySQL 基础中的：基本准备，DDL，DML，DQL，DCL，函数等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MySQL_Basics">
+<meta property="og:url" content="http://lmc.pub/2022/06/14/MySQL-Basics/index.html">
+<meta property="og:site_name" content="LMC_Blog">
+<meta property="og:description" content="MySQL 基础中的：基本准备，DDL，DML，DQL，DCL，函数等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-06-14T03:04:48.000Z">
+<meta property="article:modified_time" content="2022-06-14T03:23:26.016Z">
+<meta property="article:author" content="LMC">
+<meta property="article:tag" content="MySQL">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/109951163993088082.jpg"><link rel="canonical" href="http://lmc.pub/2022/06/14/MySQL-Basics/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: LMC","link":"链接: ","source":"来源: LMC_Blog","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MySQL_Basics',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: true,
+  isToc: true,
+  postUpdate: '2022-06-14 11:23:26'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const now = new Date()
+          const hour = now.getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.2"><link rel="alternate" href="/atom.xml" title="LMC_Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/109951163261278540.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">123</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 个人简历</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LMC_Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 个人简历</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">MySQL_Basics</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-06-14T03:04:48.000Z" title="发表于 2022-06-14 11:04:48">2022-06-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-14T03:23:26.016Z" title="更新于 2022-06-14 11:23:26">2022-06-14</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/MySQL/">MySQL</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="MySQL_Basics"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>MySQL 基础中的：基本准备，DDL，DML，DQL，DCL，函数等</p>
+<span id="more"></span>
+<h1>MySQL笔记总结</h1>
+<h2 id="一，基本介绍-操作">一，基本介绍&amp;操作</h2>
+<h3 id="1-1-理解">1.1 理解</h3>
+<p>数据就是书，数据库就是图书馆</p>
+<h3 id="1-2-安装">1.2 安装</h3>
+<h4 id="1-2-1-MySQL服务安装">1.2.1 MySQL服务安装</h4>
+<p>具体怎么安后面补起来，考试不考。</p>
+<p>但是这个安的 MySQL 是啥要知道：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165429868-16551759190411.png" alt="image-20220612165429868"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165443069-16551759190413.png" alt="image-20220612165443069"></p>
+<h4 id="1-2-2-图形化界面软件安装">1.2.2 图形化界面软件安装</h4>
+<p>Navicat</p>
+<p>SQLyog(我在用这个)</p>
+<p>后面补起来，考试不考。</p>
+<h3 id="1-3-初始化">1.3  初始化</h3>
+<h4 id="1-启动服务">1.启动服务</h4>
+<p>启动：<code>net start mysql</code></p>
+<p>关闭：<code>net stop mysql</code></p>
+<p>注意：要用管理员权限打开命令提示符</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612164156181-16551759190425.png" alt="image-20220612164156181"></p>
+<h4 id="2-登录服务">2. 登录服务</h4>
+<p>最标准：<code>mysql -h 主机名 -P 端口 -u 用户名 -p密码</code></p>
+<p>最简单：	mysql -u root -p密码</p>
+<p>注意：</p>
+<p>一般来说主机名可以不写默认本地 localhost，</p>
+<p>端口可以不写默认 3306，工作中一般会改</p>
+<p>注意端口那里是<code>P</code>而不是<code>p</code></p>
+<p>密码可以紧跟<code>-p</code>,中间没空格，也可以不写他会像图中一样让你输入</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612164452378-16551759190427.png" alt="image-20220612164452378"></p>
+<h4 id="3-总结">3. 总结</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612163232896-16551759190429.png" alt="image-20220612163232896"></p>
+<h3 id="1-4-其他">1.4 其他</h3>
+<h4 id="1-4-1-数据在数据库中的存储形式">1.4.1 数据在数据库中的存储形式</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165704575-165517591904211.png" alt="image-20220612165704575"></p>
+<h4 id="1-4-2-SQL-语句分类">1.4.2 SQL 语句分类</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612165746443-165517591904213.png" alt="image-20220612165746443"></p>
+<h2 id="二，DDL-数据定义">二，DDL_数据定义</h2>
+<blockquote>
+<p>DDL (Data Definition Language)</p>
+</blockquote>
+<h3 id="2-1-库">2.1 库</h3>
+<h4 id="2-1-1-创建数据库">2.1.1 创建数据库</h4>
+<p>最简单的：<code>create database 数据库名;</code></p>
+<p>标准的：<code>create database 数据库名 character set 指定字符集 collate 校对规则;</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612172454149-165517591904215.png" alt="image-20220612172454149"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612175212742-165517591904217.png" alt="image-20220612175212742"></p>
+<h4 id="2-1-2-删除数据库">2.1.2 删除数据库</h4>
+<p>唯一一个：<code>drop database 数据库名</code></p>
+<h4 id="2-1-3-查看数据库">2.1.3 查看数据库</h4>
+<p>显示所有数据库: <code>show databases</code></p>
+<p>显示数据库创建语句：<code>show create database da_name</code></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612180429725-165517591904219.png" alt="image-20220612180429725"></p>
+<h4 id="2-1-4-备份恢复数据库">2.1.4 备份恢复数据库</h4>
+<p>在dos命令行备份：<code>mysqldump -u root -p -B ds_name &gt; backups_name.sql</code></p>
+<p>在 SQL 命令行恢复：<code>source baskups_name.sql</code></p>
+<p>也可以用笨方法恢复：直接粘贴文件中的所有语句再去执行一遍</p>
+<p>注意：其实备份后的文件就是那个数据的从创建开始的所有 SQL 语句；一般存放在 MySQL 自己的 bin 文件夹中。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612182627992-165517591904221.png" alt="image-20220612182627992"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612182653419-165517591904223.png" alt="image-20220612182653419"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612182733764-165517591904225.png" alt="image-20220612182733764"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612183027014-165517591904227.png" alt="image-20220612183027014"></p>
+<h4 id="2-1-5-备份恢复数据库的表">2.1.5 备份恢复数据库的表</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612183050530-165517591904229.png" alt="image-20220612183050530"></p>
+<p>其实我推荐别指定在那个盘，直接用<code>文件名.sql</code>。因为你用那种具体的盘的位置，到时候恢复的时候会报<code>Fail to open file,erro:2</code>就是 MySQL 找不到那个文件，直接这样名字创建，文件就在 MySQL bin 下面就不会出问题。</p>
+<h3 id="2-2-表">2.2 表</h3>
+<h4 id="2-2-1-创建表">2.2.1 创建表</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612211242574-165517591904231.png" alt="image-20220612211242574"></p>
+<p>演示：</p>
+<p>简约：<code>create table table_name( field datetype 。。。);</code></p>
+<p>其实其他的他又默认值的，咱也是这样简洁用的多。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612212235660-165517591904233.png" alt="image-20220612212235660"></p>
+<h4 id="2-2-2-数据类型">2.2.2 数据类型</h4>
+<h5 id="2-2-2-1-总览">2.2.2.1 总览</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213033364-165517591904335.png" alt="image-20220612213033364"></p>
+<h5 id="2-2-2-2-整数">2.2.2.2 整数</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213155195-165517591904339.png" alt="image-20220612213155195"></p>
+<h5 id="2-2-2-3-小数">2.2.2.3 小数</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213703055-165517591904337.png" alt="image-20220612213703055"></p>
+<h5 id="2-2-2-3-无符号整数">2.2.2.3 无符号整数</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213248083-165517591904341.png" alt="image-20220612213248083"></p>
+<h5 id="2-2-2-4-bit">2.2.2.4 bit</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213455626-165517591904343.png" alt="image-20220612213455626"></p>
+<h5 id="2-2-2-5-小数">2.2.2.5 小数</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612213909009-165517591904345.png" alt="image-20220612213909009"></p>
+<h5 id="2-2-2-6-字符串">2.2.2.6 字符串</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612214613288-165517591904347.png" alt="image-20220612214613288"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612214625581-165517591904349.png" alt="image-20220612214625581"></p>
+<h5 id="2-2-2-7-日期">2.2.2.7 日期</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220612214706641-165517591904351.png" alt="image-20220612214706641"></p>
+<h4 id="2-2-3-修改表">2.2.3 修改表</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613093805552-165517591904353.png" alt="image-20220613093805552"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">#添加列</span><br><span class="line">ALTER TABLE demo01 </span><br><span class="line">ADD (gender CHAR(1));</span><br><span class="line">#修改列</span><br><span class="line">ALTER TABLE demo01</span><br><span class="line">MODIFY `name` VARCHAR(200);</span><br><span class="line">#删除列</span><br><span class="line">ALTER TABLE demo01</span><br><span class="line">DROP word;</span><br><span class="line">#修改表名</span><br><span class="line">RENAME TABLE demo1 TO demo01;</span><br><span class="line">#显示表结构</span><br><span class="line">DESC demo01;</span><br><span class="line">#修改表的字符集</span><br><span class="line">ALTER TABLE demo01 CHARACTER SET utf8; </span><br><span class="line">#修改列名</span><br><span class="line">ALTER TABLE demo01 CHANGE `name` `user_name` VARCHAR(63);</span><br><span class="line">#查找</span><br><span class="line">SELECT * FROM demo01;</span><br></pre></td></tr></table></figure>
+<h4 id="2-2-4-表的复制">2.2.4 表的复制</h4>
+<p>蠕虫复制：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">-- 演示如何自我复制</span><br><span class="line">-- 1. 先把 emp 表的记录复制到 my_tab01</span><br><span class="line">INSERT INTO my_tab01</span><br><span class="line">(id, `name`, sal, job,deptno)</span><br><span class="line">SELECT empno, ename, sal, job, deptno FROM emp;</span><br><span class="line">-- 2. 自我复制</span><br><span class="line">INSERT INTO my_tab01</span><br><span class="line">SELECT * FROM my_tab01;</span><br><span class="line"></span><br><span class="line">SELECT COUNT(*) FROM my_tab01;</span><br></pre></td></tr></table></figure>
+<p>如何删除一张表的重复记录：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line">思路</span><br><span class="line">(1) 先创建一张临时表 my_tmp , 该表的结构和 my_tab02 一样</span><br><span class="line">(2) 把 my_tmp 的记录 通过 distinct 关键字 处理后 把记录复制到 my_tmp</span><br><span class="line">(3) 清除掉 my_tab02 记录</span><br><span class="line">(4) 把 my_tmp 表的记录复制到 my_tab02</span><br><span class="line">(5) drop 掉 临时表 my_tmp</span><br><span class="line">*/</span><br><span class="line">-- (1) 先创建一张临时表 my_tmp , 该表的结构和 my_tab02 一样</span><br><span class="line">create table my_tmp like my_tab02</span><br><span class="line">-- (2) 把 my_tmp 的记录 通过 distinct 关键字 处理后 把记录复制到 my_tmp</span><br><span class="line">insert into my_tmp</span><br><span class="line">select distinct * from my_tab02;</span><br><span class="line">-- (3) 清除掉 my_tab02 记录</span><br><span class="line">delete from my_tab02;</span><br><span class="line">-- (4) 把 my_tmp 表的记录复制到 my_tab02</span><br><span class="line">insert into my_tab02</span><br><span class="line">select * from my_tmp;</span><br><span class="line">-- (5) drop 掉 临时表 my_tmp</span><br><span class="line">drop table my_tmp;</span><br><span class="line"></span><br><span class="line">select * from my_tab02;</span><br></pre></td></tr></table></figure>
+<h2 id="三，DML-数据操纵">三，DML_数据操纵</h2>
+<blockquote>
+<p>DML (Data Manipulation Language)</p>
+</blockquote>
+<h3 id="3-1-CRUD">3.1 CRUD</h3>
+<p>C：create 添加</p>
+<p>R：read 查找</p>
+<p>U：update 更新</p>
+<p>D：delete 删除</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613102113955-165517591904355.png" alt="image-20220613102113955"></p>
+<h3 id="3-2-Insert">3.2 Insert</h3>
+<p>向表中插入数据</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613102404919-165517591904457.png" alt="image-20220613102404919"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#insert 插入数据</span><br><span class="line">#简约方式</span><br><span class="line">INSERT INTO demo01</span><br><span class="line">VALUES(1,&#x27;张三&#x27;,&#x27;男&#x27;);</span><br><span class="line">#标准方式</span><br><span class="line">INSERT INTO demo01(id,user_name) </span><br><span class="line">VALUES(2,&#x27;李四&#x27;);</span><br><span class="line">#一次性插入多条语句</span><br><span class="line">INSERT INTO demo01</span><br><span class="line">VALUES(3,&#x27;王五&#x27;,&#x27;女&#x27;),(4,&#x27;托尼&#x27;,&#x27;男&#x27;),(5,&#x27;杰克&#x27;,&#x27;女&#x27;);</span><br><span class="line">#查询表中情况</span><br><span class="line">SELECT * FROM demo01;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104028164-165517591904459.png" alt="image-20220613104028164"></p>
+<p>补充：</p>
+<ol>
+<li>如果添加是给表中所有字段都加就不用写<code>table_name</code>后的字段名称；</li>
+<li>如果没有赋值，有默认值，可以创建表时指定也可以是各类型的默认值；</li>
+<li>注意插入的数据顺序对应，长度合适；</li>
+<li>如果数据是日期或者字符加上英文单引号；</li>
+<li>某列某行上可以为空，前提是可以为 null；</li>
+</ol>
+<h3 id="3-3-update">3.3 update</h3>
+<p>修改表中数据</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613103739700-165517591904461.png" alt="image-20220613103739700"></p>
+<p>细节：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104159098-165517591904463.png" alt="image-20220613104159098"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#更新表中数据</span><br><span class="line">update demo01</span><br><span class="line">set gender = &#x27;女&#x27;</span><br><span class="line">where id = 4;</span><br><span class="line">#同时更新多行</span><br><span class="line">update demo01</span><br><span class="line">set user_name = &#x27;大石头&#x27;,id = 666</span><br><span class="line">where gender = &#x27;男&#x27;; </span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104533640-165517591904465.png" alt="image-20220613104533640"></p>
+<h3 id="3-4-delete">3.4 delete</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613104803511-165517591904467.png" alt="image-20220613104803511"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#删除一条数据</span><br><span class="line">DELETE FROM demo01</span><br><span class="line">WHERE id = 2;</span><br><span class="line">#删除一个表所有数据</span><br><span class="line">DELETE FROM demo01;</span><br></pre></td></tr></table></figure>
+<p>细节：<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613105217939-165517591904469.png" alt="image-20220613105217939"></p>
+<h2 id="四，DQL-数据查询">四，DQL_数据查询</h2>
+<blockquote>
+<p>DQL (Data Query Language)</p>
+</blockquote>
+<h3 id="4-1-语法">4.1 语法</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613105259184-165517591904471.png" alt="image-20220613105259184"></p>
+<p>解释:<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613105336698-165517591904473.png" alt="image-20220613105336698"></p>
+<p>代码演示：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#整表查询</span><br><span class="line">SELECT * FROM demo01;</span><br><span class="line">#去重整表查询</span><br><span class="line">SELECT DISTINCT * FROM demo01;</span><br><span class="line">#指定查询</span><br><span class="line">SELECT id,user_name FROM demo01</span><br><span class="line">WHERE gender = &#x27;女&#x27;; </span><br></pre></td></tr></table></figure>
+<h3 id="4-2-查询加工">4.2 查询加工</h3>
+<p>查询中加列计算加as改名</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613110948455-165517591904475.png" alt="image-20220613110948455"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613110954887-165517591904477.png" alt="image-20220613110954887"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#演示查询中加计算和改名</span><br><span class="line">CREATE TABLE student</span><br><span class="line">(</span><br><span class="line">`name` VARCHAR(55),</span><br><span class="line">math INT,</span><br><span class="line">chinese INT,</span><br><span class="line">english INT</span><br><span class="line">);</span><br><span class="line">INSERT INTO student </span><br><span class="line">VALUES(&#x27;张三&#x27;,10,10,10),</span><br><span class="line">(&#x27;李四&#x27;,20,20,20),</span><br><span class="line">(&#x27;王五&#x27;,30,30,30);</span><br><span class="line">SELECT `name`,(math+chinese+english)</span><br><span class="line"> AS total_scores FROM student;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613111705902-165517591904479.png" alt="image-20220613111705902"></p>
+<h3 id="4-3-运算符">4.3 运算符</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613111820632-165517591904481.png" alt="image-20220613111820632"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">运算符在过滤查询中的使用</span><br><span class="line"> select * from student</span><br><span class="line"> where (math+chinese+english) between 40 and 100 and math = 20 ;</span><br></pre></td></tr></table></figure>
+<h3 id="4-4-排序查找">4.4 排序查找</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613113748228-165517591904483.png" alt="image-20220613113748228"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#按照总分降序输出</span><br><span class="line">select *,(math+chinese+english) as total_scores from student</span><br><span class="line">order by total_scores desc;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613114125636-165517591904585.png" alt="image-20220613114125636"></p>
+<h3 id="4-5-加强表查询">4.5 加强表查询</h3>
+<ol>
+<li>mysql 中日期类型可以直接比较，需要注意格式；</li>
+<li>%：表示0到多个任意字符 _：表示任意字符；</li>
+<li>详细的要在实战中体现，这里就不在赘述；</li>
+</ol>
+<h3 id="4-6-分页查询">4.6 分页查询</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613171323018-165517591904587.png" alt="image-20220613171323018"></p>
+<h3 id="4-7-数据分组的总结">4.7 数据分组的总结</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613172216361-165517591904589.png" alt="image-20220613172216361"></p>
+<h3 id="4-8-多表查询">4.8 多表查询</h3>
+<p>就是我们要查询的信息来源于两个表以上，这时候注意我们的条件至少要是 表的个数-1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT ename,sal,dname,emp.deptno</span><br><span class="line">FROM emp, dept</span><br><span class="line">WHERE emp.deptno = dept.deptno</span><br></pre></td></tr></table></figure>
+<h3 id="4-9-自连接">4.9 自连接</h3>
+<p>在同一张表上的连接查询，将一张表看成两张表</p>
+<p>注意给表取个别名，列也可以这样加一个</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT worker.ename AS &#x27;职员名&#x27; , boss.ename AS &#x27;上级名&#x27;</span><br><span class="line">FROM emp worker, emp boss</span><br><span class="line">WHERE worker.mgr = boss.empno;</span><br></pre></td></tr></table></figure>
+<h3 id="4-10-子查询">4.10 子查询</h3>
+<p>就是查询语句嵌套在其他 SQL 语句中</p>
+<p>找 smith 同部门的人</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM emp</span><br><span class="line">WHERE deptno = (</span><br><span class="line">SELECT deptno</span><br><span class="line">FROM emp</span><br><span class="line">WHERE ename = &#x27;SMITH&#x27;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>找和10号部门的工作相同但是不是 10 号部门的人</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">select ename, job, sal, deptno</span><br><span class="line">from emp</span><br><span class="line">where job in (</span><br><span class="line">SELECT DISTINCT job</span><br><span class="line">FROM emp</span><br><span class="line">WHERE deptno = 10</span><br><span class="line">) and deptno &lt;&gt; 10  </span><br></pre></td></tr></table></figure>
+<p>子查询额结果也可以作为临时表使用</p>
+<p>子查询中加 all/any：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613184414579-165517591904591.png" alt="image-20220613184414579"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613185313496-165517591904593.png" alt="image-20220613185313496"></p>
+<p>当然了，你把 all 换成 any 就是查大于部门 30 中的任意一个就符合条件</p>
+<p>查询一个表中各个类别最贵的商品：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">select goods_id, ecs_goods.cat_id, goods_name, shop_price</span><br><span class="line">from (</span><br><span class="line">SELECT cat_id , MAX(shop_price) as max_price</span><br><span class="line">FROM ecs_goods</span><br><span class="line">GROUP BY cat_id</span><br><span class="line">) temp , ecs_goods</span><br><span class="line">where temp.cat_id = ecs_goods.cat_id</span><br><span class="line">and temp.max_price = ecs_goods.shop_price</span><br></pre></td></tr></table></figure>
+<p>多列子查询</p>
+<p>举例：找和 allen 部门和岗位完全相同的所有雇员，除了他自己：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT *</span><br><span class="line">FROM emp</span><br><span class="line">WHERE (deptno , job) = (</span><br><span class="line">SELECT deptno , job</span><br><span class="line">FROM emp</span><br><span class="line">WHERE ename = &#x27;ALLEN&#x27;</span><br><span class="line">) AND ename != &#x27;ALLEN&#x27;</span><br></pre></td></tr></table></figure>
+<p>子查询作为临时表：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">SELECT ename, sal, temp.max_sal, emp.deptno</span><br><span class="line">FROM emp, (</span><br><span class="line">SELECT deptno, MAX(sal) AS max_sal</span><br><span class="line">FROM emp</span><br><span class="line">GROUP BY deptno</span><br><span class="line">) temp</span><br><span class="line">WHERE emp.deptno = temp.deptno AND emp.sal = temp.max_sal</span><br></pre></td></tr></table></figure>
+<h3 id="4-11-合并查询">4.11 合并查询</h3>
+<p>下面的有笔误</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613214210603-165517591904595.png" alt="image-20220613214210603"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- union all 就是将两个查询结果合并， 不会去重</span><br><span class="line">SELECT ename,sal,job FROM emp WHERE sal&gt;2500 -- 5</span><br><span class="line">UNION ALL</span><br><span class="line">SELECT ename,sal,job FROM emp WHERE job=&#x27;MANAGER&#x27; -- 3</span><br><span class="line">-- union 就是将两个查询结果合并， 会去重</span><br><span class="line">SELECT ename,sal,job FROM emp WHERE sal&gt;2500 -- 5</span><br><span class="line">UNION</span><br><span class="line">SELECT ename,sal,job FROM emp WHERE job=&#x27;MANAGER&#x27; -- 3</span><br></pre></td></tr></table></figure>
+<h2 id="五，DCL-数据控制">五，DCL_数据控制</h2>
+<blockquote>
+<p>DCL（Date control Language）</p>
+</blockquote>
+<p>考完回来继续~</p>
+<h3 id="5-1-表外连接">5.1 表外连接</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613223248000-165517591904597.png" alt="image-20220613223248000"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-- 使用左外连接实现</span><br><span class="line">SELECT dname, ename, job</span><br><span class="line">FROM dept LEFT JOIN emp</span><br><span class="line">ON dept.deptno = emp.deptno</span><br><span class="line">-- 使用右外连接实现</span><br><span class="line">SELECT dname, ename, job</span><br><span class="line">FROM emp RIGHT JOIN dept</span><br><span class="line">ON dept.deptno = emp.deptno</span><br><span class="line">--</span><br></pre></td></tr></table></figure>
+<h3 id="5-2-约束">5.2 约束</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613224434578-165517591904599.png" alt="image-20220613224434578"></p>
+<h4 id="5-2-1-primary-key">5.2.1 primary key</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613224541177-1655175919045101.png" alt="image-20220613224541177"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE t20</span><br><span class="line">(id INT ,</span><br><span class="line">`name` VARCHAR(32) ,</span><br><span class="line">email VARCHAR(32),</span><br><span class="line">PRIMARY KEY(id,`name`) -- 在表定义最后写 primary key(列名)复合主键：也就是说两个元素一致才是叫重复</span><br><span class="line"> );</span><br></pre></td></tr></table></figure>
+<h4 id="5-2-2-not-null-非空">5.2.2 not null (非空)</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613224916183-1655175919045103.png" alt="image-20220613224916183"></p>
+<h4 id="5-2-3-unique（唯一）">5.2.3 unique（唯一）</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613225007039-1655175919045105.png" alt="image-20220613225007039"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613225418310-1655175919045107.png" alt="image-20220613225418310"></p>
+<h4 id="5-2-4-foreign-key-外键">5.2.4 foreign key (外键)</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613230302981-1655175919045109.png" alt="image-20220613230302981"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-- 外键演示</span><br><span class="line">-- 创建 主表 my_class</span><br><span class="line">CREATE TABLE my_class (</span><br><span class="line">id INT PRIMARY KEY , -- 班级编号</span><br><span class="line">`name` VARCHAR(32) NOT NULL DEFAULT &#x27;&#x27;);</span><br><span class="line">-- 创建 从表 my_stu</span><br><span class="line">CREATE TABLE my_stu (</span><br><span class="line">id INT PRIMARY KEY , -- 学生编号</span><br><span class="line">`name` VARCHAR(32) NOT NULL DEFAULT &#x27;&#x27;,</span><br><span class="line">class_id INT , -- 学生所在班级的编号</span><br><span class="line">-- 下面指定外键关系</span><br><span class="line">FOREIGN KEY (class_id) REFERENCES my_class(id))</span><br></pre></td></tr></table></figure>
+<h4 id="5-2-5-check">5.2.5 check</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613231721108-1655175919045111.png" alt="image-20220613231721108"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">-- 测试</span><br><span class="line">CREATE TABLE t23 (</span><br><span class="line">id INT PRIMARY KEY,</span><br><span class="line">`name` VARCHAR(32) ,</span><br><span class="line">sex VARCHAR(6) CHECK (sex IN(&#x27;man&#x27;,&#x27;woman&#x27;)),</span><br><span class="line">sal DOUBLE CHECK ( sal &gt; 1000 AND sal &lt; 2000)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h3 id="5-3-自增长">5.3 自增长</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613231905887-1655175919045113.png" alt="image-20220613231905887"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613234239604-1655175919045115.png" alt="image-20220613234239604"></p>
+<h3 id="5-4-索引">5.4 索引</h3>
+<h4 id="5-4-1-入门">5.4.1 入门</h4>
+<p>可以优化查询速度，但是索引也会暂用空间</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-- empno_index 索引名称</span><br><span class="line">-- ON emp (empno) : 表示在 emp 表的 empno 列创建索引</span><br><span class="line">CREATE INDEX empno_index ON emp (empno)</span><br></pre></td></tr></table></figure>
+<p>注意创建的索引只对有索引的行有用。</p>
+<h4 id="5-4-2-索引原理">5.4.2 索引原理</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614094039715-1655175919045117.png" alt="image-20220614094039715"></p>
+<h4 id="5-4-3-索引类型">5.4.3 索引类型</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614094124795-1655175919045119.png" alt="image-20220614094124795"></p>
+<h4 id="5-4-4-索引使用">5.4.4 索引使用</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614094310600-1655175919045121.png" alt="image-20220614094310600"></p>
+<h4 id="5-4-5-适合">5.4.5 适合</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614095344974-1655175919045123.png" alt="image-20220614095344974"></p>
+<h3 id="5-5-事务">5.5 事务</h3>
+<p>事务就是一种捆绑关系，把几句DML MySQL 语句捆在一起，要么都执行要么就都不执行。比如转账，没用事务你这边钱扣了，她那边没收到，你说麻烦不？所以这个事务的必要性呼之欲出了，它保证了数据的一致性。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614095827717-1655175919046125.png" alt="image-20220614095827717"></p>
+<h4 id="5-5-1-锁">5.5.1 锁</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614095932729-1655175919046127.png" alt="image-20220614095932729"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">-- 演示</span><br><span class="line">-- 1. 创建一张测试表</span><br><span class="line">CREATE TABLE t27</span><br><span class="line">( id INT,</span><br><span class="line">`name` VARCHAR(32));</span><br><span class="line">-- 2. 开始事务</span><br><span class="line">START TRANSACTION</span><br><span class="line">set autocommit=off;</span><br><span class="line">-- 3. 设置保存点</span><br><span class="line">SAVEPOINT a</span><br><span class="line">-- 执行 dml 操作</span><br><span class="line">INSERT INTO t27 VALUES(100, &#x27;tom&#x27;);</span><br><span class="line">SELECT * FROM t27;</span><br><span class="line">SAVEPOINT b</span><br><span class="line">-- 执行 dml 操作</span><br><span class="line">INSERT INTO t27 VALUES(200, &#x27;jack&#x27;);</span><br><span class="line">-- 回退到 b</span><br><span class="line">ROLLBACK TO b</span><br><span class="line">-- 继续回退 a</span><br><span class="line">ROLLBACK TO a</span><br><span class="line">-- 如果这样, 表示直接回退到事务开始的状态.</span><br><span class="line">ROLLBACK</span><br><span class="line">COMMIT</span><br></pre></td></tr></table></figure>
+<h4 id="5-5-2-细节强调">5.5.2 细节强调</h4>
+<h5 id="5-5-2-1-回退事务">5.5.2.1 回退事务</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614100601670-1655175919046129.png" alt="image-20220614100601670"></p>
+<h5 id="5-5-2-2-提交事务">5.5.2.2 提交事务</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614100818618-1655175919046131.png" alt="image-20220614100818618"></p>
+<h5 id="5-5-2-3-细节">5.5.2.3 细节</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614100844428-1655175919046133.png" alt="image-20220614100844428"></p>
+<h4 id="5-5-3-隔离级别">5.5.3 隔离级别</h4>
+<h5 id="5-5-3-1-介绍">5.5.3.1 介绍</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614101257428-1655175919046135.png" alt="image-20220614101257428"></p>
+<h5 id="5-5-3-2-查看隔离级别">5.5.3.2 查看隔离级别</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614101511845-1655175919046137.png" alt="image-20220614101511845"></p>
+<h5 id="5-5-3-3-事务隔离级别">5.5.3.3 事务隔离级别</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614101818685-1655175919046139.png" alt="image-20220614101818685"></p>
+<h5 id="5-5-3-4-设置事务隔离级别">5.5.3.4 设置事务隔离级别</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102255276-1655175919046141.png" alt="image-20220614102255276"></p>
+<h4 id="5-5-4-ACID">5.5.4 ACID</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102542166-1655175919046143.png" alt="image-20220614102542166"></p>
+<h3 id="5-6-表类型和存储引擎">5.6 表类型和存储引擎</h3>
+<h4 id="5-6-1-介绍">5.6.1 介绍</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102712168-1655175919046145.png" alt="image-20220614102712168"></p>
+<h5 id="5-6-2-引擎一览表">5.6.2 引擎一览表</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102822695-1655175919046147.png" alt="image-20220614102822695"></p>
+<h5 id="5-6-3-细节-v3">5.6.3 细节</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102848675-1655175919046149.png" alt="image-20220614102848675"></p>
+<h5 id="5-6-4-怎么选">5.6.4 怎么选</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614102936751-1655175919046151.png" alt="image-20220614102936751"></p>
+<h5 id="5-6-5-修改引擎">5.6.5 修改引擎</h5>
+<p><code>alter table table_name engine = 存储引擎</code></p>
+<h3 id="5-7-视图">5.7 视图</h3>
+<h4 id="5-7-1-基本介绍">5.7.1 基本介绍</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614103132421-1655175919046153.png" alt="image-20220614103132421"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614103142087-1655175919046155.png" alt="image-20220614103142087"></p>
+<h4 id="5-7-2-使用">5.7.2 使用</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614103250362-1655175919046157.png" alt="image-20220614103250362"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">-- 视图的使用</span><br><span class="line">-- 创建一个视图 emp_view01， 只能查询 emp 表的(empno、 ename, job 和 deptno ) 信息</span><br><span class="line">-- 创建视图</span><br><span class="line">CREATE VIEW emp_view01</span><br><span class="line">AS</span><br><span class="line">SELECT empno, ename, job, deptno FROM emp;</span><br><span class="line">-- 查看视图</span><br><span class="line">DESC emp_view01</span><br><span class="line">SELECT * FROM emp_view01;</span><br><span class="line">SELECT empno, job FROM emp_view01;</span><br><span class="line">-- 查看创建视图的指令</span><br><span class="line">SHOW CREATE VIEW emp_view01</span><br><span class="line">-- 删除视图</span><br><span class="line">DROP VIEW emp_view01;</span><br></pre></td></tr></table></figure>
+<h4 id="5-7-3-细节讨论">5.7.3 细节讨论</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104114782-1655175919046159.png" alt="image-20220614104114782"></p>
+<h4 id="5-7-4-实践">5.7.4 实践</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104225661-1655175919046161.png" alt="image-20220614104225661"></p>
+<h3 id="5-8-MySQL-管理">5.8 MySQL 管理</h3>
+<h4 id="5-8-1-MySQL-用户">5.8.1 MySQL 用户</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104450566-1655175919046163.png" alt="image-20220614104450566"></p>
+<h4 id="5-8-2-创建用户">5.8.2 创建用户</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104516446-1655175919046165.png" alt="image-20220614104516446"></p>
+<h4 id="5-8-3-删除用户">5.8.3 删除用户</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104540411-1655175919047167.png" alt="image-20220614104540411"></p>
+<h4 id="5-8-4-用户改密码">5.8.4 用户改密码</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104608219-1655175919047169.png" alt="image-20220614104608219"></p>
+<h4 id="5-8-5-权限">5.8.5 权限</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614104800419-1655175919047171.png" alt="image-20220614104800419"></p>
+<h4 id="5-8-6-给用户授权">5.8.6 给用户授权</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105357308-1655175919047173.png" alt="image-20220614105357308"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105427232-1655175919047175.png" alt="image-20220614105427232"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105438686-1655175919047177.png" alt="image-20220614105438686"></p>
+<h4 id="5-8-7-细节">5.8.7 细节</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220614105554910-1655175919047179.png" alt="image-20220614105554910"></p>
+<h2 id="六，函数">六，函数</h2>
+<h3 id="6-1-合计-统计函数">6.1 合计/统计函数</h3>
+<h4 id="6-1-1-Count">6.1.1 Count</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613114418530-1655175919047181.png" alt="image-20220613114418530"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT COUNT(*) FROM student;//4(空值要)</span><br><span class="line">SELECT COUNT(`name`) FROM student;//3(空值不算)</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613114926429-1655175919047183.png" alt="image-20220613114926429"></p>
+<h4 id="6-1-2-Sum">6.1.2 Sum</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613120630608-1655175919047185.png" alt="image-20220613120630608"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613120637601-1655175919047187.png" alt="image-20220613120637601"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#Sum</span><br><span class="line">SELECT SUM(math)/COUNT(*)AS math_avg FROM student;</span><br></pre></td></tr></table></figure>
+<h4 id="6-1-3-avg">6.1.3 avg</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613121229060-1655175919047189.png" alt="image-20220613121229060"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#avg</span><br><span class="line">SELECT AVG(math)AS math_avg FROM student;</span><br></pre></td></tr></table></figure>
+<h4 id="6-1-4-max-min">6.1.4 max/min</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613121557231-1655175919047191.png" alt="image-20220613121557231"></p>
+<p>代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#max/min</span><br><span class="line">SELECT MAX(math),MIN(english)FROM student;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613121833069-1655175919047193.png" alt="image-20220613121833069"></p>
+<h4 id="6-1-5-group-by-分组">6.1.5 group by 分组</h4>
+<p>对列进行分组</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613122020593-1655175919047195.png" alt="image-20220613122020593"></p>
+<p>解释：比如这里有一个员工表，里面的员工有自己的部门和工资，我们想知道每个部门的平均工资是多少</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#查各个部门平均工资</span><br><span class="line">SELECT dept,FORMAT(AVG(salary),2)AS salary_avg FROM worker</span><br><span class="line">GROUP BY dept;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613125513714-1655175919047197.png" alt="image-20220613125513714"></p>
+<h4 id="6-1-6-having">6.1.6 having</h4>
+<p>对分组后的结果进行再过滤</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613122034221-1655175919048199.png" alt="image-20220613122034221"></p>
+<p>解释：我们想找出每个部门中（分组了），工资高于10000的 (进一步筛选，用 having)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">#查那个部门的最高工资=200</span><br><span class="line">SELECT  MAX(salary)AS salary_max,dept  FROM worker</span><br><span class="line">GROUP BY dept</span><br><span class="line">HAVING salary_max = 200;</span><br></pre></td></tr></table></figure>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613125612572-1655175919048201.png" alt="image-20220613125612572"></p>
+<h3 id="6-2-字符串函数">6.2 字符串函数</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613154524042-1655175919048203.png" alt="image-20220613154524042"></p>
+<p>dual表 是亚元表，系统表可以用来做测试</p>
+<h3 id="6-3-数学函数">6.3 数学函数</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613155314246-1655175919048205.png" alt="image-20220613155314246"></p>
+<h3 id="6-4-时间日期函数">6.4 时间日期函数</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613160418958-1655175919048207.png" alt="image-20220613160418958"></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613155730860-1655175919048209.png" alt="image-20220613155730860"></p>
+<h3 id="6-5-加密-系统函数">6.5 加密/系统函数</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613160311320-1655175919048211.png" alt="image-20220613160311320"></p>
+<h3 id="6-6-控制流程函数">6.6 控制流程函数</h3>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20220613161812310-1655175919048213.png" alt="image-20220613161812310"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#控制函数</span><br><span class="line">SELECT IF(FALSE,&#x27;你好&#x27;,&#x27;我好&#x27;)FROM DUAL;</span><br><span class="line">SELECT IFNULL(NULL,&#x27;杰哥不要啊&#x27;)FROM DUAL;</span><br><span class="line">SELECT CASE</span><br><span class="line">WHEN FALSE THEN &#x27;jack&#x27;</span><br><span class="line">WHEN FALSE THEN &#x27;tony&#x27;</span><br><span class="line">ELSE &#x27;HL&#x27; END AS AAA</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>说在后面，至于 MySQL 编程基础，触发器，储存过程后面搞了，再回来补充</p>
+</blockquote>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://lmc.pub">LMC</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://lmc.pub/2022/06/14/MySQL-Basics/">http://lmc.pub/2022/06/14/MySQL-Basics/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://lmc.pub" target="_blank">LMC_Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/MySQL/">MySQL</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/06/12/Linux-ALL/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux_ALL</div></div></a></div><div class="next-post pull-right"><a href="/2022/06/19/Java-senior01/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">你真的懂了Java 的 `i++ 和 ++i`了嘛？</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/109951163261278540.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">LMC</div><div class="author-info__description">哈哈哈</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">123</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">8</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">43</div></a></div><a id="card-info-btn" href="https://lmc.pub/about/"><i class="fa fa-paper-plane"></i><span>我是简历</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/Mecenlee" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/1915585174" target="_blank" title="QQ"><i class="fab fa-qq"></i></a><a class="social-icon" href="/lmc15665332495" target="_blank" title="微信"><i class="fab fa-weixin"></i></a><a class="social-icon" href="/13102345825" target="_blank" title="电话"><i class="fa fa-phone"></i></a><a class="social-icon" href="/1915585174@qq.com" target="_blank" title="QQEmail"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">我想说啥来着</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-text">MySQL笔记总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%EF%BC%8C%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D-%E6%93%8D%E4%BD%9C"><span class="toc-text">一，基本介绍&amp;操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%90%86%E8%A7%A3"><span class="toc-text">1.1 理解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%AE%89%E8%A3%85"><span class="toc-text">1.2 安装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-MySQL%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85"><span class="toc-text">1.2.1 MySQL服务安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E5%9B%BE%E5%BD%A2%E5%8C%96%E7%95%8C%E9%9D%A2%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85"><span class="toc-text">1.2.2 图形化界面软件安装</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">1.3  初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-text">1.启动服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E7%99%BB%E5%BD%95%E6%9C%8D%E5%8A%A1"><span class="toc-text">2. 登录服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E6%80%BB%E7%BB%93"><span class="toc-text">3. 总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E5%85%B6%E4%BB%96"><span class="toc-text">1.4 其他</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E6%95%B0%E6%8D%AE%E5%9C%A8%E6%95%B0%E6%8D%AE%E5%BA%93%E4%B8%AD%E7%9A%84%E5%AD%98%E5%82%A8%E5%BD%A2%E5%BC%8F"><span class="toc-text">1.4.1 数据在数据库中的存储形式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-SQL-%E8%AF%AD%E5%8F%A5%E5%88%86%E7%B1%BB"><span class="toc-text">1.4.2 SQL 语句分类</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%EF%BC%8CDDL-%E6%95%B0%E6%8D%AE%E5%AE%9A%E4%B9%89"><span class="toc-text">二，DDL_数据定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%BA%93"><span class="toc-text">2.1 库</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E5%88%9B%E5%BB%BA%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">2.1.1 创建数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E5%88%A0%E9%99%A4%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">2.1.2 删除数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">2.1.3 查看数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-4-%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">2.1.4 备份恢复数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-5-%E5%A4%87%E4%BB%BD%E6%81%A2%E5%A4%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E8%A1%A8"><span class="toc-text">2.1.5 备份恢复数据库的表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E8%A1%A8"><span class="toc-text">2.2 表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-%E5%88%9B%E5%BB%BA%E8%A1%A8"><span class="toc-text">2.2.1 创建表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-text">2.2.2 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-1-%E6%80%BB%E8%A7%88"><span class="toc-text">2.2.2.1 总览</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-2-%E6%95%B4%E6%95%B0"><span class="toc-text">2.2.2.2 整数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-3-%E5%B0%8F%E6%95%B0"><span class="toc-text">2.2.2.3 小数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-3-%E6%97%A0%E7%AC%A6%E5%8F%B7%E6%95%B4%E6%95%B0"><span class="toc-text">2.2.2.3 无符号整数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-4-bit"><span class="toc-text">2.2.2.4 bit</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-5-%E5%B0%8F%E6%95%B0"><span class="toc-text">2.2.2.5 小数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-6-%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-text">2.2.2.6 字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-7-%E6%97%A5%E6%9C%9F"><span class="toc-text">2.2.2.7 日期</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-%E4%BF%AE%E6%94%B9%E8%A1%A8"><span class="toc-text">2.2.3 修改表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4-%E8%A1%A8%E7%9A%84%E5%A4%8D%E5%88%B6"><span class="toc-text">2.2.4 表的复制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%EF%BC%8CDML-%E6%95%B0%E6%8D%AE%E6%93%8D%E7%BA%B5"><span class="toc-text">三，DML_数据操纵</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-CRUD"><span class="toc-text">3.1 CRUD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Insert"><span class="toc-text">3.2 Insert</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-update"><span class="toc-text">3.3 update</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-delete"><span class="toc-text">3.4 delete</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%EF%BC%8CDQL-%E6%95%B0%E6%8D%AE%E6%9F%A5%E8%AF%A2"><span class="toc-text">四，DQL_数据查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E8%AF%AD%E6%B3%95"><span class="toc-text">4.1 语法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%9F%A5%E8%AF%A2%E5%8A%A0%E5%B7%A5"><span class="toc-text">4.2 查询加工</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">4.3 运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E6%8E%92%E5%BA%8F%E6%9F%A5%E6%89%BE"><span class="toc-text">4.4 排序查找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E5%8A%A0%E5%BC%BA%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-text">4.5 加强表查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-text">4.6 分页查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-%E6%95%B0%E6%8D%AE%E5%88%86%E7%BB%84%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-text">4.7 数据分组的总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-8-%E5%A4%9A%E8%A1%A8%E6%9F%A5%E8%AF%A2"><span class="toc-text">4.8 多表查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-9-%E8%87%AA%E8%BF%9E%E6%8E%A5"><span class="toc-text">4.9 自连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-10-%E5%AD%90%E6%9F%A5%E8%AF%A2"><span class="toc-text">4.10 子查询</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-11-%E5%90%88%E5%B9%B6%E6%9F%A5%E8%AF%A2"><span class="toc-text">4.11 合并查询</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%EF%BC%8CDCL-%E6%95%B0%E6%8D%AE%E6%8E%A7%E5%88%B6"><span class="toc-text">五，DCL_数据控制</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E8%A1%A8%E5%A4%96%E8%BF%9E%E6%8E%A5"><span class="toc-text">5.1 表外连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E7%BA%A6%E6%9D%9F"><span class="toc-text">5.2 约束</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-1-primary-key"><span class="toc-text">5.2.1 primary key</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-2-not-null-%E9%9D%9E%E7%A9%BA"><span class="toc-text">5.2.2 not null (非空)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-3-unique%EF%BC%88%E5%94%AF%E4%B8%80%EF%BC%89"><span class="toc-text">5.2.3 unique（唯一）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-4-foreign-key-%E5%A4%96%E9%94%AE"><span class="toc-text">5.2.4 foreign key (外键)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-5-check"><span class="toc-text">5.2.5 check</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E8%87%AA%E5%A2%9E%E9%95%BF"><span class="toc-text">5.3 自增长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-4-%E7%B4%A2%E5%BC%95"><span class="toc-text">5.4 索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-1-%E5%85%A5%E9%97%A8"><span class="toc-text">5.4.1 入门</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-2-%E7%B4%A2%E5%BC%95%E5%8E%9F%E7%90%86"><span class="toc-text">5.4.2 索引原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-3-%E7%B4%A2%E5%BC%95%E7%B1%BB%E5%9E%8B"><span class="toc-text">5.4.3 索引类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-4-%E7%B4%A2%E5%BC%95%E4%BD%BF%E7%94%A8"><span class="toc-text">5.4.4 索引使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4-5-%E9%80%82%E5%90%88"><span class="toc-text">5.4.5 适合</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-5-%E4%BA%8B%E5%8A%A1"><span class="toc-text">5.5 事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-1-%E9%94%81"><span class="toc-text">5.5.1 锁</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-2-%E7%BB%86%E8%8A%82%E5%BC%BA%E8%B0%83"><span class="toc-text">5.5.2 细节强调</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-2-1-%E5%9B%9E%E9%80%80%E4%BA%8B%E5%8A%A1"><span class="toc-text">5.5.2.1 回退事务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-2-2-%E6%8F%90%E4%BA%A4%E4%BA%8B%E5%8A%A1"><span class="toc-text">5.5.2.2 提交事务</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-2-3-%E7%BB%86%E8%8A%82"><span class="toc-text">5.5.2.3 细节</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-3-%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">5.5.3 隔离级别</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-3-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">5.5.3.1 介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-3-2-%E6%9F%A5%E7%9C%8B%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">5.5.3.2 查看隔离级别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-3-3-%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">5.5.3.3 事务隔离级别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-5-3-4-%E8%AE%BE%E7%BD%AE%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-text">5.5.3.4 设置事务隔离级别</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5-4-ACID"><span class="toc-text">5.5.4 ACID</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-6-%E8%A1%A8%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-text">5.6 表类型和存储引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6-1-%E4%BB%8B%E7%BB%8D"><span class="toc-text">5.6.1 介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#5-6-2-%E5%BC%95%E6%93%8E%E4%B8%80%E8%A7%88%E8%A1%A8"><span class="toc-text">5.6.2 引擎一览表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-6-3-%E7%BB%86%E8%8A%82-v3"><span class="toc-text">5.6.3 细节</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-6-4-%E6%80%8E%E4%B9%88%E9%80%89"><span class="toc-text">5.6.4 怎么选</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-6-5-%E4%BF%AE%E6%94%B9%E5%BC%95%E6%93%8E"><span class="toc-text">5.6.5 修改引擎</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-7-%E8%A7%86%E5%9B%BE"><span class="toc-text">5.7 视图</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-7-1-%E5%9F%BA%E6%9C%AC%E4%BB%8B%E7%BB%8D"><span class="toc-text">5.7.1 基本介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-7-2-%E4%BD%BF%E7%94%A8"><span class="toc-text">5.7.2 使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-7-3-%E7%BB%86%E8%8A%82%E8%AE%A8%E8%AE%BA"><span class="toc-text">5.7.3 细节讨论</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-7-4-%E5%AE%9E%E8%B7%B5"><span class="toc-text">5.7.4 实践</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-8-MySQL-%E7%AE%A1%E7%90%86"><span class="toc-text">5.8 MySQL 管理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-8-1-MySQL-%E7%94%A8%E6%88%B7"><span class="toc-text">5.8.1 MySQL 用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-8-2-%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7"><span class="toc-text">5.8.2 创建用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-8-3-%E5%88%A0%E9%99%A4%E7%94%A8%E6%88%B7"><span class="toc-text">5.8.3 删除用户</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-8-4-%E7%94%A8%E6%88%B7%E6%94%B9%E5%AF%86%E7%A0%81"><span class="toc-text">5.8.4 用户改密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-8-5-%E6%9D%83%E9%99%90"><span class="toc-text">5.8.5 权限</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-8-6-%E7%BB%99%E7%94%A8%E6%88%B7%E6%8E%88%E6%9D%83"><span class="toc-text">5.8.6 给用户授权</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-8-7-%E7%BB%86%E8%8A%82"><span class="toc-text">5.8.7 细节</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%EF%BC%8C%E5%87%BD%E6%95%B0"><span class="toc-text">六，函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#6-1-%E5%90%88%E8%AE%A1-%E7%BB%9F%E8%AE%A1%E5%87%BD%E6%95%B0"><span class="toc-text">6.1 合计&#x2F;统计函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-1-Count"><span class="toc-text">6.1.1 Count</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-2-Sum"><span class="toc-text">6.1.2 Sum</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-3-avg"><span class="toc-text">6.1.3 avg</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-4-max-min"><span class="toc-text">6.1.4 max&#x2F;min</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-5-group-by-%E5%88%86%E7%BB%84"><span class="toc-text">6.1.5 group by 分组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-1-6-having"><span class="toc-text">6.1.6 having</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-2-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="toc-text">6.2 字符串函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-3-%E6%95%B0%E5%AD%A6%E5%87%BD%E6%95%B0"><span class="toc-text">6.3 数学函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-4-%E6%97%B6%E9%97%B4%E6%97%A5%E6%9C%9F%E5%87%BD%E6%95%B0"><span class="toc-text">6.4 时间日期函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-5-%E5%8A%A0%E5%AF%86-%E7%B3%BB%E7%BB%9F%E5%87%BD%E6%95%B0"><span class="toc-text">6.5 加密&#x2F;系统函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-6-%E6%8E%A7%E5%88%B6%E6%B5%81%E7%A8%8B%E5%87%BD%E6%95%B0"><span class="toc-text">6.6 控制流程函数</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/05/%E3%80%90Bug%E3%80%91Android-%E7%94%A8OkHttp%E5%8E%BB%E8%AE%BF%E9%97%AEApache%E4%B8%8A%E7%9A%84xml%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%9C%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E6%88%96%E8%80%85%E8%B6%85%E6%97%B6/" title="【Bug】Android 用OkHttp去访问Apache上的xml文件结果连接失败或者超时"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="【Bug】Android 用OkHttp去访问Apache上的xml文件结果连接失败或者超时"/></a><div class="content"><a class="title" href="/2022/10/05/%E3%80%90Bug%E3%80%91Android-%E7%94%A8OkHttp%E5%8E%BB%E8%AE%BF%E9%97%AEApache%E4%B8%8A%E7%9A%84xml%E6%96%87%E4%BB%B6%E7%BB%93%E6%9E%9C%E8%BF%9E%E6%8E%A5%E5%A4%B1%E8%B4%A5%E6%88%96%E8%80%85%E8%B6%85%E6%97%B6/" title="【Bug】Android 用OkHttp去访问Apache上的xml文件结果连接失败或者超时">【Bug】Android 用OkHttp去访问Apache上的xml文件结果连接失败或者超时</a><time datetime="2022-10-05T09:43:31.000Z" title="发表于 2022-10-05 17:43:31">2022-10-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/04/2022-10-04-Apache%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85/" title="Apache下载安装"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Apache下载安装"/></a><div class="content"><a class="title" href="/2022/10/04/2022-10-04-Apache%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85/" title="Apache下载安装">Apache下载安装</a><time datetime="2022-10-04T13:57:26.000Z" title="发表于 2022-10-04 21:57:26">2022-10-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/03/Typora%E7%BE%8E%E5%8C%96%E4%B8%BB%E9%A2%98/" title="Typora美化主题"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/Android36.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Typora美化主题"/></a><div class="content"><a class="title" href="/2022/10/03/Typora%E7%BE%8E%E5%8C%96%E4%B8%BB%E9%A2%98/" title="Typora美化主题">Typora美化主题</a><time datetime="2022-10-03T13:57:26.000Z" title="发表于 2022-10-03 21:57:26">2022-10-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/20/Android49/" title="Android49"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/Android36.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android49"/></a><div class="content"><a class="title" href="/2022/09/20/Android49/" title="Android49">Android49</a><time datetime="2022-09-20T13:57:26.000Z" title="发表于 2022-09-20 21:57:26">2022-09-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/19/Android48/" title="Android48"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/Android36.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Android48"/></a><div class="content"><a class="title" href="/2022/09/19/Android48/" title="Android48">Android48</a><time datetime="2022-09-19T13:57:26.000Z" title="发表于 2022-09-19 21:57:26">2022-09-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By LMC</div><div class="footer_custom_text">不是不想备案，是真没钱买服务器了</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload/dist/lazyload.iife.min.js"></script><div class="js-pjax"></div><script defer="defer" id="fluttering_ribbon" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/canvas-fluttering-ribbon.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = true;
+POWERMODE.mobile = false;
+document.body.addEventListener('input', POWERMODE);
+</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"left","width":135,"height":250},"mobile":{"show":false,"scale":0.2},"react":{"opacity":0.7},"log":false});</script></body></html>
