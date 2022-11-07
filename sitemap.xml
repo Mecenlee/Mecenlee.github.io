@@ -2,9 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://lmc.pub/2022/09/14/Device%20File%20Explorer%20There%20were%20errors%20downloading%20files%20andor%20directories%20Cannot%20delete%20'CUsersMicenleeDesktop/</loc>
+    <loc>http://lmc.pub/about/index.html</loc>
     
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/2022/11/03/2022-11-03-Android%E9%A1%B9%E7%9B%AE_%E5%A4%A9%E6%B0%94%E9%A2%84%E6%8A%A5/</loc>
+    
+    <lastmod>2022-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/2022/08/05/Android09/</loc>
+    
+    <lastmod>2022-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/2022/07/30/Android03/</loc>
+    
+    <lastmod>2022-11-06</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/2022/07/10/Android/</loc>
+    
+    <lastmod>2022-11-03</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/2022/07/30/Android02/</loc>
+    
+    <lastmod>2022-11-02</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -12,6 +57,15 @@
   
   <url>
     <loc>http://lmc.pub/2022/07/09/Android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF%E8%A7%84%E5%88%92/</loc>
+    
+    <lastmod>2022-11-02</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/2022/09/14/Device%20File%20Explorer%20There%20were%20errors%20downloading%20files%20andor%20directories%20Cannot%20delete%20'CUsersMicenleeDesktop/</loc>
     
     <lastmod>2022-10-05</lastmod>
     
@@ -39,15 +93,6 @@
   
   <url>
     <loc>http://lmc.pub/2022/07/03/%E3%80%90%E9%A1%B9%E7%9B%AE%E3%80%91%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</loc>
-    
-    <lastmod>2022-10-05</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/2022/07/10/Android/</loc>
     
     <lastmod>2022-10-05</lastmod>
     
@@ -470,15 +515,6 @@
   </url>
   
   <url>
-    <loc>http://lmc.pub/2022/08/05/Android09/</loc>
-    
-    <lastmod>2022-08-14</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://lmc.pub/2022/08/05/Android10/</loc>
     
     <lastmod>2022-08-14</lastmod>
@@ -551,24 +587,6 @@
   </url>
   
   <url>
-    <loc>http://lmc.pub/2022/07/30/Android03/</loc>
-    
-    <lastmod>2022-08-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/about/index.html</loc>
-    
-    <lastmod>2022-08-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://lmc.pub/tags/index.html</loc>
     
     <lastmod>2022-08-01</lastmod>
@@ -581,15 +599,6 @@
     <loc>http://lmc.pub/categories/index.html</loc>
     
     <lastmod>2022-08-01</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/2022/07/30/Android02/</loc>
-    
-    <lastmod>2022-07-31</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -1147,7 +1156,7 @@
 
   <url>
     <loc>http://lmc.pub/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -1155,56 +1164,56 @@
   
   <url>
     <loc>http://lmc.pub/tags/Android/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/tags/Kotlin/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/tags/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/tags/Java/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/tags/Linux/</loc>
-    <lastmod>2022-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/tags/MySQL/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/tags/Bug/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/tags/MySQL/</loc>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/tags/Demo/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -1213,301 +1222,308 @@
   
   <url>
     <loc>http://lmc.pub/categories/%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/%E7%BC%96%E7%A8%8B/Android/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/categories/%E7%BC%96%E7%A8%8B/%E9%A1%B9%E7%9B%AE/</loc>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/%E7%BC%96%E7%A8%8B/Android/Kotlin/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Android/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/Android/</loc>
-    <lastmod>2022-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/categories/Java-SE/01-%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/02-%E5%8F%98%E9%87%8F/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/categories/Java-SE/01-%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/03-%E8%BF%90%E7%AE%97%E7%AC%A6/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/04-%E6%8E%A7%E5%88%B6%E7%BB%93%E6%9E%84/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/05-%E6%95%B0%E7%BB%84/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/10-%E9%9B%86%E5%90%88/</loc>
-    <lastmod>2022-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/categories/Java-SE/11-%E6%B3%9B%E5%9E%8B/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/12-%E5%A4%9A%E7%BA%BF%E7%A8%8B/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/categories/Java-SE/11-%E6%B3%9B%E5%9E%8B/</loc>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/13-IO%E6%B5%81/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/14-%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/15-%E5%8F%8D%E5%B0%84/</loc>
-    <lastmod>2022-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/categories/Java-SE/%E8%B6%85%E5%85%A8%E5%A4%A7%E6%80%BB%E7%BB%93/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/16-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/17-JDBC/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/%E8%A1%A5%E5%85%85/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/categories/Java-SE/%E8%B6%85%E5%85%A8%E5%A4%A7%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/07-%E6%9E%9A%E4%B8%BE-%E6%B3%A8%E8%A7%A3/</loc>
-    <lastmod>2022-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/categories/Java-SE/06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E7%B1%BB%E6%88%90%E5%91%98/</loc>
-    <lastmod>2022-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/categories/Java-SE/09-%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/08-%E5%BC%82%E5%B8%B8/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/categories/Java-SE/06-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/%E7%B1%BB%E6%88%90%E5%91%98/</loc>
+    <lastmod>2022-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/categories/Java-SE/09-%E5%B8%B8%E7%94%A8%E7%B1%BB/</loc>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java-SE/%E8%BF%9B%E9%98%B6/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Kotlin/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Linux/</loc>
-    <lastmod>2022-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/categories/MySQL/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Bugs/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Bug/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/categories/MySQL/</loc>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Java/JavaWeb/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Bugs/AS/</loc>
-    <lastmod>2022-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://lmc.pub/categories/Bug/AS/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Bug/%E6%B5%8F%E8%A7%88%E5%99%A8/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Bug/Hexo/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://lmc.pub/categories/Bug/AS/</loc>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Bug/%E9%A1%B9%E7%9B%AE/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/%E9%A1%B9%E7%9B%AE/Java/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>http://lmc.pub/categories/Bug/%E9%A1%B9%E7%9B%AE/%E9%A4%90%E9%A5%AE%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/</loc>
-    <lastmod>2022-10-05</lastmod>
+    <lastmod>2022-11-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
