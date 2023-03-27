@@ -6,7 +6,7 @@
   <link href="http://lmc.pub/atom.xml" rel="self"/>
   
   <link href="http://lmc.pub/"/>
-  <updated>2023-03-27T01:35:55.638Z</updated>
+  <updated>2023-03-27T01:57:23.817Z</updated>
   <id>http://lmc.pub/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【Bug】Gson数据类型转换异常java.lang.ClassCastException:com.google.gson.internal</title>
+    <link href="http://lmc.pub/2023/03/27/%E3%80%90Bug%E3%80%91Gson%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%BC%82%E5%B8%B8java-lang-ClassCastException-com-google-gson-internal/"/>
+    <id>http://lmc.pub/2023/03/27/%E3%80%90Bug%E3%80%91Gson%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2%E5%BC%82%E5%B8%B8java-lang-ClassCastException-com-google-gson-internal/</id>
+    <published>2023-03-27T01:47:38.000Z</published>
+    <updated>2023-03-27T01:57:23.817Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Bug描述-v2">Bug描述</h2><blockquote><p>做 Android 项目的时候，在使用 Retrofit 框架的时候。出的问题/</p><p>卡了很长时间</p></blockquote><p>报错信息：</p><blockquote><p>关键报错全文：<br>Caused by: java.lang.ClassCastException: com.google.gson.internal.LinkedTreeMap cannot be cast to com.ixuea.courses.mymusic.component.sheet.Sheet</p></blockquote><p><img src="C:/Users/Micenlee/Desktop/3dc946a70bed80dd07fc5fc89458f3b.png" alt="3dc946a70bed80dd07fc5fc89458f3b"></p><h2 id="Bug原理">Bug原理</h2><p>参考这个：<a href="https://blog.csdn.net/TheJam/article/details/104654477"> Gson数据类型转换异常 java.lang.ClassCastException: com.google.gson.internal.出现原因已经解决方案 gson泛型指定_5AnJam的博客-CSDN博客</a></p><h2 id="Bug病因">Bug病因</h2><p><img src="C:/Users/Micenlee/AppData/Roaming/Typora/typora-user-images/image-20230327095521339.png" alt="image-20230327095521339"></p><h2 id="solution-v2">solution</h2><p><img src="C:/Users/Micenlee/AppData/Roaming/Typora/typora-user-images/image-20230327095112220.png" alt="image-20230327095112220"></p><p><img src="C:/Users/Micenlee/AppData/Roaming/Typora/typora-user-images/image-20230327095303593.png" alt="image-20230327095303593"></p><p><img src="C:/Users/Micenlee/AppData/Roaming/Typora/typora-user-images/image-20230327095338838.png" alt="image-20230327095338838"></p>]]></content>
+    
+    
+    <summary type="html">Android 项目APP。网络阶段。Retrofit。Gson类型转换异常。泛型。</summary>
+    
+    
+    
+    <category term="Bug" scheme="http://lmc.pub/categories/Bug/"/>
+    
+    
+    <category term="Bug" scheme="http://lmc.pub/tags/Bug/"/>
+    
+  </entry>
   
   <entry>
     <title>好用JSON美化插件</title>
@@ -408,33 +429,6 @@
     
     
     <category term="Git" scheme="http://lmc.pub/tags/Git/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Bug】Java中Char和Int的互转</title>
-    <link href="http://lmc.pub/2023/01/11/%E3%80%90Bug%E3%80%91Java%E4%B8%ADChar%E5%92%8CInt%E7%9A%84%E4%BA%92%E8%BD%AC/"/>
-    <id>http://lmc.pub/2023/01/11/%E3%80%90Bug%E3%80%91Java%E4%B8%ADChar%E5%92%8CInt%E7%9A%84%E4%BA%92%E8%BD%AC/</id>
-    <published>2023-01-11T04:24:27.000Z</published>
-    <updated>2023-03-23T14:26:07.801Z</updated>
-    
-    <content type="html"><![CDATA[<h1>【Bug】Java中Char和Int的互转</h1><p>今天在做一个栈相关的算法，然后在 Java中Char和Int互转 这里粗心记混了，结果出了个Bug，修了一会。</p><p>事情是这样的：</p><p>有一个由数字构成的字符串，比如：“1433223”，然后想把组成字符串的每一位数字都放到一个栈里面去。</p><p>但是每次从这个字符串(String)拿出来的是是一个字符(Char)而非数字(Int)，比如拿出第一位，他是字符‘1’而不是整数1。</p><p>当时就直接强转了，以为： int 1 = (int)‘1’</p><p>但其实 (int)‘1’ = 49(int) 而不是期望的 1(int)。导致后面的一大堆出了奇怪的 bug。</p><p><img src="C:/Users/Micenlee/AppData/Roaming/Typora/typora-user-images/image-20230111231905800.png" alt="image-20230111231905800"></p><p>因为 Java 中的char其实底层都是对应的ASCII码，也是int整数。</p><p>比如：‘1’（Char） = 49(int)</p><p>所以正确的做法，应该是下面这样：</p><p>把char转为对应的Integer</p><p><img src="C:/Users/Micenlee/AppData/Roaming/Typora/typora-user-images/image-20230111232012386.png" alt="image-20230111232012386"></p><p>当然也可以这样：</p><p>numStack.push((int)(char01 - ‘0’);</p><p>所以关于 Java的Char底层就是对应的ASCII码(int),你忘了吗？</p><p><s>(int)‘1’ = 1(int)</s></p><p>(int)‘1’ = 49(int)</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1&gt;【Bug】Java中Char和Int的互转&lt;/h1&gt;
-&lt;p&gt;今天在做一个栈相关的算法，然后在 Java中Char和Int互转 这里粗心记混了，结果出了个Bug，修了一会。&lt;/p&gt;
-&lt;p&gt;事情是这样的：&lt;/p&gt;
-&lt;p&gt;有一个由数字构成的字符串，比如：“1433223”，然后</summary>
-      
-    
-    
-    
-    <category term="Bug" scheme="http://lmc.pub/categories/Bug/"/>
-    
-    
-    <category term="Bug" scheme="http://lmc.pub/tags/Bug/"/>
     
   </entry>
   
