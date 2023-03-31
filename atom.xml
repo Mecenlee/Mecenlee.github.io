@@ -6,7 +6,7 @@
   <link href="http://lmc.pub/atom.xml" rel="self"/>
   
   <link href="http://lmc.pub/"/>
-  <updated>2023-03-29T14:31:56.538Z</updated>
+  <updated>2023-03-31T05:22:45.118Z</updated>
   <id>http://lmc.pub/</id>
   
   <author>
@@ -17,13 +17,55 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>【算法】反转字符串II541</title>
+    <link href="http://lmc.pub/posts/180107193.html"/>
+    <id>http://lmc.pub/posts/180107193.html</id>
+    <published>2023-03-31T02:16:37.000Z</published>
+    <updated>2023-03-31T05:22:45.118Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目描述-v2">题目描述</h2><p><a href="https://leetcode.cn/problems/reverse-string-ii/description/">反转字符串II541</a></p><h2 id="代码实现-v2">代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.lang.Math;</span><br><span class="line"></span><br><span class="line"><span class="comment">//反转字符串II541</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ReverseStringII541</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line">System.out.println(<span class="keyword">new</span> <span class="title class_">Solution</span>().reverseStr(<span class="string">&quot;abcdefg&quot;</span>,<span class="number">2</span>));<span class="comment">//bacdfeg</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">reverseStr</span><span class="params">(String s, <span class="type">int</span> k)</span> &#123;</span><br><span class="line">    <span class="type">char</span>[] res = s.toCharArray();</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; res.length; i += <span class="number">2</span> * k) &#123;</span><br><span class="line">    <span class="type">int</span> <span class="variable">start</span> <span class="operator">=</span> i;</span><br><span class="line">    <span class="type">int</span> <span class="variable">end</span> <span class="operator">=</span> Math.min(res.length - <span class="number">1</span>, start + k - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">while</span> (start &lt; end)&#123;</span><br><span class="line">    <span class="type">char</span> <span class="variable">temp</span> <span class="operator">=</span> res[start];</span><br><span class="line">    res[start++] = res[end];</span><br><span class="line">    res[end--] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> String.valueOf(res);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="个人总结-v3">个人总结</h2><ol><li>在循环内部不要改变循环控制量</li><li>上面这种实现方式最好理解且轻便</li></ol>]]></content>
+    
+    
+    <summary type="html">【算法】反转字符串II541</summary>
+    
+    
+    
+    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【算法】反转字符串344</title>
+    <link href="http://lmc.pub/posts/772676929.html"/>
+    <id>http://lmc.pub/posts/772676929.html</id>
+    <published>2023-03-31T01:48:34.000Z</published>
+    <updated>2023-03-31T05:22:45.117Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目描述">题目描述</h2><p><a href="https://leetcode.cn/problems/reverse-string/description/">力扣，反转字符串344</a></p><h2 id="代码实现">代码实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="comment">//反转字符串344</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ReverseString344</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line"><span class="type">Scanner</span> <span class="variable">input</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"></span><br><span class="line">System.out.print(<span class="string">&quot;请输入需要 reverse 的 String ： &quot;</span>);</span><br><span class="line"><span class="type">String</span> <span class="variable">string</span> <span class="operator">=</span> input.nextLine();</span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Solution</span>().reverseString(string.toCharArray());</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">reverseString</span><span class="params">(<span class="type">char</span>[] s)</span> &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>,j = s.length - <span class="number">1</span>; i &lt; j; i++,j--) &#123;</span><br><span class="line">    <span class="type">char</span> <span class="variable">temp</span> <span class="operator">=</span> s[i];</span><br><span class="line">    s[i] = s[j];</span><br><span class="line">    s[j] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">System.out.print(<span class="string">&quot;\n&quot;</span> + String.valueOf(s));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="个人总结-v2">个人总结</h2><p>题目请简单的，就双指针法直接一换就可以了。</p><p>补充： ==谁用size谁用length？==</p><blockquote><ol><li><p><code>length</code>是<strong>数组的属性</strong>。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span>[] nums = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">System.out.println(<span class="string">&quot;nums.length = &quot;</span> + nums.length);<span class="comment">//5</span></span><br></pre></td></tr></table></figure></li><li><p><code>length()</code>是<strong>String的统计长度方法</strong>。底层还是length。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">System.out.println(<span class="string">&quot;The length of s is &quot;</span> + s.length());<span class="comment">//5</span></span><br></pre></td></tr></table></figure></li><li><p><code>size()</code>是集合统计元素个数的统计方法，底层还是length。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;String&gt;();</span><br><span class="line">list.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">list.add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">list.add(<span class="string">&quot;c&quot;</span>);</span><br><span class="line">System.out.println(<span class="string">&quot;这个list的长度为：&quot;</span> + list.size());<span class="comment">//3</span></span><br></pre></td></tr></table></figure></li></ol></blockquote>]]></content>
+    
+    
+    <summary type="html">【算法】反转字符串344</summary>
+    
+    
+    
+    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>百度网盘网页版怎么按文件名排序</title>
     <link href="http://lmc.pub/posts/59755803.html"/>
     <id>http://lmc.pub/posts/59755803.html</id>
     <published>2023-03-29T14:26:50.000Z</published>
-    <updated>2023-03-29T14:31:56.538Z</updated>
+    <updated>2023-03-29T16:03:20.592Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="题目描述">题目描述</h2><p>百度网盘文件默认排序只有<code>修改时间</code>和<code>大小</code>两个。</p><p>导致一些用文件名排好序的文件全乱了。</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230329222930927.png" alt="image-20230329222930927"></p><p>而且只给了这两个调整方案。</p><h2 id="solution-v3">solution</h2><ol><li>回到老版</li><li>空白处右键</li></ol><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230329223037544.png" alt="image-20230329223037544"></p><h2 id="个人总结-v2">个人总结</h2><p>这波属于是升级新版，直接脱离用户体验。</p><p>产品经理是哈了吧。还好百度程序员留了个口子。</p><p>真心离谱哈。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="题目描述-v3">题目描述</h2><p>百度网盘文件默认排序只有<code>修改时间</code>和<code>大小</code>两个。</p><p>导致一些用文件名排好序的文件全乱了。</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230329222930927.png" alt="image-20230329222930927"></p><p>而且只给了这两个调整方案。</p><h2 id="solution-v3">solution</h2><ol><li>回到老版</li><li>空白处右键</li></ol><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230329223037544.png" alt="image-20230329223037544"></p><h2 id="个人总结-v4">个人总结</h2><p>这波属于是升级新版，直接脱离用户体验。</p><p>产品经理是哈了吧。还好百度程序员留了个口子。</p><p>真心离谱哈。</p>]]></content>
     
     
     <summary type="html">百度网盘网页版怎么按文件名排序</summary>
@@ -65,9 +107,9 @@
     <link href="http://lmc.pub/posts/4175140693.html"/>
     <id>http://lmc.pub/posts/4175140693.html</id>
     <published>2023-03-28T02:06:49.000Z</published>
-    <updated>2023-03-29T14:11:04.398Z</updated>
+    <updated>2023-03-30T05:58:26.694Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述">描述</h2><p><code>Sublime</code>是一款很好用的轻量级编辑器。</p><p>我挺喜欢的，但是每次写完代码都要 <code>ctrl + s</code>手动保存。</p><p>有点 emo。</p><h2 id="实现">实现</h2><p><img src="C:/Users/Micenlee/AppData/Roaming/Typora/typora-user-images/image-20230328101156490.png" alt="image-20230328101156490"></p><p><img src="C:/Users/Micenlee/AppData/Roaming/Typora/typora-user-images/image-20230328101228019.png" alt="image-20230328101228019"></p><p>然后重启 Sublime，就好了。</p><h2 id="个人总结">个人总结</h2><p>Sublime 这个自动保存，会有点点延迟。</p><p>是你离开了这个文件，她才保存。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述">描述</h2><p><code>Sublime</code>是一款很好用的轻量级编辑器。</p><p>我挺喜欢的，但是每次写完代码都要 <code>ctrl + s</code>手动保存。</p><p>有点 emo。</p><h2 id="实现">实现</h2><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230328101156490.png" alt="image-20230328101156490"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230328101228019.png" alt="image-20230328101228019"></p><p>然后重启 Sublime，就好了。</p><h2 id="个人总结">个人总结</h2><p>Sublime 这个自动保存，会有点点延迟。</p><p>是你离开了这个文件，她才保存。</p>]]></content>
     
     
     <summary type="html">【Sublime】自动保存设置</summary>
@@ -86,11 +128,19 @@
     <link href="http://lmc.pub/posts/2449576452.html"/>
     <id>http://lmc.pub/posts/2449576452.html</id>
     <published>2023-03-28T01:21:04.000Z</published>
-    <updated>2023-03-29T14:11:04.403Z</updated>
+    <updated>2023-03-30T07:42:47.167Z</updated>
+    
+    <content type="html"><![CDATA[<p><a href="https://leetcode.cn/problems/4sum/">四数之和18</a></p>]]></content>
+    
+    
+    <summary type="html">【算法】四数之和18</summary>
     
     
     
+    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
     
+    
+    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
@@ -379,48 +429,6 @@
     
     
     <category term="Json" scheme="http://lmc.pub/tags/Json/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Android】Android调试最佳搭档</title>
-    <link href="http://lmc.pub/posts/3808891007.html"/>
-    <id>http://lmc.pub/posts/3808891007.html</id>
-    <published>2023-03-27T01:30:06.000Z</published>
-    <updated>2023-03-27T23:30:06.769Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="真机调试">真机调试</h2><p>Anlink</p><h2 id="虚拟机调试">虚拟机调试</h2><p>夜神模拟器</p>]]></content>
-    
-    
-    <summary type="html">小众宝藏搭配，AS调试双雄。</summary>
-    
-    
-    
-    <category term="Android" scheme="http://lmc.pub/categories/Android/"/>
-    
-    
-    <category term="Android工具" scheme="http://lmc.pub/tags/Android%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【Bug】小米手机USB安装提示弹窗关闭</title>
-    <link href="http://lmc.pub/posts/1390482521.html"/>
-    <id>http://lmc.pub/posts/1390482521.html</id>
-    <published>2023-03-27T01:26:30.000Z</published>
-    <updated>2023-03-27T23:30:06.800Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="怎么关闭小米手机这个，USB安装提示弹窗？">怎么关闭小米手机这个，USB安装提示弹窗？</h2><blockquote><ol><li>打开手机开发者选项；</li><li>进入开发者，关闭 <code>MIUI优化</code>；</li><li>找到<strong>应用管理</strong> -》<strong>权限管理</strong> -》<strong>右上角三个点</strong>；</li><li>进去把 USB 那个关了；</li><li>退出来，打开<code>MUIU优化</code></li></ol></blockquote>]]></content>
-    
-    
-    <summary type="html">AS真机调试的时候总是弹出【USB安装提示窗口】，这是关闭方法</summary>
-    
-    
-    
-    <category term="Bug" scheme="http://lmc.pub/categories/Bug/"/>
-    
-    
-    <category term="Bug" scheme="http://lmc.pub/tags/Bug/"/>
     
   </entry>
   
