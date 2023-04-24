@@ -6,7 +6,7 @@
   <link href="http://lmc.pub/atom.xml" rel="self"/>
   
   <link href="http://lmc.pub/"/>
-  <updated>2023-04-24T14:41:39.392Z</updated>
+  <updated>2023-04-24T13:10:01.590Z</updated>
   <id>http://lmc.pub/</id>
   
   <author>
@@ -15,28 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title></title>
-    <link href="http://lmc.pub/posts/1.html"/>
-    <id>http://lmc.pub/posts/1.html</id>
-    <published>2023-04-24T14:40:12.171Z</published>
-    <updated>2023-04-24T14:41:39.392Z</updated>
-    
-    <content type="html"><![CDATA[<h1>你好啊</h1><p>我想这个文件不影响那个个人博客，但是可以存在就可以了</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1&gt;你好啊&lt;/h1&gt;
-&lt;p&gt;我想这个文件不影响那个个人博客，但是可以存在就可以了&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>【JavaSE】static关键字</title>
@@ -160,7 +138,7 @@
     <published>2023-04-14T07:54:14.000Z</published>
     <updated>2023-04-24T13:10:01.577Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v32">描述</h2><p>在做项目的时候，有时候在xml中定义了一个控件加了id。但是去java文件中访问不了。现实爆红，找不到。</p><h2 id="分析-v29">分析</h2><p>AS缓存没缓过来。</p><p>比如你的AS上次没关，然后现在刚打开写。</p><p>就很有可能出现这种情况。</p><h2 id="实现-v30">实现</h2><p>重启一下AS就好了</p><p>或者直接运行一下</p><h2 id="总结-v32">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v14">描述</h2><p>在做项目的时候，有时候在xml中定义了一个控件加了id。但是去java文件中访问不了。现实爆红，找不到。</p><h2 id="分析-v14">分析</h2><p>AS缓存没缓过来。</p><p>比如你的AS上次没关，然后现在刚打开写。</p><p>就很有可能出现这种情况。</p><h2 id="实现-v14">实现</h2><p>重启一下AS就好了</p><p>或者直接运行一下</p><h2 id="总结-v15">总结</h2>]]></content>
     
     
     <summary type="html">【Bug】AS在java文件中无法拿到xml中一个id控件</summary>
@@ -181,7 +159,7 @@
     <published>2023-04-12T22:31:48.000Z</published>
     <updated>2023-04-24T13:10:01.571Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v11">描述</h2><h2 id="分析-v11">分析</h2><h2 id="实现-v11">实现</h2><h2 id="总结-v11">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v12">描述</h2><h2 id="分析-v12">分析</h2><h2 id="实现-v12">实现</h2><h2 id="总结-v12">总结</h2>]]></content>
     
     
     <summary type="html">【算法】把二叉搜索树转换为累加树538</summary>
@@ -202,7 +180,7 @@
     <published>2023-04-12T22:31:17.000Z</published>
     <updated>2023-04-24T13:10:01.554Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v9">描述</h2><h2 id="分析-v9">分析</h2><h2 id="实现-v9">实现</h2><h2 id="总结-v9">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v10">描述</h2><h2 id="分析-v10">分析</h2><h2 id="实现-v10">实现</h2><h2 id="总结-v10">总结</h2>]]></content>
     
     
     <summary type="html">【算法】将有序数组转换为二叉搜索树108</summary>
@@ -223,7 +201,7 @@
     <published>2023-04-12T22:30:36.000Z</published>
     <updated>2023-04-24T13:10:01.548Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v8">描述</h2><h2 id="分析-v8">分析</h2><h2 id="实现-v8">实现</h2><h2 id="总结-v8">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v7">描述</h2><h2 id="分析-v7">分析</h2><h2 id="实现-v7">实现</h2><h2 id="总结-v7">总结</h2>]]></content>
     
     
     <summary type="html">【算法】修剪二叉搜索树669</summary>
@@ -244,7 +222,7 @@
     <published>2023-04-12T22:29:54.000Z</published>
     <updated>2023-04-24T13:10:01.552Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v7">描述</h2><h2 id="分析-v7">分析</h2><h2 id="实现-v7">实现</h2><h2 id="总结-v7">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v9">描述</h2><h2 id="分析-v9">分析</h2><h2 id="实现-v9">实现</h2><h2 id="总结-v9">总结</h2>]]></content>
     
     
     <summary type="html">【算法】删除二叉搜索树中的节点450</summary>
@@ -265,7 +243,7 @@
     <published>2023-04-12T22:29:20.000Z</published>
     <updated>2023-04-24T13:10:01.541Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v4">描述</h2><h2 id="分析-v4">分析</h2><h2 id="实现-v4">实现</h2><h2 id="总结-v4">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v3">描述</h2><h2 id="分析-v3">分析</h2><h2 id="实现-v3">实现</h2><h2 id="总结-v3">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉搜索树的插入操作701</summary>
@@ -328,7 +306,7 @@
     <published>2023-04-12T22:27:56.000Z</published>
     <updated>2023-04-24T13:10:01.537Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v3">描述</h2><h2 id="分析-v3">分析</h2><h2 id="实现-v3">实现</h2><h2 id="总结-v3">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述">描述</h2><h2 id="分析">分析</h2><h2 id="实现">实现</h2><h2 id="总结">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉搜索树中的众数501</summary>
@@ -349,7 +327,7 @@
     <published>2023-04-12T22:27:22.000Z</published>
     <updated>2023-04-24T13:10:01.543Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v2">描述</h2><h2 id="分析-v2">分析</h2><h2 id="实现-v2">实现</h2><h2 id="总结-v2">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v4">描述</h2><h2 id="分析-v4">分析</h2><h2 id="实现-v4">实现</h2><h2 id="总结-v4">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉搜索树的最小绝对差530</summary>
@@ -370,7 +348,7 @@
     <published>2023-04-12T22:26:43.000Z</published>
     <updated>2023-04-24T13:10:01.575Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v10">描述</h2><h2 id="分析-v10">分析</h2><h2 id="实现-v10">实现</h2><h2 id="总结-v10">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v13">描述</h2><h2 id="分析-v13">分析</h2><h2 id="实现-v13">实现</h2><h2 id="总结-v13">总结</h2>]]></content>
     
     
     <summary type="html">【算法】验证二叉搜索树98</summary>
@@ -391,7 +369,7 @@
     <published>2023-04-12T22:26:10.000Z</published>
     <updated>2023-04-24T13:10:01.539Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述">描述</h2><h3 id="djoa">djoa</h3><h3 id="djao">djao</h3><h4 id="josa">josa</h4><h2 id="分析">分析</h2><h2 id="实现">实现</h2><h2 id="总结">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v2">描述</h2><h3 id="djoa">djoa</h3><h3 id="djao">djao</h3><h4 id="josa">josa</h4><h2 id="分析-v2">分析</h2><h2 id="实现-v2">实现</h2><h2 id="总结-v2">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉搜索树中的搜索700</summary>
@@ -412,7 +390,7 @@
     <published>2023-04-12T22:25:30.000Z</published>
     <updated>2023-04-24T13:10:01.551Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v13">描述</h2><h2 id="分析-v13">分析</h2><h2 id="实现-v13">实现</h2><h2 id="总结-v13">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v8">描述</h2><h2 id="分析-v8">分析</h2><h2 id="实现-v8">实现</h2><h2 id="总结-v8">总结</h2>]]></content>
     
     
     <summary type="html">【算法】合并二叉树617</summary>
@@ -437,6 +415,27 @@
     
     
     <summary type="html">【算法】最大二叉树654</summary>
+    
+    
+    
+    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【算法】从中序与后序遍历序列构造二叉树106</title>
+    <link href="http://lmc.pub/posts/529150660.html"/>
+    <id>http://lmc.pub/posts/529150660.html</id>
+    <published>2023-04-12T22:24:16.000Z</published>
+    <updated>2023-04-24T13:10:01.600Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述-v24">描述</h2><p><a href="https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/">106. 从中序与后序遍历序列构造二叉树 - 力扣（Leetcode）</a></p><p><a href="https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/">105. 从前序与中序遍历序列构造二叉树 - 力扣（Leetcode）</a></p><h2 id="分析-v21">分析</h2><p>这里的构造用确认来说更加贴切。</p><p>其实就是给你一棵树的两种遍历结果，让你判断能不能恢复树原来的样子。</p><p>这种确认有两种方式：</p><ol><li>前序 + 中序确认</li><li>后序 + 中序确认</li></ol><p>确认就是验证。</p><p>注意：必须有中序，光前序 + 后序是做不了这件事的。</p><h2 id="实现-v22">实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"></span><br><span class="line"><span class="comment">//106. 从中序与后序遍历序列构造二叉树</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ConstructBinaryTreeFromInorderAndPostorderTraversal106</span> &#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line"><span class="type">TreeNode</span> <span class="variable">root</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Solution1</span>().buildTree(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">3</span>,<span class="number">9</span>,<span class="number">20</span>,<span class="number">15</span>,<span class="number">7</span>&#125;, <span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">9</span>,<span class="number">3</span>,<span class="number">15</span>,<span class="number">20</span>,<span class="number">7</span>&#125;);</span><br><span class="line">MyUtils.levelOrder(root);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//中序 + 后序</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    Map&lt;Integer,Integer&gt; map;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">buildTree</span><span class="params">(<span class="type">int</span>[] inorder, <span class="type">int</span>[] postorder)</span> &#123;</span><br><span class="line">    map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//保存中序数组中的值</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; inorder.length; i++) &#123;</span><br><span class="line">    map.put(inorder[i],i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> findNode(inorder, <span class="number">0</span>, inorder.length, postorder, <span class="number">0</span>, postorder.length);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//左闭右开</span></span><br><span class="line">    TreeNode <span class="title function_">findNode</span><span class="params">(<span class="type">int</span>[] inorder, <span class="type">int</span> inStrat, <span class="type">int</span> inEnd, <span class="type">int</span>[] postorder, <span class="type">int</span> postStart, <span class="type">int</span> postEnd)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (inStrat &gt;= inEnd || postStart &gt;= postEnd) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//拿到root在中序中的位置</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">rootIndex</span> <span class="operator">=</span> map.get(postorder[postEnd - <span class="number">1</span>]);</span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">root</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(inorder[rootIndex]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//中序数组左子树的长度</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">lengthOfLeft</span> <span class="operator">=</span> rootIndex - inStrat;</span><br><span class="line">    root.left = findNode(inorder, inStrat, rootIndex, postorder, postStart, postStart + lengthOfLeft);</span><br><span class="line">    root.right = findNode(inorder, rootIndex + <span class="number">1</span>, inEnd, postorder, postStart + lengthOfLeft, postEnd - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//前序 + 中序</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution1</span> &#123;</span><br><span class="line">    Map&lt;Integer, Integer&gt; map;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">buildTree</span><span class="params">(<span class="type">int</span>[] preorder, <span class="type">int</span>[] inorder)</span> &#123;</span><br><span class="line">    map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">    <span class="comment">//inorder入HashMap</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; inorder.length; i++) &#123;</span><br><span class="line">    map.put(inorder[i], i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//因为前闭右开，所以这里不用 - 1</span></span><br><span class="line">    <span class="keyword">return</span> findNode(preorder, <span class="number">0</span>, preorder.length, inorder, <span class="number">0</span>, inorder.length);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> TreeNode <span class="title function_">findNode</span><span class="params">(</span></span><br><span class="line"><span class="params">    <span class="type">int</span>[] preorder, <span class="type">int</span> preStart, <span class="type">int</span> preEnd,</span></span><br><span class="line"><span class="params">    <span class="type">int</span>[] inorder, <span class="type">int</span> inStart, <span class="type">int</span> inEnd)</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (preStart &gt;= preEnd || inStart &gt;= inEnd) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">root</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(preorder[preStart]);</span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> <span class="variable">index</span> <span class="operator">=</span> map.get(preorder[preStart]);</span><br><span class="line">    <span class="type">int</span> <span class="variable">lengthOfLeft</span> <span class="operator">=</span> index - inStart;</span><br><span class="line"></span><br><span class="line">    root.left = findNode(preorder, preStart + <span class="number">1</span>, preStart + lengthOfLeft + <span class="number">1</span>, inorder, inStart, index);</span><br><span class="line">    root.right = findNode(preorder, preStart + lengthOfLeft + <span class="number">1</span>, preEnd, inorder, index + <span class="number">1</span>, inEnd);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line"><span class="type">int</span> val;</span><br><span class="line">TreeNode left;</span><br><span class="line">TreeNode right;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">TreeNode</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">public</span> <span class="title function_">TreeNode</span><span class="params">(<span class="type">int</span> val)</span>&#123;<span class="built_in">this</span>.val = val;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="title function_">TreeNode</span><span class="params">(<span class="type">int</span> val, TreeNode left, TreeNode right)</span>&#123;</span><br><span class="line"><span class="built_in">this</span>.val = val;</span><br><span class="line"><span class="built_in">this</span>.left = left;</span><br><span class="line"><span class="built_in">this</span>.right = right;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyUtils</span> &#123;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *二叉树的构建</span></span><br><span class="line"><span class="comment"> * int[] -&gt; 二叉树</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title function_">buildTree</span><span class="params">(Integer[] arr)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> buildTreeHelper(arr, <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title function_">buildTreeHelper</span><span class="params">(Integer[] arr, Integer index)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (index &gt;= arr.length || arr[index] == <span class="literal">null</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(arr[index]);</span><br><span class="line"></span><br><span class="line">        node.left = buildTreeHelper(arr, <span class="number">2</span> * index + <span class="number">1</span>);</span><br><span class="line">        node.right = buildTreeHelper(arr, <span class="number">2</span> * index + <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> node;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">levelOrder</span><span class="params">(TreeNode root)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (root == <span class="literal">null</span>) <span class="keyword">return</span>;</span><br><span class="line">        </span><br><span class="line">        Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">        queue.offer(root);</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">            <span class="type">int</span> <span class="variable">levelSize</span> <span class="operator">=</span> queue.size();</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; levelSize; i++) &#123;</span><br><span class="line">                <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">                System.out.print(node.val + <span class="string">&quot; &quot;</span>);</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> (node.left != <span class="literal">null</span>) queue.offer(node.left);</span><br><span class="line">                <span class="keyword">if</span> (node.right != <span class="literal">null</span>) queue.offer(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">            System.out.println();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><h2 id="总结-v24">总结</h2>]]></content>
+    
+    
+    <summary type="html">【算法】从中序与后序遍历序列构造二叉树106</summary>
     
     
     
