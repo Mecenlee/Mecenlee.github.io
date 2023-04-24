@@ -6,7 +6,7 @@
   <link href="http://lmc.pub/atom.xml" rel="self"/>
   
   <link href="http://lmc.pub/"/>
-  <updated>2023-04-24T14:40:43.288Z</updated>
+  <updated>2023-04-24T14:41:39.392Z</updated>
   <id>http://lmc.pub/</id>
   
   <author>
@@ -18,10 +18,10 @@
   
   <entry>
     <title></title>
-    <link href="http://lmc.pub/posts/0.html"/>
-    <id>http://lmc.pub/posts/0.html</id>
+    <link href="http://lmc.pub/posts/1.html"/>
+    <id>http://lmc.pub/posts/1.html</id>
     <published>2023-04-24T14:40:12.171Z</published>
-    <updated>2023-04-24T14:40:43.288Z</updated>
+    <updated>2023-04-24T14:41:39.392Z</updated>
     
     <content type="html"><![CDATA[<h1>你好啊</h1><p>我想这个文件不影响那个个人博客，但是可以存在就可以了</p>]]></content>
     
@@ -160,7 +160,7 @@
     <published>2023-04-14T07:54:14.000Z</published>
     <updated>2023-04-24T13:10:01.577Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v15">描述</h2><p>在做项目的时候，有时候在xml中定义了一个控件加了id。但是去java文件中访问不了。现实爆红，找不到。</p><h2 id="分析-v15">分析</h2><p>AS缓存没缓过来。</p><p>比如你的AS上次没关，然后现在刚打开写。</p><p>就很有可能出现这种情况。</p><h2 id="实现-v14">实现</h2><p>重启一下AS就好了</p><p>或者直接运行一下</p><h2 id="总结-v15">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v15">描述</h2><p>在做项目的时候，有时候在xml中定义了一个控件加了id。但是去java文件中访问不了。现实爆红，找不到。</p><h2 id="分析-v15">分析</h2><p>AS缓存没缓过来。</p><p>比如你的AS上次没关，然后现在刚打开写。</p><p>就很有可能出现这种情况。</p><h2 id="实现-v14">实现</h2><p>重启一下AS就好了</p><p>或者直接运行一下</p><h2 id="总结-v16">总结</h2>]]></content>
     
     
     <summary type="html">【Bug】AS在java文件中无法拿到xml中一个id控件</summary>
@@ -202,7 +202,7 @@
     <published>2023-04-12T22:31:17.000Z</published>
     <updated>2023-04-24T13:10:01.554Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v8">描述</h2><h2 id="分析-v8">分析</h2><h2 id="实现-v8">实现</h2><h2 id="总结-v8">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v9">描述</h2><h2 id="分析-v9">分析</h2><h2 id="实现-v9">实现</h2><h2 id="总结-v9">总结</h2>]]></content>
     
     
     <summary type="html">【算法】将有序数组转换为二叉搜索树108</summary>
@@ -223,7 +223,7 @@
     <published>2023-04-12T22:30:36.000Z</published>
     <updated>2023-04-24T13:10:01.548Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v5">描述</h2><h2 id="分析-v5">分析</h2><h2 id="实现-v5">实现</h2><h2 id="总结-v5">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v10">描述</h2><h2 id="分析-v10">分析</h2><h2 id="实现-v10">实现</h2><h2 id="总结-v10">总结</h2>]]></content>
     
     
     <summary type="html">【算法】修剪二叉搜索树669</summary>
@@ -244,7 +244,7 @@
     <published>2023-04-12T22:29:54.000Z</published>
     <updated>2023-04-24T13:10:01.552Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v6">描述</h2><h2 id="分析-v6">分析</h2><h2 id="实现-v6">实现</h2><h2 id="总结-v6">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v7">描述</h2><h2 id="分析-v7">分析</h2><h2 id="实现-v7">实现</h2><h2 id="总结-v7">总结</h2>]]></content>
     
     
     <summary type="html">【算法】删除二叉搜索树中的节点450</summary>
@@ -265,7 +265,7 @@
     <published>2023-04-12T22:29:20.000Z</published>
     <updated>2023-04-24T13:10:01.541Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述">描述</h2><h2 id="分析">分析</h2><h2 id="实现">实现</h2><h2 id="总结">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v2">描述</h2><h2 id="分析-v2">分析</h2><h2 id="实现-v2">实现</h2><h2 id="总结-v2">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉搜索树的插入操作701</summary>
@@ -286,7 +286,7 @@
     <published>2023-04-12T22:28:59.000Z</published>
     <updated>2023-04-24T13:10:01.545Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v3">描述</h2><h2 id="分析-v3">分析</h2><h2 id="实现-v3">实现</h2><h2 id="总结-v3">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v4">描述</h2><h2 id="分析-v4">分析</h2><h2 id="实现-v4">实现</h2><h2 id="总结-v4">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉搜索树的最近公共祖先235</summary>
@@ -307,7 +307,7 @@
     <published>2023-04-12T22:28:34.000Z</published>
     <updated>2023-04-24T13:10:01.547Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v4">描述</h2><h2 id="分析-v4">分析</h2><h2 id="实现-v4">实现</h2><h2 id="总结-v4">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v5">描述</h2><h2 id="分析-v5">分析</h2><h2 id="实现-v5">实现</h2><h2 id="总结-v5">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉树的最近公共祖先236</summary>
@@ -328,7 +328,7 @@
     <published>2023-04-12T22:27:56.000Z</published>
     <updated>2023-04-24T13:10:01.537Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v9">描述</h2><h2 id="分析-v9">分析</h2><h2 id="实现-v9">实现</h2><h2 id="总结-v9">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述">描述</h2><h2 id="分析">分析</h2><h2 id="实现">实现</h2><h2 id="总结">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉搜索树中的众数501</summary>
@@ -349,7 +349,7 @@
     <published>2023-04-12T22:27:22.000Z</published>
     <updated>2023-04-24T13:10:01.543Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v13">描述</h2><h2 id="分析-v13">分析</h2><h2 id="实现-v13">实现</h2><h2 id="总结-v13">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v3">描述</h2><h2 id="分析-v3">分析</h2><h2 id="实现-v3">实现</h2><h2 id="总结-v3">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉搜索树的最小绝对差530</summary>
@@ -391,7 +391,7 @@
     <published>2023-04-12T22:26:10.000Z</published>
     <updated>2023-04-24T13:10:01.539Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v2">描述</h2><h3 id="djoa">djoa</h3><h3 id="djao">djao</h3><h4 id="josa">josa</h4><h2 id="分析-v2">分析</h2><h2 id="实现-v2">实现</h2><h2 id="总结-v2">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v6">描述</h2><h3 id="djoa">djoa</h3><h3 id="djao">djao</h3><h4 id="josa">josa</h4><h2 id="分析-v6">分析</h2><h2 id="实现-v6">实现</h2><h2 id="总结-v6">总结</h2>]]></content>
     
     
     <summary type="html">【算法】二叉搜索树中的搜索700</summary>
@@ -412,7 +412,7 @@
     <published>2023-04-12T22:25:30.000Z</published>
     <updated>2023-04-24T13:10:01.551Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v7">描述</h2><h2 id="分析-v7">分析</h2><h2 id="实现-v7">实现</h2><h2 id="总结-v7">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v8">描述</h2><h2 id="分析-v8">分析</h2><h2 id="实现-v8">实现</h2><h2 id="总结-v8">总结</h2>]]></content>
     
     
     <summary type="html">【算法】合并二叉树617</summary>
