@@ -2,11 +2,11 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>LMC_Blog</title>
   
-  <subtitle>MyOuterBrain</subtitle>
+  
   <link href="http://lmc.pub/atom.xml" rel="self"/>
   
   <link href="http://lmc.pub/"/>
-  <updated>2023-04-24T15:34:08.932Z</updated>
+  <updated>2023-05-26T16:13:27.987Z</updated>
   <id>http://lmc.pub/</id>
   
   <author>
@@ -20,15 +20,20 @@
     <title></title>
     <link href="http://lmc.pub/posts/0.html"/>
     <id>http://lmc.pub/posts/0.html</id>
-    <published>2023-04-24T15:33:54.553Z</published>
-    <updated>2023-04-24T15:34:08.932Z</updated>
+    <published>2023-05-26T16:10:43.563Z</published>
+    <updated>2023-05-26T16:13:27.987Z</updated>
     
-    <content type="html"><![CDATA[<h1>你好。我是test</h1>]]></content>
+    <content type="html"><![CDATA[<ul><li>[ ] 发现界面轮播图</li><li>[ ] 下面的<code>直播</code>去掉</li><li>[ ] 主题色换一个</li><li>[ ]</li></ul>]]></content>
     
     
       
       
-    <summary type="html">&lt;h1&gt;你好。我是test&lt;/h1&gt;
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;[ ] 发现界面轮播图&lt;/li&gt;
+&lt;li&gt;[ ] 下面的&lt;code&gt;直播&lt;/code&gt;去掉&lt;/li&gt;
+&lt;li&gt;[ ] 主题色换一个&lt;/li&gt;
+&lt;li&gt;[ ]&lt;/li&gt;
+&lt;/ul&gt;
 </summary>
       
     
@@ -38,131 +43,104 @@
   </entry>
   
   <entry>
-    <title>【JavaSE】static关键字</title>
-    <link href="http://lmc.pub/posts/1191355689.html"/>
-    <id>http://lmc.pub/posts/1191355689.html</id>
-    <published>2023-04-16T04:13:46.000Z</published>
-    <updated>2023-04-24T13:10:01.590Z</updated>
+    <title>【Android】软件架构模式</title>
+    <link href="http://lmc.pub/posts/2642054592.html"/>
+    <id>http://lmc.pub/posts/2642054592.html</id>
+    <published>2023-05-26T11:00:51.000Z</published>
+    <updated>2023-05-26T11:35:49.365Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="介绍-v2">介绍</h2><p>static 是 Java 里面的一个关键字，我们在开发的时候，如果希望通过不创建一个对象而访问某个类的成员就会用这个关键字去修饰。</p><h2 id="静态变量">静态变量</h2><p>也叫类变量。</p><p>只属于类，是所有这个类的对象所共享的。</p><h2 id="静态方法">静态方法</h2><p>类方法。</p><p>里面只能调用静态的变量或者方法。</p><p>想不创建对象就使用某个方法就可以在他前面加上这个关键字。</p><h2 id="静态代码块">静态代码块</h2><p>类加载的时候就直接执行</p>]]></content>
-    
-    
-    <summary type="html">【JavaSE】static关键字</summary>
+    <content type="html"><![CDATA[<h2 id="类型">类型</h2><p>MVCMVP MVVMMVI</p><p>（先后循序）</p><h2 id="MVC">MVC</h2><p>Model：数据类型和堆数据类型的操作：增删改查</p><p>View：视图，展示数据和接受用户交互</p><p>Controller：Model和View的连接器。接受View的要求转交给Model去处理。</p><p>优点：为了让业务（Model）和视图（View）代码分离，实现解耦。</p><p>缺点：</p><ol><li>Model和View是可以直接通信的</li><li>Controler太臃肿</li></ol><h2 id="MVP">MVP</h2><p>Presenter代替了Controller</p><p>MVC是View和Model直接通信</p><p>MVP是让P在中间双向同心，这样MV就不需要接触。</p><p>全部给P中转。</p><p>优点：</p><ol><li>解决MVC的C太臃肿</li><li>M和V不直接通信，进一步降低耦合</li></ol><h2 id="MVVM">MVVM</h2><p>把P换成了ViewModel</p><p>采用<strong>数据绑定</strong>。</p><p>View的变动自动反应再ViewModel上。</p><p>单项绑定：只有VM变了，View才变</p><p>双向绑定：V和VM同步</p><p>优点：</p><ol><li>通过数据绑定简化代码，无需手动同步View和Model之间的数据</li><li>提高效率，降低出错率</li><li>View和ViewModel直接通信自动，降低耦合度提高代码可维护性和可测试性</li></ol><h2 id="MVI">MVI</h2><p>将app状态管理集中再Intent中</p><p>View发出意图，意图转为状态存在Model中。</p><p>然后Model将心状态推送回View来更新用户界面。</p>]]></content>
     
     
-    
-    <category term="Java" scheme="http://lmc.pub/categories/Java/"/>
-    
-    <category term="JavaSE" scheme="http://lmc.pub/categories/Java/JavaSE/"/>
+    <summary type="html">【Android】软件架构模式</summary>
     
     
-    <category term="JavaSE" scheme="http://lmc.pub/tags/JavaSE/"/>
+    
+    <category term="Android" scheme="http://lmc.pub/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://lmc.pub/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>【JavaSE】public、protected、default、private的区别</title>
-    <link href="http://lmc.pub/posts/3219995583.html"/>
-    <id>http://lmc.pub/posts/3219995583.html</id>
-    <published>2023-04-16T02:02:31.000Z</published>
-    <updated>2023-04-24T13:10:01.586Z</updated>
+    <title>【工具-Git】Git版本控制</title>
+    <link href="http://lmc.pub/posts/2621232213.html"/>
+    <id>http://lmc.pub/posts/2621232213.html</id>
+    <published>2023-05-26T08:32:08.000Z</published>
+    <updated>2023-05-26T09:09:28.069Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="解释">解释</h2><table><thead><tr><th>访问修饰符</th><th>访问原则</th></tr></thead><tbody><tr><td>private</td><td>同类</td></tr><tr><td>默认</td><td>同包</td></tr><tr><td>protect</td><td>同包 + 子类（？）</td></tr><tr><td>public</td><td>任何地方</td></tr></tbody></table><p>注意：</p><ol><li>对于类来说，只有默认和public</li><li>上面这些都是对于类成员说的。</li><li>如果不涉及继承，应用上只有三种（private，默认/protect,public）</li><li>如果是继承访问，那个protect才有用处。</li></ol><hr><p>对象访问</p><table><thead><tr><th>修饰符</th><th>对象访问范围</th></tr></thead><tbody><tr><td>private</td><td>同类</td></tr><tr><td>默认/protect</td><td>同包</td></tr><tr><td>public</td><td>任何地方</td></tr></tbody></table><blockquote><p>也就是：在new一个对象，然后通过这个对象去调用被访问修饰符修饰过的方法的时候。</p><p>默认和protect是一样的。</p><p>就是同包以内都可以访问到。</p><p>这种访问方式，涉及子类，只用看：在不在同一个包？</p><p>默认：同包子类（Y）不同包子类（X）</p><p>protect：同包子类（Y）不同包子类（X）</p><p>在就是按那个来，这种访问方式，这两个是一致的。</p></blockquote><p>继承访问</p><table><thead><tr><th>范围</th><th>private</th><th>默认</th><th>protect</th><th>public</th></tr></thead><tbody><tr><td>同类</td><td>Y</td><td>Y</td><td>Y</td><td>Y</td></tr><tr><td>同包子类</td><td>X</td><td>Y</td><td>Y</td><td>Y</td></tr><tr><td>不同包子类</td><td>X</td><td>X</td><td>Y</td><td>Y</td></tr></tbody></table><blockquote><p>这种就是，涉及继承。</p><p>访问不是new那种，而是直接一个类里面的方法直接调用你被修饰符修饰的方法。</p><p>这种情况，默认 和 protect 就不一样。</p><p>这个时候，protect 的范围成了：同包 + 所有子类。</p><p>它的所有子类可以访问，不是new一个对象，然后通过对象去访问的，而是直接访问的。</p><p>能证明这点的就是，不同包的子类。</p><p>能用这种方式，访问protect，但是访问不了默认。</p></blockquote><hr><p>这个地方，我发现很多同学其实是模糊的，根本没理解清除。</p><p>所以最后结论是：</p><p>如果是new对象那种访问，那<code>默认</code>和<code>protect</code>是一样的，==都是只能同包访问==。</p><p>如果是继承那种直接调方法访问，那<code>默认</code>还是只能访问同包的，但是<code>protect</code>可以在同包 + 所有子类访问。</p><p>所以，我们什么时候用protect？</p><p>答案是：在继承的场景下，只想让一个方法访问，同时不想让这个包以外的访问。</p>]]></content>
-    
-    
-    <summary type="html">你果然理解错了protected访问修饰符。</summary>
+    <content type="html"><![CDATA[<h2 id="工作Git流程">工作Git流程</h2><p>命令行版本：</p><ul><li><p><strong>克隆远程仓库</strong>：当你加入一个新项目时，需要将远程仓库克隆到本地。可以使用 <code>git clone</code> 命令完成此操作。</p></li><li><p><strong>创建新分支</strong>：当你需要开发一个新功能或修复一个问题时，可以创建一个新分支来进行开发。可以使用 <code>git branch</code> 命令创建新分支，并使用 <code>git checkout</code> 命令切换到新分支。</p></li><li><p><strong>添加和提交更改</strong>：当你完成了一部分开发工作时，需要将更改添加到暂存区并提交到本地仓库。可以使用 <code>git add</code> 命令添加更改，使用 <code>git commit</code> 命令提交更改。</p></li><li><p><strong>推送和拉取更改</strong>：当你完成了一部分开发工作并希望与团队分享时，需要将更改推送到远程仓库。同时，你也需要从远程仓库拉取其他人的更改并合并到本地。可以使用 <code>git push</code> 命令推送更改，使用 <code>git pull</code> 命令拉取并合并更改。</p></li><li><p><strong>解决冲突</strong>：当你从远程仓库拉取更改时，可能会遇到合并冲突。此时，需要手动编辑冲突文件，选择要保留的更改，并提交解决冲突后的文件。</p></li><li><p><strong>合并分支</strong>：当你完成了一个功能或修复了一个问题时，需要将更改合并回主分支。可以使用 <code>git merge</code> 命令合并分支。</p></li></ul><p>Android Studio版本：</p><ul><li><p><strong>克隆远程仓库</strong>：在 Android Studio 的欢迎界面中，选择 “Get from Version Control”，然后选择 “Git”。输入远程仓库的 URL 和本地存储路径，然后点击 “Clone”。</p></li><li><p><strong>创建新分支</strong>：在 Android Studio 的底部状态栏中，点击当前分支名称，然后选择 “New Branch”。输入新分支的名称，然后点击 “Create”。</p></li><li><p><strong>添加和提交更改</strong>：在 Android Studio 的右侧边栏中，选择 “Commit” 标签页。在左侧窗格中选择要提交的文件，在右侧窗格中编写提交信息，然后点击 “Commit”。</p></li><li><p><strong>推送和拉取更改</strong>：在 Android Studio 的底部状态栏中，点击 “Git: [branch name]”，然后选择 “Push” 或 “Pull”。</p></li><li><p><strong>解决冲突</strong>：当你从远程仓库拉取更改时，如果遇到合并冲突，Android Studio 会弹出一个对话框提示你解决冲突。你可以点击 “Merge” 按钮打开合并工具，在其中选择要保留的更改。</p></li><li><p><strong>合并分支</strong>：在 Android Studio 的底部状态栏中，点击当前分支名称，然后选择要合并到的目标分支。在弹出的菜单中选择 “Merge into Current”。</p></li></ul><h2 id="什么是版本控制？">什么是版本控制？</h2><p>一种记录文件内容变化的工具。</p><p>我们可以查阅和回滚到这个文件内容变更的任何时间点，只要有过记录。</p><p>就像哆啦A梦的时光机。</p><h2 id="Git指令有哪些？">Git指令有哪些？</h2><ul><li><code>git clone</code>：克隆远程仓库到本地。</li><li><code>git status</code>：查看当前仓库状态。</li><li><code>git add</code>：将更改添加到暂存区。</li><li><code>git commit</code>：提交更改到本地仓库。</li><li><code>git push</code>：将本地更改推送到远程仓库。</li><li><code>git pull</code>：从远程仓库拉取并合并更改。</li><li><code>git branch</code>：查看和管理分支。</li><li><code>git checkout</code>：切换分支或恢复工作树文件。</li><li><code>git merge</code>：合并分支。</li><li><code>git log</code>：查看提交历史记录。</li></ul><h2 id="git-rebase-和git-merge的区别">git rebase 和git merge的区别</h2><p><code>git merge</code> 和 <code>git rebase</code> 都是用于合并分支的命令，但它们的工作方式不同。</p><p><code>git merge</code> 会创建一个新的提交，该提交包含两个分支的所有更改。这种方法保留了完整的提交历史记录，并且可以清楚地看到分支合并的时间点。但是，如果经常合并分支，提交历史记录可能会变得复杂。</p><p><code>git rebase</code> 通过重新应用一个分支上的所有更改来整合两个分支。这样做会创建一个线性的提交历史记录，使其更容易阅读。但是，这种方法会改变提交历史记录，因此需要谨慎使用。</p><p>总之，<code>git merge</code> 保留了完整的提交历史记录，而 <code>git rebase</code> 则创建了一个线性的提交历史记录。选择哪种方法取决于你对提交历史记录的需求。</p><blockquote><p>比如公司开发，我们提交功能模块到主线用的都是merge。</p><p>但是我们自己开发模块用的分支在提交之前可以rebase合并好然后再merge过去。</p></blockquote><h2 id="Git把别人分支的一次提交合并到自己分支？">Git把别人分支的一次提交合并到自己分支？</h2><p>如果你想将别人分支上的一次提交合并到自己的分支，可以使用 <code>git cherry-pick</code> 命令。这个命令允许你选择一个提交并将其应用到当前分支。</p><p>例如，如果你想将 <code>other-branch</code> 分支上的 <code>commit-hash</code> 提交合并到当前分支，可以使用以下命令：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git cherry-pick commit-hash</span><br></pre></td></tr></table></figure><p>这会在当前分支上创建一个新的提交，该提交包含 <code>other-branch</code> 分支上 <code>commit-hash</code> 提交的所有更改。</p><p>请注意，在执行 <code>git cherry-pick</code> 命令之前，你需要先切换到要应用提交的目标分支。此外，如果在应用提交时遇到冲突，需要手动解决冲突。</p><h2 id="如何撤销更改？"><strong>如何撤销更改？</strong></h2><p>Git 提供了多种撤销更改的方法，包括使用 <code>git reset</code> 命令撤销提交，使用 <code>git checkout</code> 命令撤销工作区更改，以及使用 <code>git revert</code> 命令撤销已经推送到远程仓库的更改</p>]]></content>
     
     
-    
-    <category term="Java" scheme="http://lmc.pub/categories/Java/"/>
-    
-    <category term="JavaSE" scheme="http://lmc.pub/categories/Java/JavaSE/"/>
-    
-    
-    <category term="JavaSE" scheme="http://lmc.pub/tags/JavaSE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【JavaSE】JVM,JRE,JDK之间的关系</title>
-    <link href="http://lmc.pub/posts/1519430248.html"/>
-    <id>http://lmc.pub/posts/1519430248.html</id>
-    <published>2023-04-16T01:51:08.000Z</published>
-    <updated>2023-04-24T13:10:01.580Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="介绍">介绍</h2><p>JVM：Java虚拟机。</p><p>让Java一次编译到处运行的东西。</p><hr><p>JRE：Java运行环境。</p><p>有这个才能运行Java程序。</p><p>JRE = JVM + Java核心类库</p><hr><p>JDK：Java开发工具包。</p><p>开发Java的一套工具。</p><p>JDK = JRE + Java小工具（java，javac，javaw）</p><h2 id="图解">图解</h2><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230416100130461.png" alt="image-20230416100130461"></p>]]></content>
-    
-    
-    <summary type="html">【JavaSE】JVM,JRE,JDK之间的关系</summary>
+    <summary type="html">【工具-Git】Git版本控制</summary>
     
     
     
-    <category term="Java" scheme="http://lmc.pub/categories/Java/"/>
-    
-    <category term="JavaSE" scheme="http://lmc.pub/categories/Java/JavaSE/"/>
+    <category term="工具" scheme="http://lmc.pub/categories/%E5%B7%A5%E5%85%B7/"/>
     
     
-    <category term="JavaSE" scheme="http://lmc.pub/tags/JavaSE/"/>
+    <category term="工具" scheme="http://lmc.pub/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="Git" scheme="http://lmc.pub/tags/Git/"/>
+    
+    <category term="面试" scheme="http://lmc.pub/tags/%E9%9D%A2%E8%AF%95/"/>
     
   </entry>
   
   <entry>
-    <title>【JavaSE】Java内存模型</title>
-    <link href="http://lmc.pub/posts/4108216215.html"/>
-    <id>http://lmc.pub/posts/4108216215.html</id>
-    <published>2023-04-16T00:10:28.000Z</published>
-    <updated>2023-04-24T13:10:01.583Z</updated>
+    <title>Android求职面经</title>
+    <link href="http://lmc.pub/posts/3219681382.html"/>
+    <id>http://lmc.pub/posts/3219681382.html</id>
+    <published>2023-05-26T06:46:22.000Z</published>
+    <updated>2023-05-26T11:48:24.971Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="JVM">JVM</h2><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230416081803876.png" alt="image-20230416081803876"></p><p>分为3个部分：栈，堆，方法区。</p><hr><p><strong>方法区</strong>：类加载信息，常量，静态变量</p><p><strong>堆</strong>：放对象的地方。在JVM启动时创建。这里对象有类属性但没有类里卖弄的哪些方法。</p><p>栈：放基本数据类型。每个线程一个栈，负责方法调用存储一些局部变量，方法参数返回值什么的。方法被调用的时候就有一个栈帧，这里面放说的那些数据。然后调用方法，栈帧入栈，结束调用就出栈。</p><blockquote><p>无论是普通类型的变量还是引用类型的变量(俗称实例)，都可以作为局部变量，他们都可以出现在栈中。</p><p>只不过普通类型的变量在栈中直接保存它所对应的值，而引用类型的变量保存的是一个指向堆区的指针，通过这个指针，就可以找到这个实例在堆区对应的对象。</p><p>因此，普通类型变量只在栈区占用一块内存，而引用类型变量要在栈区和堆区各占一块内存。</p></blockquote><h2 id="什么是实例，什么是对象？">什么是实例，什么是对象？</h2><p>Object o = new Object();</p><p>左边的是实例，在栈中。</p><p>右边的是对象在堆中。</p><p>操作实例实际上是通过实例的指针间接操作对象。多个实例可以指向同一个对象。</p><h2 id="栈中的数据和堆中的数据销毁并不是同步的。">栈中的数据和堆中的数据销毁并不是同步的。</h2><p>方法一旦结束，栈中的局部变量立即销毁，但是堆中对象不一定销毁。</p><p>因为可能有其他变量也指向了这个对象，直到栈中没有变量指向堆中的对象时，它才销毁。</p><p>而且还不是马上销毁，要等垃圾回收扫描时才可以被销毁。</p><p>每一个应用程序都对应唯一的一个JVM实例，每一个JVM实例都有自己的内存区域，</p><hr><p>类的成员变量在不同对象中各不相同，都有自己的存储空间(成员变量在堆中的对象中)。而类的方法却是该类的所有对象共享的，只有一套。</p><p>对象使用方法的时候方法才被压入栈，方法不使用则不占用内存。</p><hr><p>栈有一个很重要的特性：<strong>栈中的数据可以共享</strong>。</p><p>当我们定义了int i = 40;，再定义int i0 = 40;这时候会自动检查栈中是否有40这个数据，如果有，i0会直接指向i的40，不会再添加一个新的40。</p><h2 id="常量池技术">常量池技术</h2><p>基础数据类型和基础数据类型的包装类</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;    </span><br><span class="line">        objPoolTest();</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">objPoolTest</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">40</span>;</span><br><span class="line">        <span class="type">int</span> <span class="variable">i0</span> <span class="operator">=</span> <span class="number">40</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">i1</span> <span class="operator">=</span> <span class="number">40</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">i2</span> <span class="operator">=</span> <span class="number">40</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">i3</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">i4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">40</span>);</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">i5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">40</span>);</span><br><span class="line">        <span class="type">Integer</span> <span class="variable">i6</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Integer</span>(<span class="number">0</span>);</span><br><span class="line">        Double d1=<span class="number">1.0</span>;</span><br><span class="line">        Double d2=<span class="number">1.0</span>;</span><br><span class="line">        </span><br><span class="line">        System.out.println(<span class="string">&quot;i=i0\t&quot;</span> + (i == i0));</span><br><span class="line">        System.out.println(<span class="string">&quot;i1=i2\t&quot;</span> + (i1 == i2));</span><br><span class="line">        System.out.println(<span class="string">&quot;i1=i2+i3\t&quot;</span> + (i1 == i2 + i3));</span><br><span class="line">        System.out.println(<span class="string">&quot;i4=i5\t&quot;</span> + (i4 == i5));</span><br><span class="line">        System.out.println(<span class="string">&quot;i4=i5+i6\t&quot;</span> + (i4 == i5 + i6));    </span><br><span class="line">        System.out.println(<span class="string">&quot;d1=d2\t&quot;</span> + (d1==d2)); </span><br><span class="line">        </span><br><span class="line">        System.out.println();        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">i=i0    <span class="literal">true</span></span><br><span class="line">i1=i2   <span class="literal">true</span></span><br><span class="line">i1=i2+i3        <span class="literal">true</span></span><br><span class="line">i4=i5   <span class="literal">false</span></span><br><span class="line">i4=i5+i6        <span class="literal">true</span></span><br><span class="line">d1=d2   <span class="literal">false</span></span><br></pre></td></tr></table></figure><p>i和i0均是普通类型(int)的变量，所以数据直接存储在栈中，而栈有一个很重要的特性：<strong>栈中的数据可以共享</strong>。当我们定义了int i = 40;，再定义int i0 = 40;这时候会自动检查栈中是否有40这个数据，如果有，i0会直接指向i的40，不会再添加一个新的40。</p><p>1和i2均是引用类型，在栈中存储指针，因为Integer是包装类。由于Integer包装类实现了常量池技术，因此i1、i2的40均是从常量池中获取的，均指向同一个地址，因此i1=12。</p><p>****4.i****4和i5均是引用类型，在栈中存储指针，因为Integer是包装类。但是由于他们各自都是new出来的，因此不再从常量池寻找数据，而是从堆中各自new一个对象，然后各自保存指向对象的指针，所以i4和i5不相等，因为他们所存指针不同，所指向对象不同。</p><p>1和d2均是引用类型，在栈中存储指针，因为Double是包装类。但Double包装类没有实现常量池技术，因此Doubled1=1.0;相当于Double d1=new Double(1.0);，是从堆new一个对象，d2同理。因此d1和d2存放的指针不同，指向的对象不同，所以不相等。</p><p>以上提到的几种基本类型包装类均实现了常量池技术，但他们维护的常量仅仅是【-128至127】这个范围内的常量，如果常量值超过这个范围，就会从堆中创建对象，不再从常量池中取。比如，把上边例子改成Integer i1 = 400; Integer i2 = 400;，很明显超过了127，无法从常量池获取常量，就要从堆中new新的Integer对象，这时i1和i2就不相等了。</p><p>String类型也实现了常量池技术，但是稍微有点不同。String型是先检测常量池中有没有对应字符串，如果有，则取出来；如果没有，则把当前的添加进去。</p><h2 id="创建对象内存分配流程">创建对象内存分配流程</h2><ol><li>方法区：加载类信息。</li><li>堆：初始化对象。（默认初始化，显式初始化，构造器初始化）</li><li>栈：把队中对象的地址赋给栈中变量名。</li></ol>]]></content>
-    
-    
-    <summary type="html">【JavaSE】Java内存分配机制</summary>
+    <content type="html"><![CDATA[<h1>Android 面试</h1><h2 id="一，常识">一，常识</h2><p>面试时间：</p><pre><code>- 一面 30min- 二面 45min</code></pre><p>流程：</p><p>自我介绍 -》项目 -&gt; Android -&gt; Java</p><p>塑造你的个人形象：强（投了多家大厂，不要透露过多被拒情况）但专一（最欣赏对方公司），强调自己的学习能力和对岗位工作的兴趣。</p><p>一般一面刷掉背景与业务不符或专业知识很欠缺的，二面细问项目经历和专业问题（最筛人），三面和HR面刷人应该不多（仅了解阿里）。</p><p>问及其它厂的投递情况和进展，如实回答，切不能让对方感觉你只有这一家有希望，否则必养鱼。</p><p>每轮都有面评，最后按排序给oc（HR面挂的可能原因），HR面提前了解公司和部门方便舔。</p><p>建议自己仔细思考一下自己的定位、想得到什么、各类话术等等，多做些预案。</p><p>测开很多要求会低一些，没有项目背景的可以考虑。运维也可以考虑。</p><p>塑造你的个人形象：强（投了多家大厂，不要透露过多被拒情况）但专一（最欣赏对方公司），强调自己的学习能力和对岗位工作的兴趣。</p><p>不要怀疑面试官的专业性（特别是二面及之后），不会的就说不会，然后明确表示接下来的答案是猜的。</p><p>有的厂会让选意向，尽量不要选“全部意向均可”，有条件可以了解下各个部门和城市，没条件也尽量选一个，否则可能泡池子</p><p><strong>日常实习要写立即到岗并尽量写长实习时间</strong></p><h2 id="二，面试题">二，面试题</h2><h3 id="项目">项目</h3><ul><li><p>[ ] 详细介绍项目</p></li><li><p>[ ] 最近做的项目是哪个，用到的技术栈和语言</p></li><li><p>[ ] 团队开发扮演的角色，开发中遇到的问题，项目的代码量，如何分工，团队开发流程</p></li><li><p>[ ] 项目中怎么用的设计模式</p></li><li><p>[ ] 做项目的时候有没有遇到过对当时的你来说很难得东西</p></li><li><p>[ ] 介绍项目中的难点</p></li><li><p>[ ] 怎么遇到的</p></li><li><p>[ ] 怎么解决的</p></li><li><p>[ ] 哪些方式解决问题</p></li><li><p>[ ] 项目过程中最有成就感的项目？</p></li><li><p>[ ] 项目中遇到了什么难题，解决的过程？</p></li></ul><h3 id="Android">Android</h3><ul><li>[ ] 安卓有哪几种页面通讯的方式</li></ul><h4 id="Handler">Handler</h4><ul><li><p>[ ] Handler机制</p></li><li><p>[ ] Handler死循环为什么没有ANR</p></li><li><p>[ ] Handler延迟触发是怎么实现的(我说我不是很确定，然后拿Alarm的消息队列的机制来类比，就猜对了。)</p></li><li><p>[ ] 讲讲Message和消息队列</p></li><li><p>[ ] Binder是怎么实现的</p></li><li><p>[ ] handlerMessage什么时候会发生内存泄漏（要怎么预防）</p></li><li><p>[ ] handler和Activity两者是怎么相互引用的？</p></li><li><p>[ ] handler和Activity在链表中的顺序是怎么样的？</p></li></ul><h4 id="Activity">Activity</h4><ul><li><p>[ ] Activity生命周期</p></li><li><p>[ ] ActivityA启动后启动ActivityB的生命周期(问的很细，问了每个状态下的A和B可不可见等等这些)</p></li><li><p>[ ] Activity启动模式</p></li><li><p>[ ] Restart和正常的启动的区别</p></li><li><p>[ ] Activity有几种启动方式？</p></li><li><p>[ ] fragment的构造函数初始化，navigate的跳转。两种方式理解</p></li><li><p>[ ] 可以异步加载fragment吗，答案：可以。</p></li><li><p>[ ] serialVersionUID是否了解</p></li></ul><h4 id="UI-布局-VIew">UI/布局/VIew</h4><ul><li><p>[ ] 常见的布局</p></li><li><p>[ ] 约束布局</p></li><li><p>[ ] view的绘制</p></li><li><p>[ ] 自定义view</p></li><li><p>[ ] compose和view写法的优缺点</p></li><li><p>[ ] 使用recycleview碰到的问题</p></li></ul><h4 id="开源框架">开源框架</h4><ul><li><p>[ ] retrofit使用什么设计模型搭建的？</p></li><li><p>[ ] okhttp对比原生的网络请求的区别？</p></li><li><p>[ ] glide的缓存加载机制</p></li><li><p>[ ] 安卓glide中与生命周期的关系</p></li><li><p>[ ] glide和OkHttp的任务调度是怎么实现的（比如同时发起很多请求）</p></li></ul><h4 id="Android优化">Android优化</h4><ul><li><p>[ ] 事件分发机制</p></li><li><p>[ ] 内存泄漏</p></li></ul><h4 id="JetPack">JetPack</h4><ul><li><p>[ ] jetpack全家桶用过哪些</p></li><li><p>[ ] livedata有什么能力</p></li></ul><h3 id="Java">Java</h3><h4 id="面向对象">面向对象</h4><ul><li><p>[ ] OOP三大特征，分别介绍</p></li><li><p>[ ] 多态有编译期和运行期，介绍一下</p></li><li><p>[ ] Java是值传递还是引用传递</p></li><li><p>[ ] Java访问权限以及这些访问权限的区别，排序</p></li><li><p>[ ] 抽象类和类的区别</p></li><li><p>[ ] 抽象类和接口的区别</p></li><li><p>[ ] StringBuilder和StringBuffer区别</p></li><li><p>[ ] 谈谈try catch</p></li><li><p>[ ] volatile作用和原理 用了就能保证线程安全吗 可以举个例子吗 那怎么保证原子性的操作呢</p></li><li><p>[ ] 谈谈static和final</p></li><li><p>[ ] 四种引用方式：强软弱虚</p></li></ul><h4 id="集合">集合</h4><ul><li><p>[ ] 数组和链表的区别2</p></li><li><p>[ ] hashmap的底层实现，时间复杂度</p></li><li><p>[ ] 谈谈HashMap和LinkedHashMap</p></li><li><p>[ ] hashmap和hashtable的区别？</p></li><li><p>[ ] ArrayList的数据结构实现</p></li><li><p>[ ] wait和sleep的区别</p></li><li><p>[ ] HashSet是线程安全的吗，怎么能获得一个安全的，使用锁的话如何提高效率</p></li><li><p>[ ] arraylist为什么不声明大小</p></li><li><p>[ ] arraylist和vector的区别 有基于arraylist写过安全的容器吗？ 如何实现arraylist的安全呢？ 用线程安全的容器一定能保证线程安全吗？</p></li><li><p>[ ] hashmap在最佳的情况下的时间复杂度？</p></li><li><p>[ ] hashmap在最差情况下的时间复杂度？这时候它是一个什么数据结构？</p></li><li><p>[ ] 如果hashmap线程不安全如何让其变成线程安全？</p></li><li><p>[ ] Map和Set</p></li><li><p>[ ] 继承为什么不能继承 多个类</p></li><li><p>[ ] 为什么不能向下转型</p></li></ul><h4 id="JVM">JVM</h4><ul><li><p>[ ] 内存回收</p></li><li><p>[ ]  GC算法</p></li><li><p>[ ] Full GC和其他GC的区别</p></li><li><p>[ ] 可达性分析是有GC Root，什么东西可以是GC Root</p></li><li><p>[ ] 用过JUC的什么</p></li></ul><h4 id="普通">普通</h4><ul><li><p>[ ] 介绍一下读写锁</p></li><li><p>[ ] 编译流程？</p></li><li><p>[ ] java里的强类型和弱类型</p></li><li><p>[ ] 双亲委派(写一个路径名字一样的String，new String（）会创建自己写的还是系统的)</p></li><li><p>[ ] 受检异常和非受检异常</p></li><li><p>[ ] 抽象类和接口的区别</p></li><li><p>[ ] ==与equals</p></li><li><p>[ ] 深拷贝和浅拷贝区别</p></li><li><p>[ ] 对多线程的理解</p></li></ul><h4 id="Kotlin">Kotlin</h4><ul><li><p>[ ] 作用域函数（应用场景）</p></li><li><p>[ ] 高阶函数（概念）</p></li><li><p>[ ] kotlin和java一块编译碰到啥问题</p></li><li><p>[ ] ::funName 双冒号的写法的理解</p></li><li><p>[ ] 泛型 out in 与Java泛型中的联系和区别</p></li></ul><h3 id="计网">计网</h3><ul><li><p>[ ] 计算机七层模式和四层模型分别介绍一下，有哪些协议路由器和交换机分别在哪一层</p></li><li><p>[ ] ipv4地址空间这么小怎么够用，NAT。用同一个IP怎么区分。</p></li></ul><h4 id="TCP-UDP">TCP/UDP</h4><ul><li><p>[ ] TCP和UDP场景应用</p></li><li><p>[ ] UDP有什么办法可靠吗</p></li><li><p>[ ] UDP有哪些协议</p></li><li><p>[ ] 介绍一下tcp udp区别</p></li><li><p>[ ] 介绍一下tcp三次握手，有什么攻击手段（flooding syn attack)</p></li><li><p>[ ] session key和cookie是什么，两者有啥区别，分别储存在哪里</p></li><li><p>[ ] post请求和get请求有什么区别</p></li><li><p>[ ] tcp的滑动窗口控制协议？</p></li><li><p>[ ] tcp如何实现可靠传输</p></li><li><p>[ ] https 如何加密</p></li><li><p>[ ] 对称加密和非对称加密的区别</p></li><li><p>[ ]  tcp断开为什么需要四次挥手 如何A要断开 B没回复 怎么办？我回复超时重传 面试官追问 如果B一直不回 会无限发下去吗</p></li></ul><h4 id="HTTP-HTTPS">HTTP/HTTPS</h4><ul><li><p>[ ] HTTP的请求包含什么内容</p></li><li><p>[ ] HTTP的数据体包含什么属性</p></li><li><p>[ ] HTTP是不是长连接</p></li><li><p>[ ] http的连接过程以及如何进行攻击</p></li><li><p>[ ] http 1.0 和 2.0</p></li><li><p>[ ] https和http的改进</p></li><li><p>[ ] http状态码</p></li><li><p>[ ] http状态码302和307区别</p></li><li><p>[ ] HTTP有加密吗？</p></li><li><p>[ ] HTTPS的S指的是什么？</p></li><li><p>[ ] TLS/SSL在哪一个阶段发挥它的作用？（三次握手之后）</p></li><li><p>[ ] http 2.0和3.0</p></li><li><p>[ ] dns解析的过程</p></li><li><p>[ ] 应用层协议有哪些</p></li><li><p>[ ] 输入网址到看到页面的整个过程(尽可能的详细, 尽量把知道的协议都说一遍)</p></li></ul><h3 id="OS">OS</h3><h4 id="内存">内存</h4><ul><li><p>[ ] 堆内存和栈内存的区别（内存管理，碎片化）</p></li><li><p>[ ] 虚拟内存相比物理内存有哪些优点</p></li><li><p>[ ]  os为什么设计<strong>虚拟内存</strong></p></li><li><p>[ ] 32位机器的虚拟内存有多大</p></li><li><p>[ ] ipc虚拟内存和智能指针</p></li><li><p>[ ]  内存空间介绍</p></li><li><p>[ ] 共享内存的使用场景</p></li><li><p>[ ] 多线程操作共享内存需要注意什么问题</p></li><li><p>[ ] 内存分页和分段</p></li></ul><h4 id="进程线程">进程线程</h4><ul><li><p>[ ] 进程的几个状态</p></li><li><p>[ ] 什么时候会进入阻塞状态</p></li><li><p>[ ] 进程调度算法有哪些</p></li><li><p>[ ] 线程间资源共享</p></li><li><p>[ ] 线程之间的通讯</p></li><li><p>[ ] 进程通信的方式</p></li><li><p>[ ] 进程线程的区别，如果只有一个打印机，怎么保证只有一个进程访问（patterson算法）</p></li></ul><h4 id="锁">锁</h4><ul><li><p>[ ] 介绍一下死锁</p></li><li><p>[ ] 锁分为哪些种类</p></li><li><p>[ ] 怎么避免死锁,怎么处理这玩意</p></li><li><p>[ ] 说一下互斥锁和信号量</p></li><li><p>[ ] 内核态和用户态</p></li></ul><h3 id="算法">算法</h3><blockquote><p>喜欢问：优化</p></blockquote><ul><li>[ ] 两个栈实现一个队列</li></ul><h4 id="排序">排序</h4><ul><li><p>[ ] 排序算法知道哪些？</p></li><li><p>[ ] 排序，哪些是稳定的，哪些是不稳定的</p></li><li><p>[ ] 快速排序是不是稳定的，为什么</p></li><li><p>[ ] 快排的流程</p></li><li><p>[ ] 快排</p></li><li><p>[ ] 归并排序的过程 复杂度多少（结合过程）</p></li><li><p>[ ] 给升序排列的整数数组，输出每个数字平方后的升序排列数组</p></li><li><p>[ ] 用堆实现小跟堆</p></li><li><p>[ ] 给一个int数，判断是不是回文平方数(既是回文数也可以有一个整数平方根)，禁止使用Math函数</p></li><li><p>[ ] 了解哪些数据结构</p></li><li><p>[ ] 项目中用到哪些</p></li></ul><p>（项目一般都是数组或者链表）树、栈等结构为什么存在</p><ul><li>[ ] 反转链表</li></ul><h4 id="LRU">LRU</h4><ul><li><p>[ ] 第一个是对比如lru算法的情景，用什么数据结构去存储</p></li><li><p>[ ] 手写一个基于读写锁的线程安全的List</p></li></ul><h4 id="遍历">遍历</h4><ul><li><p>[ ] 二叉树的中序遍历</p></li><li><p>[ ] 层序遍历</p></li><li><p>[ ] 图的遍历算法</p></li><li><p>[ ] 树的遍历算法</p></li><li><p>[ ] 反转字符串</p></li><li><p>[ ] 上楼梯动态规划，如果第M阶梯是不能踩的</p></li></ul><h3 id="其他">其他</h3><h4 id="软件架构模式🆗">软件架构模式🆗</h4><ul><li>[x] MVC，MVP，MVVM 各自介绍和区别</li></ul><blockquote><p>MVC：</p><p>Model：数据类型，以及对数据的CRUD</p><p>View：界面展示，用户交互</p><p>Controller：Model和View的中间人</p><p>解决业务界面分析，解耦。但C臃肿</p><p>MVP：</p><p>改C为P，M和V不能直接通信，全部P中转。</p><p>解耦plus，但是P代码量大，部分View功能。</p><p>MVVM：</p><p>用ViewModel代替Presenter，实行数据绑定。</p><p>View变通，ViewModel也变。</p><p>这是单项，双向的。VM变V也变。</p><p>这个减少代码量。</p><p>MVI：V发出意图给Model然后Model新状态给V，实现同步。</p></blockquote><h4 id="设计模式">设计模式</h4><ul><li><p>[ ]  设计模式有什么了解，分别能做什么场景</p></li><li><p>[ ] 单例模式的线程安全问题</p></li><li><p>[ ] 手写单例模式 在项目中用过吗 有什么优劣吗</p></li><li><p>[ ] 单例的生命周期有限制吗</p></li><li><p>[ ] 单例模式的实现方式</p></li><li><p>[ ] 手写单例模式的懒汉式</p></li><li><p>[ ] 写一个单利线程安全且高性能的实例</p></li><li><p>[ ] 观察者模式介绍一下</p></li></ul><h4 id="Git🆗">Git🆗</h4><ul><li>[x] 讲讲git rebase 和git merge的区别</li></ul><blockquote><p>git merge：可以保留完整Git版本合并更改记录</p><p>git rebase：可以保持线性干净的版本控制记录</p><p>在项目开发时,自己开发好模块在准备合并到主branch前自己gitrebase一下，然后再 git merge到主版本</p></blockquote><ul><li>[x] Git指令有哪些</li></ul><blockquote><p>git init：初始化</p><p>git status：看状态</p><p>git log：看提交日志</p><p>git add：添加暂存区</p><p>git commit：添加本地仓库</p><p>git push：同步GitHub</p><p>git clone：新项目进去克隆远程项目到本地</p><p>git pull：拉取远程仓库状态到本地并合并</p><p>git merge：合并分支并保留完整记录</p><p>git rebase：合并成线性记录</p><p>git branch：拉一个新分支</p><p>git chekout：切换分支</p><p>git cherry-pick commit-hash：将其他分支的依次提交合并到自己分支</p></blockquote><ul><li>[x] Git把别人分支的一次提交合并到自己分支 用什么command</li></ul><blockquote><p>git cherry-pick commit-hash</p></blockquote><h4 id="学习能力🆗">学习能力🆗</h4><ul><li>[x]  自我学习能力如何？通过哪些渠道方式提升自己？</li></ul><blockquote><p>自我学习能力：自驱性强（技术全自学），韧性好（遇到问题必解决），认知高（选择，信息，决策，效率）</p><p>提升自己渠道：见人（书籍/公众号/私课），做事（验证，重复）。</p></blockquote><h4 id="HR面">HR面</h4><ul><li>[x] 未来职业规划</li></ul><blockquote><p>分类讨论：</p><p>短期：</p><ul><li>一直日常实习到大三结束</li><li>如果有转正机会就争取转正</li><li>没有就大三下冲提前批，秋招，春招</li><li>目标是大厂</li></ul><p>中期：</p><ul><li>快速熟悉公司工作环境和流程，融入公司开始工作</li><li>完成好自己的小工作模块转正</li><li>成为骨干</li><li>成为主程</li></ul><p>长期：</p><ul><li>深度上：坚持Android原生，提升自己这方面的技术。成为高级Android开发</li><li>广度：配合公司hybid技术，学习大前端 or 学framework</li></ul></blockquote><ul><li>[x] base地选择</li></ul><blockquote><p>我都可以，听从安排。</p></blockquote><ul><li>[x] 实习时间</li></ul><blockquote><p>立即到岗，期间全勤。</p><p>8~12个月，每周6天。</p></blockquote><ul><li>[x] 非常确认后面确认了offer可以来？</li></ul><blockquote><p>大厂：我坑定来你家，不为别的，就是看对眼，喜欢！稀罕！</p><p>小厂：如果argue一下钱，那我就坑定来。因为想家/女朋友/喜欢这个城市/人情味</p></blockquote><ul><li>[x] 可以实习到什么时间</li></ul><blockquote><p>大三下~更久</p></blockquote><ul><li>[x] 有读博、公务员计划？</li></ul><blockquote><p>无，从大一开始就铁定工作。</p></blockquote><ul><li>[x] 本科专业是信管，想走程序员为啥不读计算机，为什么想要走这个方向</li></ul><blockquote><ol><li>填计算机被调剂来信管</li><li>家庭情况</li><li>个人性格追求</li><li>真喜欢技术，享受</li><li>Andorid很好玩</li></ol></blockquote><ul><li>[x] 你专业有哪些课，技术都是自学的吗</li></ul><blockquote><p>计算机 + 管理 = 信管</p></blockquote><blockquote><p>基础：高数 线代 概率论 （离散）大物 政治</p></blockquote><blockquote><p>计算机：</p><p>C Java C++ Python</p><p>数据结构和算法 计网 操作系统 计组</p><p>数据库 大数据（数据分析 数据挖掘） AI人工智能&amp;机械学习 商务智能</p><p>Java EE /Android/测试</p></blockquote><blockquote><p>管理：</p><p>经济学 管理学 运筹学 营销学  商务分析 财务</p><p>信息系统 ERP</p></blockquote><ul><li>[x] 大学取得的最大成就是什么</li></ul><blockquote><p>内在：认知 + 情绪 + 成长（大）</p><p>外在：就业最好 + 靠自己还债和养活自己甚至反哺家里</p></blockquote><ul><li>[x] 说一下如何学习，学习方法。</li></ul><blockquote><p>重复</p></blockquote><ul><li>[x] 兴趣爱好</li></ul><blockquote><p>写代码</p><p>3C数码</p></blockquote><ul><li>[x] 对职位有了解吗</li></ul><blockquote><p>开发 -&gt; 客户端 -&gt;Android -&gt; 原生 APP开发</p><p>纯粹 性能 门槛</p></blockquote><hr><ul><li><p>[ ] 入职了以后发现没有达到职位要求怎么办，怎么样尽快开启工作</p></li><li><p>[ ] 希望在团队中担任什么角色</p></li><li><p>[ ] 毕业规划</p></li><li><p>[ ] 自己最大的优点和缺点</p></li><li><p>[ ] 自己遇到过的挫折有哪些</p></li><li><p>[ ] 整个学习期间影响最深的事情</p></li><li><p>[ ] 学校课程学习</p></li><li><p>[ ] 网络协议的差别</p></li><li><p>[ ] linux系统和别的嵌入式系统android, ios的差别</p></li><li><p>[ ] c，python，java的区别极其优缺点</p></li><li><p>[ ] 平时关注前沿技术资讯吗，介绍一两个最新的</p></li><li><p>[ ] 自己大学期间有没有学过什么其他的技术</p></li><li><p>[ ]  技术栈会哪些？其他语言会吗？</p></li><li><p>[ ] Java和c++区别？</p></li><li><p>[ ] 解决过的最难的问题是什么以及对应解决方法</p></li><li><p>[ ] 如果碰到一些新问题、新技术有什么好的学习方法</p></li></ul>]]></content>
     
     
-    
-    <category term="Java" scheme="http://lmc.pub/categories/Java/"/>
-    
-    <category term="JavaSE" scheme="http://lmc.pub/categories/Java/JavaSE/"/>
+    <summary type="html">Android求职面经</summary>
     
     
-    <category term="JavaSE" scheme="http://lmc.pub/tags/JavaSE/"/>
+    
+    <category term="Android" scheme="http://lmc.pub/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://lmc.pub/tags/Android/"/>
     
   </entry>
   
   <entry>
-    <title>【JavaSE】容易忘记的小点</title>
-    <link href="http://lmc.pub/posts/1147267053.html"/>
-    <id>http://lmc.pub/posts/1147267053.html</id>
-    <published>2023-04-15T22:22:16.000Z</published>
-    <updated>2023-04-24T13:10:01.596Z</updated>
+    <title>【算法】一维数组构建二叉树细节优化</title>
+    <link href="http://lmc.pub/posts/1260642221.html"/>
+    <id>http://lmc.pub/posts/1260642221.html</id>
+    <published>2023-05-26T05:49:39.000Z</published>
+    <updated>2023-05-26T06:02:40.951Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="JavaSE容易疏忽的点">JavaSE容易疏忽的点</h2><ol><li><p>每个Java源文件只能有一个<code>public</code>类，且这个类名要和源文件名保持一致。</p></li><li><p>提示==缺少<code>;</code>的时候==也有可能是少了一个大括号{}</p></li><li><p>byte 和 short 以及char 在进行运算的都是往往会全部先转成 int</p></li><li><p>char 可以保存整数值，但不能保存整数变量，除非强转。</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230403125413934.png" alt="image-20230403125413934"></p></li><li><p>Java里面/只能用作整数上，有小数都会约去。</p></li><li><p>Java中取余%。a%b = a - a/b * b 这才是本质。和5连起来刚刚好。</p></li><li><p>int a = 1 &gt;&gt; 2;   // 1/2/2 = 0</p></li><li><p>int c = 1 &lt;&lt;2;   // 1 * 2 * 2 = 4</p></li><li><p>数组和String一样都是引用类型的，也就是类实例化的对象一样的。</p></li><li><p>二维数组的各个一维之间可以一样长度可以不一样chagn’du</p></li></ol>]]></content>
-    
-    
-    <summary type="html">零碎易错的JavaSE小细节</summary>
+    <content type="html"><![CDATA[<h2 id="描述-v31">描述</h2><p>在刷算法的时候，有一个一维数组构建二叉树有点争议。</p><p>就是我要这么一个二叉树：</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230526135143789.png" alt="image-20230526135143789"></p><p>然后chtgpt写的二叉树构建代码是这样的：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    TreeNode(<span class="type">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> TreeNode <span class="title function_">buildTree</span><span class="params">(Integer[] nums)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> buildTree(nums, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> TreeNode <span class="title function_">buildTree</span><span class="params">(Integer[] nums, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &gt;= nums.length || nums[index] == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(nums[index]);</span><br><span class="line">    node.left = buildTree(nums, <span class="number">2</span> * index + <span class="number">1</span>);</span><br><span class="line">    node.right = buildTree(nums, <span class="number">2</span> * index + <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>然后当输入：<code>输入: [1,2,3,4,null,5,6,null,null,7]</code></p><p>的时候，<code>7</code>这个值被吞掉了。</p><h2 id="分析-v28">分析</h2><p>就gpt给出的这个【一维数组构建二叉树】是最原始的办法。</p><p>按他这个构建我要的二叉树，数组应该要这样：</p><p><code>[1,2,3,4,null,5,6,null,null,null,null,7]</code></p><p>因为他这个是严格按数组的下标去一一对应的。</p><p>很严格，只要是null的地方必须全部null起来。</p><p>哪怕父节点也是null，子节点也要两个null占位。</p><h2 id="实现-v28">实现</h2><p>基本实现：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line">    <span class="type">int</span> val;</span><br><span class="line">    TreeNode left;</span><br><span class="line">    TreeNode right;</span><br><span class="line">    TreeNode(<span class="type">int</span> x) &#123; val = x; &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> TreeNode <span class="title function_">buildTree</span><span class="params">(Integer[] nums)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> buildTree(nums, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> TreeNode <span class="title function_">buildTree</span><span class="params">(Integer[] nums, <span class="type">int</span> index)</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (index &gt;= nums.length || nums[index] == <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(nums[index]);</span><br><span class="line">    node.left = buildTree(nums, <span class="number">2</span> * index + <span class="number">1</span>);</span><br><span class="line">    node.right = buildTree(nums, <span class="number">2</span> * index + <span class="number">2</span>);</span><br><span class="line">    <span class="keyword">return</span> node;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>优化一下：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> TreeNode <span class="title function_">createBT</span><span class="params">(Integer[] arr)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(arr.length == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">root</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(arr[<span class="number">0</span>]);</span><br><span class="line">    Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line">    queue.add(root);</span><br><span class="line"></span><br><span class="line">    <span class="type">boolean</span> <span class="variable">isLeft</span> <span class="operator">=</span> <span class="literal">true</span>;<span class="comment">//是左子树</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">1</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        <span class="type">TreeNode</span> <span class="variable">node</span> <span class="operator">=</span> queue.peek(); <span class="comment">//peek()获取第一个元素，不移除</span></span><br><span class="line">        <span class="keyword">if</span>(isLeft)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] != <span class="literal">null</span>)&#123;</span><br><span class="line">                node.left = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(arr[i]);</span><br><span class="line">                queue.offer(node.left); <span class="comment">//offer(E e) 在队列尾部添加一个元素，并返回是否成功</span></span><br><span class="line">            &#125;</span><br><span class="line">            isLeft = <span class="literal">false</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[i] != <span class="literal">null</span>)&#123;</span><br><span class="line">                node.right = <span class="keyword">new</span> <span class="title class_">TreeNode</span>(arr[i]);</span><br><span class="line">                queue.offer(node.right);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//右节点加入队列尾部，删除第一个元素，保证队列里保存的是根节点</span></span><br><span class="line">            queue.poll(); <span class="comment">//poll()  删除队列中第一个元素，并返回该元素的值,</span></span><br><span class="line">            isLeft = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>换了这个，才能用</p><p><code>输入: [1,2,3,4,null,5,6,null,null,7]</code></p><p>初始化出来我们想要的数组。</p><h2 id="总结-v30">总结</h2><p>这个优化学习一下。</p><p>要仔细看才能看懂。很巧妙</p>]]></content>
     
     
-    
-    <category term="Java" scheme="http://lmc.pub/categories/Java/"/>
-    
-    <category term="JavaSE" scheme="http://lmc.pub/categories/Java/JavaSE/"/>
+    <summary type="html">【Bug】一维数组构建二叉树细节优化</summary>
     
     
-    <category term="JavaSE" scheme="http://lmc.pub/tags/JavaSE/"/>
+    
+    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>【Bug】AS在java文件中无法拿到xml中一个id控件</title>
-    <link href="http://lmc.pub/posts/2813306735.html"/>
-    <id>http://lmc.pub/posts/2813306735.html</id>
-    <published>2023-04-14T07:54:14.000Z</published>
-    <updated>2023-04-24T13:10:01.577Z</updated>
+    <title>【Bug】项目App在支付宝支付成功后没有按代码跳转</title>
+    <link href="http://lmc.pub/posts/2446384190.html"/>
+    <id>http://lmc.pub/posts/2446384190.html</id>
+    <published>2023-05-23T09:45:59.000Z</published>
+    <updated>2023-05-23T10:18:42.333Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v15">描述</h2><p>在做项目的时候，有时候在xml中定义了一个控件加了id。但是去java文件中访问不了。现实爆红，找不到。</p><h2 id="分析-v15">分析</h2><p>AS缓存没缓过来。</p><p>比如你的AS上次没关，然后现在刚打开写。</p><p>就很有可能出现这种情况。</p><h2 id="实现-v14">实现</h2><p>重启一下AS就好了</p><p>或者直接运行一下</p><h2 id="总结-v15">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v22">描述</h2><p>APP中有商城功能，然后集成支付宝来支付。</p><p>在测试支付功能的时候，本来应该：<code>支付成功后检查订单状态如果成功支付了，就跳转订单详情并显示定位状态为待发货。</code></p><p>但实际上，检查后就还是支付界面，没有跳转。</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/2.gif" alt=""></p><h2 id="分析-v22">分析</h2><h3 id="代码：日志追踪流程排查bug点">代码：日志追踪流程排查bug点</h3><p>我先是去看了代码，然后用日志追踪整个流程排查bug点在哪里。</p><p>PayActivity类：支付界面</p><p>依次是：</p><p>onAlipayStatusChanged -&gt; checkPayStatus -&gt; loadData -&gt; showData</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 支付宝支付状态改变了</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> event</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Subscribe(threadMode = ThreadMode.MAIN)</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onAlipayStatusChanged</span><span class="params">(AlipayStatusChangedEvent event)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">resultStatus</span> <span class="operator">=</span> event.getData().getResultStatus();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="string">&quot;9000&quot;</span>.equals(resultStatus)) &#123;</span><br><span class="line"></span><br><span class="line">            isPayed = <span class="literal">true</span>;</span><br><span class="line">            <span class="comment">//本地支付成功</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//不能依赖本地支付结果</span></span><br><span class="line">            <span class="comment">//一定要以服务端为准</span></span><br><span class="line">            showLoading(R.string.hint_pay_wait);</span><br><span class="line">            Timber.d(<span class="string">&quot;本地支付成功:onAlipayStatusChanged&quot;</span>);</span><br><span class="line">            <span class="comment">//延时3秒</span></span><br><span class="line">            <span class="comment">//因为支付宝回调我们服务端可能有延迟</span></span><br><span class="line">            binding.primary.postDelayed(() -&gt; &#123;</span><br><span class="line">                checkPayStatus();</span><br><span class="line">            &#125;, <span class="number">3000</span>);</span><br><span class="line"></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="string">&quot;6001&quot;</span>.equals(resultStatus)) &#123;</span><br><span class="line">            <span class="comment">//支付取消</span></span><br><span class="line">            SuperToast.show(R.string.error_pay_cancel);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//支付失败</span></span><br><span class="line">            SuperToast.show(R.string.error_pay_failed);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 检查支付状态</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">checkPayStatus</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//隐藏加载对话框</span></span><br><span class="line">        hideLoading();</span><br><span class="line">        Timber.d(<span class="string">&quot;进入:checkPayStatus 检查状态&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//请求订单详情</span></span><br><span class="line">        loadData();</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">void</span> <span class="title function_">loadData</span><span class="params">(<span class="type">boolean</span> isPlaceholder)</span> &#123;</span><br><span class="line">        Timber.d(<span class="string">&quot;进入:loadData 开始加载数据&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="built_in">super</span>.loadData(isPlaceholder);</span><br><span class="line">        <span class="comment">//获取订单数据，主要是获取价格，因为服务端可能更改了价格</span></span><br><span class="line">        DefaultRepository.getInstance()</span><br><span class="line">                .orderDetail(id)</span><br><span class="line">                .to(autoDisposable(AndroidLifecycleScopeProvider.from(<span class="built_in">this</span>)))</span><br><span class="line">                .subscribe(<span class="keyword">new</span> <span class="title class_">HttpObserver</span>&lt;DetailResponse&lt;Order&gt;&gt;() &#123;</span><br><span class="line">                    <span class="meta">@Override</span></span><br><span class="line">                    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onSucceeded</span><span class="params">(DetailResponse&lt;Order&gt; data)</span> &#123;</span><br><span class="line"></span><br><span class="line">                        showData(data.getData());</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">void</span> <span class="title function_">showData</span><span class="params">(Order data)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.data = data;</span><br><span class="line"></span><br><span class="line">        binding.price.setText(getResources().getString(R.string.price, data.getPrice()));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//因为后端这里并没有改order的status从0(未支付)到500(已经支付，等待发货)</span></span><br><span class="line"><span class="comment">//        if (BuildConfig.DEBUG &amp;&amp; isPayed)&#123;</span></span><br><span class="line"><span class="comment">//            data.setStatus(501);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"></span><br><span class="line">        Timber.d(<span class="string">&quot;支付了吗？ &quot;</span> + data.isPaid());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (data.isPaid()) &#123;</span><br><span class="line">            <span class="comment">//发送支付成功通知</span></span><br><span class="line">            EventBus.getDefault().post(<span class="keyword">new</span> <span class="title class_">PaySuccessEvent</span>());</span><br><span class="line"></span><br><span class="line">            finish();</span><br><span class="line"></span><br><span class="line">            Timber.d(<span class="string">&quot;支付成功了&quot;</span>);</span><br><span class="line">            <span class="comment">//跳转到订单详情界面</span></span><br><span class="line">            startActivityExtraId(OrderDetailActivity.class, data.getId());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            Timber.d(<span class="string">&quot;没有支付&quot;</span>);</span><br><span class="line">            startCountDown();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>然后经过追踪发现：</p><p>在 <code>onAlipayStatusChanged </code>里面支付宝确实是已经支付了。（不然呢，我钱都少了一毛）</p><p>但是在<code>onShow</code>里面<code>if (data.isPaid())</code>判断的时候，确实没有支付。</p><h3 id="手机抓网络包确认是后端问题">手机抓网络包确认是后端问题</h3><p>然后我查看了，抓包日志。</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230523180413575.png" alt="image-20230523180413575"></p><p>最后知道，这个订单支付前支付后两个状态都是0，也就是未支付。</p><p>所以这是后端在处理这个order的状态时候没有变更。</p><h2 id="实现-v19">实现</h2><p>为了实现目的效果，只能本地自己改一下</p><p>PayActivity中设置一个变量isPayed。默认为false</p><p>表示临时订单有没有支付。</p><p>然后在支付宝反馈为是的时候，改为true</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230523181111076.png" alt="image-20230523181111076"></p><p>在<code>PayAcivity</code>的<code>showData</code>方法中判断/</p><p>如果是开发阶段同时这个变量为ture就手动设置这里的订单状态为已经支付</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230523180850546.png" alt="image-20230523180850546"></p><p>到这里，app就可以正常跳转到订单详情界面。</p><p>但是订单详情的信息还是<code>未支付</code>。</p><p>因为这里的判断订单还是用的请求网络。</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230523181259738.png" alt="image-20230523181259738"></p><p>那就只能在展示数据的时候，再改这个状态</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230523181333275.png" alt="image-20230523181333275"></p><p>最后结果：</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/3.gif" alt=""></p><h2 id="总结-v22">总结</h2><p>工作中遇到后端的bug要即使反馈给后端人员。</p><p>学习的话，灵活变通。</p>]]></content>
     
     
-    <summary type="html">【Bug】AS在java文件中无法拿到xml中一个id控件</summary>
+    <summary type="html">【Bug】项目App在支付宝支付成功后没有按代码跳转</summary>
     
     
     
@@ -174,268 +152,340 @@
   </entry>
   
   <entry>
-    <title>【算法】把二叉搜索树转换为累加树538</title>
-    <link href="http://lmc.pub/posts/1639272716.html"/>
-    <id>http://lmc.pub/posts/1639272716.html</id>
-    <published>2023-04-12T22:31:48.000Z</published>
-    <updated>2023-04-24T13:10:01.571Z</updated>
+    <title>【Bug】Android中Notification的前台service导致app过一会就闪退</title>
+    <link href="http://lmc.pub/posts/2456803986.html"/>
+    <id>http://lmc.pub/posts/2456803986.html</id>
+    <published>2023-05-21T10:16:28.000Z</published>
+    <updated>2023-05-21T10:28:33.297Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v12">描述</h2><h2 id="分析-v12">分析</h2><h2 id="实现-v12">实现</h2><h2 id="总结-v12">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】把二叉搜索树转换为累加树538</summary>
+    <content type="html"><![CDATA[<h2 id="描述-v15">描述</h2><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230521182150265.png" alt="image-20230521182150265"></p><p>APP的表现：正常显示一会之后自动崩溃消失了。</p><h2 id="分析-v15">分析</h2><p>英语翻译：</p><blockquote><p>com.ixuea.courses.mymusic/.service.MusicPlayerService</p><p>这个app里面的这个地方。</p><p>没有在拉起前台service后调用什么<code>Service.startForeground()</code></p></blockquote><p>搜索引擎说：</p><blockquote><p>这个异常是指你的服务在调用 <strong>Context.startForegroundService()</strong> 后没有及时调用 <strong>Service.startForeground()</strong> 来显示一个前台通知¹²⁴。这可能会导致系统停止你的服务并报告应用无响应（ANR）¹。为了避免这个异常，你需要在服务的 <strong>onCreate()</strong> 方法中调用 <strong>startForeground()</strong> 并传入一个有效的通知¹²⁴。如果你的服务是在后台启动的，比如通过广播接收器，你还需要注意在Android 8.0及以上版本中使用 <strong>ContextCompat.startForegroundService()</strong> 来启动服务³⁴。</p></blockquote><p>我当时的<code>onCreate()</code></p><blockquote><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">onCreate</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="built_in">super</span>.onCreate();</span><br><span class="line">        Timber.d(<span class="string">&quot;onCreate&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//因为这个API是8.0才有的</span></span><br><span class="line">        <span class="comment">//所以要这样判断版本</span></span><br><span class="line">        <span class="comment">//不然低版本会崩溃</span></span><br><span class="line">        <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.O) &#123;</span><br><span class="line">            <span class="comment">//设置service为前台service</span></span><br><span class="line">            <span class="comment">//提高应用的优先级</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//获取通知</span></span><br><span class="line">            <span class="type">Notification</span> <span class="variable">notification</span> <span class="operator">=</span> NotificationUtil.getServiceForeground(getApplicationContext());</span><br><span class="line"></span><br><span class="line">            <span class="comment">//Id写0：这个通知就不会显示</span></span><br><span class="line">            <span class="comment">//对于我们这里来说</span></span><br><span class="line">            <span class="comment">//就需要不显示</span></span><br><span class="line">            startForeground(<span class="number">0</span>, notification);</span><br><span class="line">        &#125;</span><br><span class="line">        musicListManager = MusicListManagerImpl.getInstance(getApplicationContext());</span><br><span class="line">        musicPlayerManager = MusicPlayerManagerImpl.getInstance(getApplicationContext());</span><br><span class="line">        musicPlayerManager.addMusicPlayerListener(<span class="built_in">this</span>);</span><br><span class="line">        initMediaSession();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></blockquote><h2 id="实现-v14">实现</h2><p><strong>把 <code>startForeground(0, notification)</code>这里的==0==改为==1==</strong></p><h2 id="总结-v15">总结</h2><p>原因：</p><blockquote><p>那个地方是0的话，就表示你的通知没有显示在通知栏中，但是你的服务仍然需要一个有效的通知才能在前台运行。</p><p>如果你没有及时调用 <strong>startForeground()</strong> 并传入一个有效的通知，系统就会认为你的服务没有正确地启动前台模式，就会抛出那个异常 。所以，你需要把那个地方改为一个非0的值，比如1，这样你的通知就会显示在通知栏中，你的服务就可以正常地运行在前台模式了。</p></blockquote><p>也就是说，我们必须有一个前台service在通知栏里躺着。</p><p>我写0，这就不是一个有效的通知。</p><p>只启动了服务但是前台没那个通知。</p><p>所以一段时间之后就会自动没了。</p><p>0还是1就是决定在通知中留不留那个通知。</p><p>启动服务 + 留下通知 = 0Bug</p>]]></content>
     
     
-    
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【算法】将有序数组转换为二叉搜索树108</title>
-    <link href="http://lmc.pub/posts/2698620212.html"/>
-    <id>http://lmc.pub/posts/2698620212.html</id>
-    <published>2023-04-12T22:31:17.000Z</published>
-    <updated>2023-04-24T13:10:01.554Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述-v11">描述</h2><h2 id="分析-v11">分析</h2><h2 id="实现-v11">实现</h2><h2 id="总结-v11">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】将有序数组转换为二叉搜索树108</summary>
+    <summary type="html">【Bug】Android中Notification的前台service导致app过一会就闪退</summary>
     
     
     
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="Bug" scheme="http://lmc.pub/categories/Bug/"/>
     
     
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="Bug" scheme="http://lmc.pub/tags/Bug/"/>
     
   </entry>
   
   <entry>
-    <title>【算法】修剪二叉搜索树669</title>
-    <link href="http://lmc.pub/posts/819212913.html"/>
-    <id>http://lmc.pub/posts/819212913.html</id>
-    <published>2023-04-12T22:30:36.000Z</published>
-    <updated>2023-04-24T13:10:01.548Z</updated>
+    <title>【电脑】怎么设置文件默认打开方式</title>
+    <link href="http://lmc.pub/posts/2736790282.html"/>
+    <id>http://lmc.pub/posts/2736790282.html</id>
+    <published>2023-05-19T01:56:46.000Z</published>
+    <updated>2023-05-19T02:02:15.018Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v8">描述</h2><h2 id="分析-v8">分析</h2><h2 id="实现-v8">实现</h2><h2 id="总结-v8">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】修剪二叉搜索树669</summary>
+    <content type="html"><![CDATA[<h2 id="描述-v28">描述</h2><p>我的labtop在打开<code>.pdf</code>和<code>.xml</code>文件总是用Edge浏览器打开很不方便。</p><p>我想<code>.pdf</code>默认用专门的pdf查看器打开，<code>.xml</code>用Sublime打开。</p><h2 id="分析-v25">分析</h2><h2 id="实现-v24">实现</h2><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230519100033410.png" alt="image-20230519100033410"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230519100056413.png" alt="image-20230519100056413"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230519100119676.png" alt="image-20230519100119676"></p><p>然后应用确认就可以了。</p><h2 id="总结-v27">总结</h2><p>电脑是自己的，要多调多用才能更加了解。</p><p>才能用的得心应手，成为自己的生产力工具。</p>]]></content>
     
     
-    
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【算法】删除二叉搜索树中的节点450</title>
-    <link href="http://lmc.pub/posts/306428341.html"/>
-    <id>http://lmc.pub/posts/306428341.html</id>
-    <published>2023-04-12T22:29:54.000Z</published>
-    <updated>2023-04-24T13:10:01.552Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述-v7">描述</h2><h2 id="分析-v7">分析</h2><h2 id="实现-v7">实现</h2><h2 id="总结-v7">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】删除二叉搜索树中的节点450</summary>
+    <summary type="html">【电脑】怎么设置文件默认打开方式</summary>
     
     
     
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="电脑" scheme="http://lmc.pub/categories/%E7%94%B5%E8%84%91/"/>
     
     
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="电脑" scheme="http://lmc.pub/tags/%E7%94%B5%E8%84%91/"/>
     
   </entry>
   
   <entry>
-    <title>【算法】二叉搜索树的插入操作701</title>
-    <link href="http://lmc.pub/posts/2259007774.html"/>
-    <id>http://lmc.pub/posts/2259007774.html</id>
-    <published>2023-04-12T22:29:20.000Z</published>
-    <updated>2023-04-24T13:10:01.541Z</updated>
+    <title>【Bug】因为后端API有个字段为null导致APP端NPE</title>
+    <link href="http://lmc.pub/posts/4072433499.html"/>
+    <id>http://lmc.pub/posts/4072433499.html</id>
+    <published>2023-05-17T07:08:58.000Z</published>
+    <updated>2023-05-17T11:00:33.719Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v6">描述</h2><h2 id="分析-v6">分析</h2><h2 id="实现-v6">实现</h2><h2 id="总结-v6">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】二叉搜索树的插入操作701</summary>
+    <content type="html"><![CDATA[<h2 id="描述-v20">描述</h2><p>今天在做那个音乐APP项目的时候，到了展示我的好友列表这个阶段。</p><p>前面测试的数据都正常显示：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230517151725879.png" alt="image-20230517151725879"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230517151843942.png" alt="image-20230517151843942"></p><p>但是换上真实数据直接NPE了：</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230517152038858.png" alt="image-20230517152038858"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230517151148844.png" alt="image-20230517151148844"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/QQ%E5%9B%BE%E7%89%8720230517151922.gif" alt="image-20230517151753030"></p><p>然后下面的【我的粉丝】又是正常的。<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230517152201185.png" alt="image-20230517152201185"></p><h2 id="分析-v20">分析</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Process: com.ixuea.courses.mymusic, PID: 2952</span><br><span class="line">    java.lang.NullPointerException: Attempt to invoke virtual method &#x27;java.lang.String java.lang.String.toLowerCase()&#x27; on a null object reference</span><br><span class="line">        at com.ixuea.courses.mymusic.util.DataUtil.processUserPinyin(DataUtil.java:163)</span><br><span class="line">        at com.ixuea.courses.mymusic.component.user.activity.UserActivity$2.onSucceeded(UserActivity.java:134)</span><br><span class="line">        at com.ixuea.courses.mymusic.component.user.activity.UserActivity$2.onSucceeded(UserActivity.java:121)</span><br><span class="line">        at com.ixuea.courses.mymusic.component.api.HttpObserver.onNext(HttpObserver.java:109)</span><br></pre></td></tr></table></figure><p>注意：上面不是原始日志。</p><p>发现是空指针异常，我依次在每个提示的地方用Log打印日志：找null具体点。</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230517152737106.png" alt="image-20230517152737106"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230517153126551.png" alt="image-20230517153126551"></p><p>发现这个日志bug3_2前几个还不是null，突然就出来一个null。</p><p>然后知道是<code>User类</code>里面的<code>getNickname</code>方法。</p><p>跳进去看了下。</p><p>搜得寺内</p><p>我觉得是后端API的问题，然后看了下手机上的那个日志小插件：</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/Screenshot_2023-05-17-15-34-34-225_com.ixuea.cour.jpg" alt="Screenshot_2023-05-17-15-34-34-225_com.ixuea.cour"></p><p>发现最后一组元素没有<code>nickname</code>这个值。</p><h2 id="实现-v17">实现</h2><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230517153303013.png" alt="image-20230517153303013"></p><p>然后我直接把那个<code>getNikeName</code>换个实现方式。</p><p>如果有值就直接用，没有值就是“无名氏”。<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/Screenshot_2023-05-17-15-36-47-740_com.ixuea.cour.jpg" alt="Screenshot_2023-05-17-15-36-47-740_com.ixuea.cour"></p><p>果真是一个无名氏。</p><h2 id="总结-v20">总结</h2><ol><li>后端的API自己写更省心</li><li>有时候bug不是自己的问题，可能是后端的锅。</li></ol>]]></content>
     
     
-    
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【算法】二叉搜索树的最近公共祖先235</title>
-    <link href="http://lmc.pub/posts/3463775054.html"/>
-    <id>http://lmc.pub/posts/3463775054.html</id>
-    <published>2023-04-12T22:28:59.000Z</published>
-    <updated>2023-04-24T13:10:01.545Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述-v2">描述</h2><h2 id="分析-v2">分析</h2><h2 id="实现-v2">实现</h2><h2 id="总结-v2">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】二叉搜索树的最近公共祖先235</summary>
+    <summary type="html">【Bug】因为后端API有个字段为null导致APP端NPE</summary>
     
     
     
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
+    <category term="Bug" scheme="http://lmc.pub/categories/Bug/"/>
     
     
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
+    <category term="Bug" scheme="http://lmc.pub/tags/Bug/"/>
     
   </entry>
   
   <entry>
-    <title>【算法】二叉树的最近公共祖先236</title>
-    <link href="http://lmc.pub/posts/2384664784.html"/>
-    <id>http://lmc.pub/posts/2384664784.html</id>
-    <published>2023-04-12T22:28:34.000Z</published>
-    <updated>2023-04-24T13:10:01.547Z</updated>
+    <title></title>
+    <link href="http://lmc.pub/posts/3.html"/>
+    <id>http://lmc.pub/posts/3.html</id>
+    <published>2023-05-16T12:38:10.942Z</published>
+    <updated>2023-05-17T05:29:31.097Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v5">描述</h2><h2 id="分析-v5">分析</h2><h2 id="实现-v5">实现</h2><h2 id="总结-v5">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】二叉树的最近公共祖先236</summary>
+    <content type="html"><![CDATA[<h1>客户端</h1><p>就是这个</p><p>Android开发</p><p>它的一个归属问题哈。</p><blockquote><p>客户端</p><p>移动端</p><p>Android</p><p>安卓</p><p>（前端）</p></blockquote><p>其实，这三个说Android开发。</p><h2 id="Android-v2">Android</h2><p>Android开发，一句话就是：开发手机APP的。</p><p>就是你的手机如果不是苹果，那坑定都是安卓系统。</p><p>不管是【三星，华为，小米，OPPO，VIVO，荣耀，魅族，红米，真我…】</p><p>啥啥啥的，只要不是苹果。</p><p>你手机就是姓安卓。</p><p>然后我们就是开发你手机上的APP的。</p><p>比如：QQ，微信，支付宝，抖音，B站，知乎</p><p>你知道的，你在用的APP就是我们这群【Android开发程序员】开发的。</p><p>然后用苹果手机的，他们手机上的APP是【IOS开发程序员】开发的。</p><p>我们都是做APP的，只是手机不一样，苹果自己是一家叫IOS，其他的手机是一家叫Android。</p><h2 id="移动端">移动端</h2><p>一句话就是：手机</p><p>开发手机的都叫【移动端开发者】</p><p>所以Android程序员和IOS程序员都是移动端开发程序员。</p><p>他这个【移动端】概念是跟【PC端】区别的。</p><p>移动端就是手机</p><p>PC端就是电脑</p><h2 id="客户端">客户端</h2><p>就是客户在用的那端。</p><p>比如用手机，电脑，网页。</p><p>只要你通过这些接触互联网。</p><p>你是客户，你用的Web网页，PC电脑，手机就是客户端。</p><p>然后对应的就有个【服务端】。</p><p>服务端就是给你提供服务的。</p><p>是服务器。</p><p>其实服务端即是后端，躲在互联网后面。</p><p>什么Java，go，C++就是后端，也就是给你服务的服务端语言，服务端开发。</p><p>然后前端就是在这个互联网上你能看到的，在前面的。</p><p>比如网页，电脑软件，手机APP</p><p>都是前端。</p><h2 id="前端">前端</h2><p>大家上网有几个接口。</p><p>网页，APP，电脑软件。</p><p>这些都是前端。</p><p>网页就叫：Web前端</p><p>APP就叫：Android/IOS</p><p>电脑软件就是：桌面端</p><p>然后还有一个游戏客户端。</p><p>就是以前游戏是端游，一刀999，这中在网页上的游戏叫端游。</p><p>然后有在电脑上的软件游戏，比如电脑端的英雄联盟，元神。</p><p>然后在手机上的游戏叫手游。比如王者，</p><p>做这些游戏用的就是Unity这个，他们的岗位就是：游戏客户端。</p><p>这个是客户端一部分。</p><p>所以，客户端 = Android + IOS + 游戏 + 电脑桌面软件。</p><h2 id="安卓招">安卓招</h2><p>互联网厂：字节</p><p>手机厂：OPPO</p><p>汽车厂：蔚来</p><p>家电厂：TCL</p>]]></content>
     
     
-    
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【算法】二叉搜索树中的众数501</title>
-    <link href="http://lmc.pub/posts/2563869577.html"/>
-    <id>http://lmc.pub/posts/2563869577.html</id>
-    <published>2023-04-12T22:27:56.000Z</published>
-    <updated>2023-04-24T13:10:01.537Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述">描述</h2><h2 id="分析">分析</h2><h2 id="实现">实现</h2><h2 id="总结">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】二叉搜索树中的众数501</summary>
+      
+      
+    <summary type="html">&lt;h1&gt;客户端&lt;/h1&gt;
+&lt;p&gt;就是这个&lt;/p&gt;
+&lt;p&gt;Android开发&lt;/p&gt;
+&lt;p&gt;它的一个归属问题哈。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;客户端&lt;/p&gt;
+&lt;p&gt;移动端&lt;/p&gt;
+&lt;p&gt;Android&lt;/p&gt;
+&lt;p&gt;安卓&lt;/p&gt;
+&lt;p&gt;（前端）&lt;/p&gt;
+&lt;/blockq</summary>
+      
     
     
     
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>【算法】二叉搜索树的最小绝对差530</title>
-    <link href="http://lmc.pub/posts/2221870846.html"/>
-    <id>http://lmc.pub/posts/2221870846.html</id>
-    <published>2023-04-12T22:27:22.000Z</published>
-    <updated>2023-04-24T13:10:01.543Z</updated>
+    <title></title>
+    <link href="http://lmc.pub/posts/4.html"/>
+    <id>http://lmc.pub/posts/4.html</id>
+    <published>2023-05-16T12:14:28.238Z</published>
+    <updated>2023-05-16T12:32:49.389Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v4">描述</h2><h2 id="分析-v4">分析</h2><h2 id="实现-v4">实现</h2><h2 id="总结-v4">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】二叉搜索树的最小绝对差530</summary>
+    <content type="html"><![CDATA[<h1>运维</h1><p>我遇到一种神奇的计算机岗位。</p><p>叫：</p><blockquote><p>IT经理/助理</p><p>IT技术员</p><p>IT储干</p><p>IT信息岗</p></blockquote><p>是一个大学校招会上的。</p><p>给起个统一的名字吧，别乱叫了。</p><p>IT技术支持岗</p><p>一句话就是：<strong>了解计算机技术的售后客服</strong>。</p><p>专门为<code>伤心计算机相关专业没找到工作的同学</code>准备的。</p><p>说会计算机吧，又不会写代码。</p><p>说不会计算机吧，又能说几个专业术语（C，Java）。</p><p>说的就是你了，来吧。</p><p>这个这个，一般正规的大公司叫【运维】。</p><p>喜欢出差。</p><p>一般计算机干技术的工作呢，从技术含量高到低是这样婶的：</p><p>算法</p><p>开发（研发）后端 &gt; 前端</p><p>测试</p><p>运维</p><blockquote><p>考虑这个职位的人自身技术水平一般都不行（大概率），比如：代码不想写，新技术不想学，但是又什么懂那么一点，这种尴尬的情况就选择了技术支持行业，门槛低，技术不深。</p><p>1.这个职业的薪资和纯研发是有不小差距的。</p><p>2.经常出差，客户是大爷，技术支持的本质是面向客户的。</p><p>3.长期以往，很难学到深层次的东西，优点是对于实施和对每种技术相关的整合有独到的理解。</p><hr><p>有段时间我前公司俩技术售后（我们这么称呼）经常出差，客户数据库或者服务器有问题经常是研发人员远程或电话解决的，技术支持决绝不了的疑难杂症到头来还是要请教研发。但是这个职位永远有缺口，有上进心的都去做研发了，客户有问题首先找的是技术支持，而程序员没啥大问题一般都不会理客户，而且程序员也不愿意出差，技术支持一直是一个缺口，公司不同可能定位也不一样，反正我觉得这个职位挺尴尬的，后来老板也觉得这个岗位流动性这么大，就需要一定的改变，直接取消了这个岗位，让一些年龄偏大的中层管理的研发，减少直接参与研发的工作量，让他们肩带做技术支持工作，给每个人都配备了向日葵远程的领航服务，减少了支持工作出差的几率，大部分问题都是线上解决，全程录像还可以避免冲突，转变之后这些中层管理其实活比之前少了很多，剩下的工作时间可以作为学习成本。</p><p>注：技术支持和客服有区别，是会技术的客服对了，他们很会找bug让你改，这和测试又有点相似，不过测试里的人不要小瞧，里面没准有个扫地僧，退隐的全栈工程师。。。</p><hr><p>唉，本科通信出来，软硬啥都学了点，但啥也没学的很透彻。计科好多投软件研发，自动化也好多去投嵌入式，妈呀现在秋招才发现自己按部就班学的啥呀都，啥硬本事没有。早应该有职业规划的，现在沉下心来学嵌入式的话，也得是准备春招，先准备秋招了，先找工作试试吧，唉</p></blockquote>]]></content>
     
     
-    
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【算法】验证二叉搜索树98</title>
-    <link href="http://lmc.pub/posts/2851862665.html"/>
-    <id>http://lmc.pub/posts/2851862665.html</id>
-    <published>2023-04-12T22:26:43.000Z</published>
-    <updated>2023-04-24T13:10:01.575Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述-v13">描述</h2><h2 id="分析-v13">分析</h2><h2 id="实现-v13">实现</h2><h2 id="总结-v13">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】验证二叉搜索树98</summary>
+      
+      
+    <summary type="html">&lt;h1&gt;运维&lt;/h1&gt;
+&lt;p&gt;我遇到一种神奇的计算机岗位。&lt;/p&gt;
+&lt;p&gt;叫：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;IT经理/助理&lt;/p&gt;
+&lt;p&gt;IT技术员&lt;/p&gt;
+&lt;p&gt;IT储干&lt;/p&gt;
+&lt;p&gt;IT信息岗&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;是一个大学校招会上的。&lt;/</summary>
+      
     
     
     
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>【算法】二叉搜索树中的搜索700</title>
-    <link href="http://lmc.pub/posts/2744593937.html"/>
-    <id>http://lmc.pub/posts/2744593937.html</id>
-    <published>2023-04-12T22:26:10.000Z</published>
-    <updated>2023-04-24T13:10:01.539Z</updated>
+    <title></title>
+    <link href="http://lmc.pub/posts/2.html"/>
+    <id>http://lmc.pub/posts/2.html</id>
+    <published>2023-05-14T15:23:30.940Z</published>
+    <updated>2023-05-16T06:58:52.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v3">描述</h2><h3 id="djoa">djoa</h3><h3 id="djao">djao</h3><h4 id="josa">josa</h4><h2 id="分析-v3">分析</h2><h2 id="实现-v3">实现</h2><h2 id="总结-v3">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】二叉搜索树中的搜索700</summary>
+    <content type="html"><![CDATA[<h1>我的健身</h1><h2 id="怎么坚持健身？">怎么坚持健身？</h2><ol><li>心狠</li><li>正反馈</li><li>数据：做组用的重量</li></ol><p>不要有负担：</p><p>一周3~5次，5次是目标，3次是底线。</p><p>一三五，耽误了就换一天。</p><p>这周烂了，没关系下一周再来。</p><h2 id="怎么区分大脑累还是身体累呢？">怎么区分大脑累还是身体累呢？</h2><p>一个简单但不严谨的方法就是：</p><p><strong>你累的时候，是想打游戏刷抖音，还是想马上就去睡。</strong></p><p>如果是前者，那么可能是脑力活动过度了，你去健身房运动下可能会更好；</p><p>如果是后者，可能是你真的没休息够，最好赶紧早点睡，睡够了明天再练。</p><h2 id="法则">法则</h2><ol><li>**睡眠&gt;锻炼，连续三天睡眠时间都不足六小时的话，切勿健身，风险太大。**不仅仅是猝死的风险，也包括精神不集中导致的受伤风险。尤其是程序员，如果你通宵一次了，请停练三天以上。如果难以做到每天睡眠六小时以上，你需要把更多时间放在睡觉上，而不要开始健身。</li><li><strong>健身是长期投资，健身的效果，用年来衡量</strong></li><li><strong>多练复合关节动作，少练小肌肉动作。</strong></li><li><strong>均衡发展</strong></li><li><strong>肌肉增长，在锻炼之外</strong>：睡眠/吃饭 &gt; 锻炼</li></ol><h2 id="健身基础知识">健身基础知识</h2><p>容量：重量 * 次数 * 组数</p><p>RM：</p><p>分化：几次一循环，推3、</p><p><strong>个循环是三次（天）训练，一个循环能覆盖到所有要锻炼的肌肉。</strong></p><p>每练三天休一天。</p><h2 id="每周练几次">每周练几次</h2><p>3~6</p><h2 id="怎么练的更有效？">怎么练的更有效？</h2><p>渐进超负荷</p><ul><li>训练重量。例如上次训练用90kg，这次用95kg。</li><li>训练容量：intatal</li></ul><h2 id="训练计划">训练计划</h2><p><img src="https://pic3.zhimg.com/v2-7b6f45d4ec9e7f50a072281f47405c7e_r.jpg" alt=""></p><p>每组多重：</p><p>增肌：8~12</p><p>增力：3~5</p><p>组间休息：</p><ul><li>深蹲硬拉卧推：3分钟以上</li><li>其他自由重量动作：2~3分钟</li><li>器械动作：1.5分钟</li></ul><p>记录重量。<br>背<br>器械下拉(3组)：40kg<br>高位下拉（3组）：30kg<br>坐姿划船（3组）：35kg</p>]]></content>
     
     
-    
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>【算法】合并二叉树617</title>
-    <link href="http://lmc.pub/posts/13151974.html"/>
-    <id>http://lmc.pub/posts/13151974.html</id>
-    <published>2023-04-12T22:25:30.000Z</published>
-    <updated>2023-04-24T13:10:01.551Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="描述-v9">描述</h2><h2 id="分析-v9">分析</h2><h2 id="实现-v9">实现</h2><h2 id="总结-v9">总结</h2>]]></content>
-    
-    
-    <summary type="html">【算法】合并二叉树617</summary>
+      
+      
+    <summary type="html">&lt;h1&gt;我的健身&lt;/h1&gt;
+&lt;h2 id=&quot;怎么坚持健身？&quot;&gt;怎么坚持健身？&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;心狠&lt;/li&gt;
+&lt;li&gt;正反馈&lt;/li&gt;
+&lt;li&gt;数据：做组用的重量&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;不要有负担：&lt;/p&gt;
+&lt;p&gt;一周3~5次，5次是目标，3次是底线。&lt;/p&gt;
+</summary>
+      
     
     
     
-    <category term="算法" scheme="http://lmc.pub/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-    <category term="算法" scheme="http://lmc.pub/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
   <entry>
-    <title>【算法】最大二叉树654</title>
-    <link href="http://lmc.pub/posts/1241064268.html"/>
-    <id>http://lmc.pub/posts/1241064268.html</id>
-    <published>2023-04-12T22:25:12.000Z</published>
-    <updated>2023-04-24T13:10:01.608Z</updated>
+    <title>【Android】AS怎么过滤垃圾日志</title>
+    <link href="http://lmc.pub/posts/788908387.html"/>
+    <id>http://lmc.pub/posts/788908387.html</id>
+    <published>2023-05-14T14:56:09.000Z</published>
+    <updated>2023-05-14T15:01:16.928Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="描述-v32">描述</h2><h2 id="分析-v29">分析</h2><p>注意类似用数组构造二叉树的题目，每次分隔尽量不要定义新的数组，而是通过下标索引直接在原数组上操作，这样可以节约时间和空间上的开销。</p><h2 id="实现-v30">实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="comment">//654最大二叉树</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MaximumBinaryTree654</span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;</span><br><span class="line"><span class="type">TreeNode</span> <span class="variable">root</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Solution</span>().constructMaximumBinaryTree(<span class="keyword">new</span> <span class="title class_">int</span>[]&#123;<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">0</span>,<span class="number">5</span>&#125;);</span><br><span class="line">MyUtils.printBinaryTree(root);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> TreeNode <span class="title function_">constructMaximumBinaryTree</span><span class="params">(<span class="type">int</span>[] nums)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> findRootNode(nums, <span class="number">0</span>, nums.length);<span class="comment">//前闭后开</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> TreeNode <span class="title function_">findRootNode</span><span class="params">(<span class="type">int</span>[] nums, <span class="type">int</span> leftIndex, <span class="type">int</span> rightIndex)</span>&#123;</span><br><span class="line">    <span class="comment">//1. 处理叶子节点和 null 节点</span></span><br><span class="line">    <span class="keyword">if</span> (rightIndex - leftIndex &lt; <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="comment">//null 节点</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(rightIndex - leftIndex == <span class="number">1</span>)&#123;</span><br><span class="line">    <span class="comment">//叶子节点</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(nums[leftIndex]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//2. 找到 nums 中的最大值以及 maxValueIndex</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">maxValueIndex</span> <span class="operator">=</span> leftIndex, maxValue = nums[leftIndex];</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> leftIndex + <span class="number">1</span>; i &lt; rightIndex; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (nums[i] &gt; maxValue) &#123;</span><br><span class="line">    maxValue = nums[i];</span><br><span class="line">    maxValueIndex = i;</span><br><span class="line">    &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//3. 设置 rootNode 以及 left 和 right, 并返回</span></span><br><span class="line">    <span class="type">TreeNode</span> <span class="variable">root</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">TreeNode</span>(maxValue);</span><br><span class="line">    root.left = findRootNode(nums, leftIndex, maxValueIndex);</span><br><span class="line">    root.right = findRootNode(nums, maxValueIndex + <span class="number">1</span>, rightIndex);</span><br><span class="line">    <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TreeNode</span> &#123;</span><br><span class="line"><span class="type">int</span> val;</span><br><span class="line">TreeNode left;</span><br><span class="line">TreeNode right;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">TreeNode</span><span class="params">()</span>&#123;&#125;;</span><br><span class="line"><span class="keyword">public</span> <span class="title function_">TreeNode</span><span class="params">(<span class="type">int</span> val)</span>&#123;<span class="built_in">this</span>.val = val;&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="title function_">TreeNode</span><span class="params">(<span class="type">int</span> val, TreeNode left, TreeNode right)</span>&#123;</span><br><span class="line"><span class="built_in">this</span>.val = val;</span><br><span class="line"><span class="built_in">this</span>.left = left;</span><br><span class="line"><span class="built_in">this</span>.right = right;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MyUtils</span>&#123;</span><br><span class="line"><span class="comment">//层序遍历</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">printBinaryTree</span><span class="params">(TreeNode root)</span>&#123;</span><br><span class="line">Queue&lt;TreeNode&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;(); </span><br><span class="line">queue.offer(root);</span><br><span class="line"><span class="type">int</span> size;</span><br><span class="line">TreeNode temp;</span><br><span class="line"><span class="keyword">while</span>(!queue.isEmpty())&#123;</span><br><span class="line">size = queue.size();</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; size; i++) &#123;</span><br><span class="line">temp = queue.poll();</span><br><span class="line">System.out.print(temp.val + <span class="string">&quot;\t&quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(temp.left != <span class="literal">null</span>) queue.offer(temp.left);</span><br><span class="line"><span class="keyword">if</span>(temp.right != <span class="literal">null</span>) queue.offer(temp.right);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="总结-v32">总结</h2>]]></content>
+    <content type="html"><![CDATA[<h2 id="描述-v30">描述</h2><p>正常情况下，哪怕开到erro级别，还是有很多垃圾日志。</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230514225706693.png" alt="image-20230514225706693"></p><h2 id="分析-v27">分析</h2><p>用正则表达式：<code>^(?!.*(想过滤1|想过滤2)).*$</code></p><h2 id="实现-v27">实现</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">^(?!.*(gralloc4|CrashReport|skia|libjpeg|libMEOW)).*$</span><br></pre></td></tr></table></figure><p>处理过程：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230514230058647.png" alt="image-20230514230058647"></p><p>结果：</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230514230006842.png" alt=""></p><h2 id="总结-v29">总结</h2><p>正则是把学问很深的利器。</p>]]></content>
     
     
-    <summary type="html">【算法】最大二叉树654</summary>
+    <summary type="html">【Android】AS怎么过滤垃圾日志</summary>
+    
+    
+    
+    <category term="Android" scheme="http://lmc.pub/categories/Android/"/>
+    
+    
+    <category term="Android Studio" scheme="http://lmc.pub/tags/Android-Studio/"/>
+    
+    <category term="日志" scheme="http://lmc.pub/tags/%E6%97%A5%E5%BF%97/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Bug】高德地图导致APP莫名崩溃</title>
+    <link href="http://lmc.pub/posts/574910321.html"/>
+    <id>http://lmc.pub/posts/574910321.html</id>
+    <published>2023-05-14T14:18:18.000Z</published>
+    <updated>2023-05-14T14:20:43.437Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述-v24">描述</h2><blockquote><p>Pointer tag for 0x7b1ad2f750 was truncated.</p></blockquote><p>关键报错信息就是这句。</p><p>表现形式就是：在高德地图上选择地方之后然后退出来，突然APP就崩溃了。</p><p>准确点是有高德地图那个Activity</p><h2 id="分析-v23">分析</h2><h2 id="解决-v5">解决</h2><blockquote><p><a href="https://ask.csdn.net/questions/7651609">https://ask.csdn.net/questions/7651609</a></p></blockquote><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230514222040413.png" alt="image-20230514222040413"></p><h2 id="总结-v24">总结</h2>]]></content>
+    
+    
+    <summary type="html">【Bug】高德地图导致APP莫名崩溃</summary>
+    
+    
+    
+    <category term="Bug" scheme="http://lmc.pub/categories/Bug/"/>
+    
+    
+    <category term="Bug" scheme="http://lmc.pub/tags/Bug/"/>
+    
+    <category term="高德地图" scheme="http://lmc.pub/tags/%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/"/>
+    
+    <category term="App崩溃" scheme="http://lmc.pub/tags/App%E5%B4%A9%E6%BA%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://lmc.pub/posts/1.html"/>
+    <id>http://lmc.pub/posts/1.html</id>
+    <published>2023-05-12T10:29:19.215Z</published>
+    <updated>2023-05-15T14:48:01.383Z</updated>
+    
+    <content type="html"><![CDATA[<h1>JavaWeb速通</h1><blockquote><p>学习目标：</p><ol><li>项目需要自己写Java后端API</li><li>自己写学年设计</li></ol><p>学习参考：<a href="https://www.bilibili.com/video/BV1m84y1w7Tb/?spm_id_from=333.337.search-card.all.click&amp;vd_source=9dcd2e65b7a7c801f0b3948b79a4e337">黑马程序员2023新版JavaWeb开发教程，实现javaweb企业开发全流程（涵盖Spring+MyBatis+SpringMVC+SpringBoot等）_哔哩哔哩_bilibili</a></p><p>理由：</p><ol><li>Vue + Spring Boot + MyBatis</li><li>学完刚好项目</li><li>40h，没有过时知识点，高效</li></ol></blockquote><p>时间规划：</p><ul><li>[ ] 1. HTML/CSS</li><li>[ ] 2. JS/Vue</li><li>[ ] 3. Vue/Element</li><li>[ ] 4. Maven/Spring Boot Web入门</li><li>[ ] 5. Spring Boot Web 请求响应</li><li>[ ] 6. MySQL</li><li>[ ] 7. MySQL</li><li>[ ] 8. MySQL/Mybatis入门</li><li>[ ] 9. Mybatis</li><li>[ ] 10. Spring Boot Web案例</li><li>[ ] 11. Spring Boot Web案例</li><li>[ ] 12. 登录认证</li><li>[ ] 13. AOP</li><li>[ ] 14. Spring Boot 原理</li><li>[ ] 15. maven高级</li></ul><h2 id="一，前端">一，前端</h2><blockquote><p>HTML：网页结构</p><p>CSS：网页样式</p><p>JS：网页行为</p></blockquote><h3 id="1-1-HTML-CSS">1.1 HTML/CSS</h3><h4 id="1-1-1-html入门体验">1.1.1 html入门体验</h4><p>HTML结构</p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>HTML 快速入门<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello HTML<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;1.png&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><p>特点</p><blockquote><ol><li>不区分大小写</li><li>不区分<code>“”</code>和<code>‘’</code></li><li>语法不严格</li></ol></blockquote><p>收获：</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230514155031253.png" alt="image-20230514155031253"></p><h4 id="1-1-2-VS-Code">1.1.2 VS Code</h4><ol><li><p>写好了直接<code>Alt + B</code>快捷键打开浏览器预览</p></li><li><p><code>Ctrl + +/-</code>调整视图缩放</p></li><li><p>设置了，VS Code 自动保存和自动格式化</p></li></ol><h4 id="1-1-3-Demo：新浪新闻">1.1.3 Demo：新浪新闻</h4><p>CSS引入：</p><p>行内/头部/单独文件</p><p>CSS选择器：</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230515224740492.png" alt="image-20230515224740492"></p><h2 id="二，后端">二，后端</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1&gt;JavaWeb速通&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;学习目标：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;项目需要自己写Java后端API&lt;/li&gt;
+&lt;li&gt;自己写学年设计&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;学习参考：&lt;a href=&quot;https://www.bilibili.com</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>【Bug】因为Android13新特性拿不到访问音频权限</title>
+    <link href="http://lmc.pub/posts/1180702251.html"/>
+    <id>http://lmc.pub/posts/1180702251.html</id>
+    <published>2023-05-09T12:58:22.000Z</published>
+    <updated>2023-05-24T03:08:50.814Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述-v21">描述</h2><p>时间点：</p><blockquote><p>2022年8月我换了红米K50，它当时是MIUI13（基于Android12）。</p><p>项目演示的录制时间是2022年5月</p><p>Android13发布是2022年8月</p><p>然后我就更新了MIUI14，从Android12 -&gt; Android13</p></blockquote><p>做一个音乐APP的时候，需要扫描本地音乐。</p><p>需要扫本地资源仓库，然后找mp3音乐文件。</p><p>但是代码写好后，一直扫不到。</p><h2 id="分析-v21">分析</h2><p>锁定代码问题：</p><blockquote><p>手机自带音乐播放器可以扫描到这些文件 -》说明已经由<code>外存文件</code> 变为<code>系统资源库文件</code></p><p>然后准备看数据库，但是因为手机没有root，没权限看。</p><p>虚拟机有权限，app运虚拟机，ok。</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230509211216881.png" alt="image-20230509211216881"></p><p>然后问老师，是本来就有的Bug，还是我的代码有问题。</p><p>然后直接下成品的app，发现这个功能可以。</p><p>说明是我自己的代码有问题。</p></blockquote><ol><li><p>刚开始以为代码写错了</p></li><li><p>然后定位到本地音乐模块</p></li><li><p>再定位到<code>ScanLocalMusicAsyncTask</code>这个【扫描本地音乐异步任务】类</p></li><li><p>再定位到<code>doInBackground</code>方法（没有那个扫目录的动画）<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230509211247169.png" alt="image-20230509211247169"></p></li><li><p>再定位到某块代码没有执行</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> (cursor != <span class="literal">null</span> &amp;&amp; cursor.moveToNext()) &#123;</span><br></pre></td></tr></table></figure></li><li><p>通过打日志，发现cursor不为null，但是没有数据。<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230509211303680.png" alt="image-20230509211303680"></p></li><li><p>然后查cursor的实例化方法</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Cursor</span> <span class="variable">cursor</span> <span class="operator">=</span> contentResolver.query(</span><br><span class="line">    ...</span><br></pre></td></tr></table></figure></li><li><p>代码没问题</p></li><li><p>后来被指点是权限问题，然后对着<code>AndroidManifest。xml</code>以及那个动态申请权限的<code>框架和动态申请代码</code>一顿实验。</p></li><li><p>偶然间，看手机app后台的时候发现：我出Bug的app相对成品app少了一个<code>访问音频</code>的访问权限。<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230509211645975.png" alt="image-20230509211645975"></p></li><li><p>问题就到：为什么有访问资源库的权限就访问音频没了？</p></li><li><p>还是在那两个文件死磕了很久，不断的搜索和尝试</p></li><li><p>最后在这样搜：</p><p><code>READ_EXTERNAL_STORAGE 不能访问音频</code></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230509211812026.png" alt="image-20230509211812026"></p><p>找到答案：是Android13的新特性。</p></li><li><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230509211920193.png" alt="image-20230509211920193"></p></li></ol><p>​</p><h2 id="实现-v18">实现</h2><p>1, 配置文件中申明</p><p>（13只用下面那个，但是低于13只要上面那个）</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230509212039067.png" alt="image-20230509212039067"></p><p>2，然后在动态申请加上这个</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230509212202065.png" alt="image-20230509212202065"></p><h2 id="总结-v21">总结</h2><ul><li><p>Android新版版特性对Android开发很重要，搞不好就是一个卡好几天的坑</p></li><li><p>要根据Bug样子，尽量定位到关键所在。</p></li><li><p>多用日志和一些辅助信息去判断问题到底出在哪里</p></li></ul><blockquote><ol><li>Android13新特性：<a href="https://developer.android.com/about/versions/13/behavior-changes-13?hl=zh-cn#granular-media-permissions">行为变更：以 Android 13 或更高版本为目标平台的应用  | Android 开发者  | Android Developers</a></li><li>访问音频权限：<a href="https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_AUDIO">https://developer.android.com/reference/android/Manifest.permission#READ_MEDIA_AUDIO</a></li></ol></blockquote><h2 id="后续">后续</h2><p>当时改了之后，在Android13的手机上可以运行了。</p><p>但是在13版本一下的手机就进入不了界面。</p><p>是这里的权限处理。</p><p>就是13：用新权限</p><p>12以及一下：用老权限</p><p>所以这里要加权限判断：</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230524110841550.png" alt="image-20230524110841550"></p><p>先简单处理了一下。</p>]]></content>
+    
+    
+    <summary type="html">【Bug】因为Android13新特性拿不到访问音频权限</summary>
+    
+    
+    
+    <category term="Bug" scheme="http://lmc.pub/categories/Bug/"/>
+    
+    
+    <category term="Bug" scheme="http://lmc.pub/tags/Bug/"/>
+    
+    <category term="Android13" scheme="http://lmc.pub/tags/Android13/"/>
+    
+    <category term="权限申请" scheme="http://lmc.pub/tags/%E6%9D%83%E9%99%90%E7%94%B3%E8%AF%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【Android-AS调试】真机链接点脑怎么让电脑不弹出资源管理对话框</title>
+    <link href="http://lmc.pub/posts/1561194730.html"/>
+    <id>http://lmc.pub/posts/1561194730.html</id>
+    <published>2023-05-08T23:49:51.000Z</published>
+    <updated>2023-05-09T09:02:29.251Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述-v29">描述</h2><p>在真机链接电脑做Android开发调试的时候，每次连接上，电脑总会弹出一个<code>资源管理器</code>对话框。</p><p>每次都要点一下，不方便。</p><h2 id="分析-v26">分析</h2><h2 id="实现-v26">实现</h2><ol><li><code>我的电脑</code>右键<code>管理</code></li><li><img src="C:/Users/Micenlee/AppData/Roaming/Typora/typora-user-images/image-20230509075231502.png" alt="image-20230509075231502"></li><li>右键<code>属性</code>打开设置为<code>手动</code><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230509075400470.png" alt="image-20230509075400470"></li></ol><h2 id="总结-v28">总结</h2><table><thead><tr><th>阶段</th><th>考试科目</th><th>备注</th></tr></thead><tbody><tr><td>大二下</td><td>1.习概 /2.统计学 /3.信息资源管理 /4.大数据 /5.数据库</td><td>高数/英语</td></tr><tr><td>大三上</td><td>1. 政治经济学 /2.计网 /3.管理信息系统 /4.商务智能和数据挖掘</td><td></td></tr><tr><td>大三下</td><td>1.企业资源 /2.信息安全 /3.信息系统分析和涉及</td><td></td></tr></tbody></table>]]></content>
+    
+    
+    <summary type="html">【Android-AS调试】真机链接点脑怎么让电脑不弹出资源管理对话框</summary>
+    
+    
+    
+    <category term="Android" scheme="http://lmc.pub/categories/Android/"/>
+    
+    
+    <category term="Android" scheme="http://lmc.pub/tags/Android/"/>
+    
+    <category term="AS" scheme="http://lmc.pub/tags/AS/"/>
+    
+    <category term="调试" scheme="http://lmc.pub/tags/%E8%B0%83%E8%AF%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【工具-电脑】浏览器进阶使用技巧</title>
+    <link href="http://lmc.pub/posts/934599193.html"/>
+    <id>http://lmc.pub/posts/934599193.html</id>
+    <published>2023-05-06T23:43:26.000Z</published>
+    <updated>2023-05-07T00:04:25.848Z</updated>
+    
+    <content type="html"><![CDATA[<h1>搜索引擎高级技巧</h1><h2 id="一，双引号-“”">一，双引号 “”</h2><p>搜索的关键词精准匹配，而不会对我们输入的关键字进行切分</p><p>例如，我们搜索 “python range 用法”，通过结果可以看出使用双引号和不使用双引号结果是不一样的。</p><h2 id="二，排除号">二，排除号 -</h2><p>如果我们想排除某些结果，可以在搜索词前面加上减号 <strong>-</strong> 符号。</p><p>例如，我们搜索 “python -菜鸟教程” 将返回与&quot;python&quot;有关的结果，但不包括任何与&quot;菜鸟教程&quot;有关的结果。</p><h2 id="三，通配符">三，通配符 *</h2><p>使用通配符 ***** 可以帮助您找到不完整或变形的单词。</p><p>例如，我们搜索 “python * 手册” 将返回所有以 “python” 和 “手册” 为关键词的结果。</p><h2 id="四，竖线">四，竖线 |</h2><p>使用竖线符号 <strong>|</strong> 可以在同一搜索中搜索多个选项。</p><p>例如，我们搜索&quot;python | java&quot;，可以看到结果会把两个官网展示出来。</p><h2 id="五：在特定网站搜：site：">五：在特定网站搜：site：</h2><p>如果您只想在特定网站上搜索，请在搜索词前面加上 <strong>site:</strong> 和网站的 URL。</p><p>例如，我们搜索&quot;site:runoob.com java&quot;将返回所有在菜鸟教程上与&quot;java&quot;有关的结果。</p><h2 id="六：搜相关网站：related：">六：搜相关网站：related：</h2><p>使用 <strong>related:</strong> 可以帮助您找到与特定网站相关的其他网站。</p><p>例如，我们搜索&quot;related:runoob.com&quot;将返回所有与菜鸟教程相关的网站。</p><h2 id="七，括号：">七，括号：()</h2><p>使用括号可以帮助您更好地组织搜索。</p><p>例如，我们搜索&quot;（python OR java） site:runoob.com&quot;将返回所有在 RUNOOB 上与&quot;python&quot;或&quot;java&quot;有关的结果。</p><h2 id="八，搜索范围：…">八，搜索范围：…</h2><p>使用两个点 <strong>…</strong> 可以搜索一个范围。</p><p>例如，我们搜索**“最佳科幻电影 2000…2010”**将返回在 2000 年到 2010 年之间发行的所有科幻电影的结果。</p><h2 id="九，其他">九，其他</h2><ul><li>定义符号：define: 使用&quot;define:&quot;可以快速获取某个词的定义。例如，搜索&quot;define:人工智能&quot;将返回人工智能的定义。</li><li>时间范围：daterange: 使用&quot;daterange:&quot;可以搜索某个特定的时间范围内的内容。例如，搜索&quot;马拉松比赛 daterange:2011-01-01…2022-01-01&quot;将返回2011年到2022年之间的马拉松比赛相关的结果。</li><li>文件类型：filetype: 使用&quot;filetype:&quot;可以搜索特定类型的文件。例如，搜索&quot;python手册 filetype:pdf&quot;将返回所有以pdf格式存储的python手册相关的文件。</li><li>搜索标题关键字：intitle:index.of: 使用&quot;intitle:index.of&quot;可以搜索页面 title 标签中包含某关键词的所有页面。例如，搜索&quot;intitle:index.of mp3&quot;将返回一个包含 mp3 文件的目录列表。</li><li>搜索链接：link: 使用&quot;link:&quot;可以搜索到指定网站链接的所有网页。例如，搜索&quot;link:runoob.com&quot;将返回所有与 RUNOOB 相关的网页链接。</li><li>搜索缩写：acronym: 使用&quot;acronym:&quot;可以搜索缩写的定义。例如，搜索&quot;acronym:AI&quot;将返回人工智能的相关定义。</li></ul><blockquote><p><a href="https://www.runoob.com/w3cnote/search-engines-usage-skills.html">盘点全球搜索引擎及其使用技巧 | 菜鸟教程 (runoob.com)</a></p></blockquote>]]></content>
+    
+    
+    <summary type="html">【工具-电脑】浏览器进阶使用技巧</summary>
+    
+    
+    
+    <category term="工具" scheme="http://lmc.pub/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    <category term="电脑" scheme="http://lmc.pub/categories/%E5%B7%A5%E5%85%B7/%E7%94%B5%E8%84%91/"/>
+    
+    
+    <category term="电脑" scheme="http://lmc.pub/tags/%E7%94%B5%E8%84%91/"/>
+    
+    <category term="浏览器" scheme="http://lmc.pub/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【编程-Bug】最小宽度引发的真机显示Bug</title>
+    <link href="http://lmc.pub/posts/1250168911.html"/>
+    <id>http://lmc.pub/posts/1250168911.html</id>
+    <published>2023-05-03T08:02:27.000Z</published>
+    <updated>2023-05-03T08:12:34.538Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述-v19">描述</h2><p>就是有些app效果在虚拟机上可以正常显示，但是在我的Redmi K50上就显示不正常，有Bug。</p><p>真机：<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230503160423477.png" alt="image-20230503160423477"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230503160441162.png" alt="image-20230503160441162"></p><p>虚拟机：（应该）</p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230503160509782.png" alt="image-20230503160509782"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230503160519726.png" alt="image-20230503160519726"></p><h2 id="分析-v19">分析</h2><p>真机的最小屏幕宽度是320左右，可能太窄了。</p><p>调宽一点就全部正常了。</p><p>我调到500多就全部正常显示了。</p><h2 id="实现-v16">实现</h2><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/767d973c11bd33c1edf852b4fea2d3a.jpg" alt="767d973c11bd33c1edf852b4fea2d3a"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/9c86778afc8523d2766f8cb47b9e55f.jpg" alt="9c86778afc8523d2766f8cb47b9e55f"></p><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/722a91b6f583aaedbe23bedf81a6361.jpg" alt="722a91b6f583aaedbe23bedf81a6361"></p><h2 id="总结-v19">总结</h2><p>要么去调最小宽度，要么换种办法写xml布局。</p>]]></content>
+    
+    
+    <summary type="html">【编程-Bug】最小宽度引发的真机显示Bug</summary>
+    
+    
+    
+    <category term="编程" scheme="http://lmc.pub/categories/%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="Bug" scheme="http://lmc.pub/categories/%E7%BC%96%E7%A8%8B/Bug/"/>
+    
+    
+    <category term="Bug" scheme="http://lmc.pub/tags/Bug/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【编程-电脑】windows关闭自启动应用设置</title>
+    <link href="http://lmc.pub/posts/418358511.html"/>
+    <id>http://lmc.pub/posts/418358511.html</id>
+    <published>2023-05-01T23:11:32.000Z</published>
+    <updated>2023-05-01T23:17:06.201Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="描述-v27">描述</h2><p><img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230502071202371.png" alt="image-20230502071202371"></p><p>windows电脑，总是有些系统软件没有经过我的同意就自己启动。</p><ol><li>拖慢电脑启动速度</li><li>在后台让电脑变卡</li></ol><h2 id="分析-v24">分析</h2><ol><li><code>win + R</code>，输入<code>msconfig</code> <img src="https://dh1.cmcmcdn.com/duba/a/8/4/4/7/a8447d3a9c6f97226436017ff0e2a6df.png" alt=""></li><li>【启动】-&gt; 【任务管理器】<img src="https://dh1.cmcmcdn.com/duba/8/2/4/7/1/824714c2e89a26c05283a99cbae4df46.png" alt=""></li><li>按自己需要去禁止一些软件的自启动<img src="https://article-picture-resource.oss-cn-chengdu.aliyuncs.com/imags/image-20230502071550430.png" alt=""></li></ol><h2 id="实现-v22">实现</h2><h2 id="总结-v26">总结</h2><p>我的windows越来越卡了，老了？</p><p>最新的macbookpro m2max 要27k！</p><p>希望公司给我配一个，谢天谢地，自己买不起。</p><p>开发还得是mac</p>]]></content>
+    
+    
+    <summary type="html">【编程-电脑】windows关闭自启动应用设置</summary>
     
     
     
