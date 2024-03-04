@@ -6,5 +6,7 @@
 
 ------
 大一技术博客：CSDN（Java基础，C，Linux，MySQL...基础课）【已丢失】
-大二技术墨客：自己搭建网站:lmc.pub(Android)【exit】
+
+大二技术博客：自己搭建网站:lmc.pub(Android)【exit】
+
 大三实习记录：语雀知识库
